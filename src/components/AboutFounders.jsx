@@ -1,23 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import card1Img from '../assets/card1.png';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const AboutFounders = () => {
-  const sectionRef  = useRef(null);
-  const headingRef  = useRef(null);
-  const descRef     = useRef(null);
-  const desc2Ref    = useRef(null);
-  const linkRef     = useRef(null);
-  const cardsRef    = useRef([]);
-
-  cardsRef.current = [];
-  const addToCards = (el) => { if (el && !cardsRef.current.includes(el)) cardsRef.current.push(el); };
-
   const cards = [
     {
       value: "7+",
@@ -48,107 +33,52 @@ const AboutFounders = () => {
     }
   ];
 
-  useEffect(() => {
-    // ── SplitType heading ────────────────────────────────────
-    const splitH = new SplitType(headingRef.current, { types: 'chars,words' });
-
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', toggleActions: 'play none none none' }
-    });
-
-    // Words reveal upward
-    tl.fromTo(splitH.words,
-      { y: '105%', opacity: 0 },
-      { y: '0%', opacity: 1, stagger: 0.04, duration: 0.75, ease: 'power3.out' }
-    );
-
-    // Description paragraphs
-    tl.fromTo([descRef.current, desc2Ref.current],
-      { opacity: 0, y: 22 },
-      { opacity: 1, y: 0, stagger: 0.12, duration: 0.7, ease: 'power2.out' },
-      '-=0.5'
-    );
-
-    // Link arrow
-    tl.fromTo(linkRef.current,
-      { opacity: 0, x: -12 },
-      { opacity: 1, x: 0, duration: 0.5, ease: 'power2.out' },
-      '-=0.35'
-    );
-
-    // Cards clip-path wipe in from bottom
-    tl.fromTo(cardsRef.current,
-      { opacity: 0, y: 50, scale: 0.96 },
-      { opacity: 1, y: 0, scale: 1, stagger: 0.14, duration: 0.85, ease: 'power3.out' },
-      '-=0.3'
-    );
-
-    // ── Hover: magnetic arrow link ───────────────────────────
-    const arrow = linkRef.current?.querySelector('.arrow-icon');
-    if (arrow) {
-      const onMove = (e) => {
-        const rect = arrow.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top  + rect.height / 2);
-        const dist = Math.hypot(dx, dy);
-        if (dist < 60) {
-          gsap.to(arrow, { x: dx * 0.3, y: dy * 0.3, duration: 0.3, ease: 'power2.out' });
-        } else {
-          gsap.to(arrow, { x: 0, y: 0, duration: 0.4, ease: 'elastic.out(1,0.5)' });
-        }
-      };
-      document.addEventListener('mousemove', onMove);
-      return () => {
-        splitH.revert();
-        ScrollTrigger.getAll().forEach(t => t.kill());
-        document.removeEventListener('mousemove', onMove);
-      };
-    }
-
-    return () => {
-      splitH.revert();
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className="relative bg-[#F8FBFA] py-16 sm:py-20 px-6 sm:px-10 overflow-hidden">
+    <section
+      id="about"
+      className="relative bg-[#F8FBFA] py-16 sm:py-20 px-6 sm:px-10 overflow-hidden"
+    >
+      {/* Inner wrapper */}
       <div className="max-w-7xl mx-auto w-full relative z-20">
 
-        {/* Top row — heading + description */}
+        {/* Top row -- heading + description */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20 text-[#102A43]">
 
-          {/* Left: heading */}
-          <div className="lg:w-1/2 overflow-hidden">
-            <h2 ref={headingRef} className="font-firs text-[38px] sm:text-[52px] lg:text-[60px] font-semibold uppercase tracking-tight leading-[0.95]">
+          {/* Left side -- Section heading */}
+          <div className="lg:w-1/2">
+            <h2 className="font-firs text-[38px] sm:text-[52px] lg:text-[60px] font-semibold uppercase tracking-tight leading-[0.95]">
               ABOUT<br />CURO CLINICS
             </h2>
           </div>
 
-          {/* Right: description */}
+          {/* Right side -- Description block */}
           <div className="lg:w-1/2 flex flex-col max-w-xl">
-            <p ref={descRef} className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581]">
+            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581]">
               Curo Clinics was founded with a simple vision — to make world-class healthcare accessible to every family in Kokapet and the surrounding communities. Our multidisciplinary team combines clinical expertise with compassionate care, creating a healthcare experience built around trust and patient wellbeing.
             </p>
-            <p ref={desc2Ref} className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581] mt-5">
+            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581] mt-5">
               With advanced diagnostics, experienced specialists and modern treatment facilities under one roof, Curo Clinics delivers comprehensive healthcare that is accessible, transparent and personalized for every patient.
             </p>
 
-            <div className="mt-6" ref={linkRef}>
+            {/* Discover Our Story Link */}
+            <div className="mt-6">
               <a
                 href="#story"
-                className="group inline-flex items-center gap-4 text-[14px] font-medium text-[#102A43] hover-underline hover:opacity-80 transition-opacity"
+                className="group inline-flex items-center gap-4 text-[14px] font-medium text-[#102A43] hover:opacity-80 transition-opacity"
               >
                 <span>Discover Our Story</span>
                 <span
-                  className="arrow-icon flex items-center justify-center w-8 h-8 border border-[#102A43] transition-transform group-hover:-translate-y-0.5"
-                  style={{ clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)" }}
+                  className="flex items-center justify-center w-8 h-8 border border-[#102A43] transition-transform group-hover:-translate-y-0.5"
+                  style={{
+                    clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)"
+                  }}
                 >
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
                 </span>
               </a>
             </div>
           </div>
+
         </div>
 
         {/* Stats cards grid */}
@@ -156,24 +86,28 @@ const AboutFounders = () => {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              ref={addToCards}
-              className={`relative w-full h-[280px] sm:h-[340px] transition-all duration-500 hover:scale-[1.025] hover:shadow-xl ${card.offset ? 'lg:mt-24' : ''}`}
+              className={`relative w-full h-[280px] sm:h-[340px] transition-transform duration-500 hover:scale-[1.01] ${card.offset ? 'lg:mt-24' : ''
+                }`}
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.85)',
                 padding: '1.5px',
                 clipPath: card.clipPath
               }}
             >
+              {/* Inner container serving as the image fill & inset border */}
               <div
-                className="relative w-full h-full overflow-hidden bg-cover bg-center group"
-                style={{ backgroundImage: `url(${card.image})`, clipPath: card.clipPath }}
+                className="relative w-full h-full overflow-hidden bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${card.image})`,
+                  clipPath: card.clipPath,
+                  mixBlendMode: 'normal'
+                }}
               >
+                {/* Soft darken overlay for readability */}
                 <div className="absolute inset-0 bg-[#102A43]/15 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
 
-                {/* Shimmer on hover */}
-                <span className="card-shimmer" aria-hidden="true" />
-
+                {/* Text overlay inside each card */}
                 <div className={`absolute ${card.placement} max-w-[66%] z-10 text-left`}>
                   <div
                     className="font-firs font-semibold uppercase leading-none text-[38px] sm:text-[54px] select-none"
@@ -187,19 +121,26 @@ const AboutFounders = () => {
                   >
                     {card.value}
                   </div>
-                  <h4 className="mt-2 text-[15px] font-bold text-[#102A43] tracking-wide">{card.title}</h4>
-                  <p  className="mt-1.5 text-[13px] sm:text-[14px] leading-[1.4] text-[#334E68] font-normal">{card.desc}</p>
+                  <h4 className="mt-2 text-[15px] font-bold text-[#102A43] tracking-wide">
+                    {card.title}
+                  </h4>
+                  <p className="mt-1.5 text-[13px] sm:text-[14px] leading-[1.4] text-[#334E68] font-normal">
+                    {card.desc}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
 
       {/* Bottom fade overlay */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40 sm:h-56 z-10"
-        style={{ background: 'linear-gradient(to bottom, rgba(248,251,250,0) 0%, rgba(248,251,250,0.7) 60%, #F8FBFA 100%)' }}
+        style={{
+          background: 'linear-gradient(to bottom, rgba(248, 251, 250, 0) 0%, rgba(248, 251, 250, 0.7) 60%, #F8FBFA 100%)'
+        }}
       />
     </section>
   );

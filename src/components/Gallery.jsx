@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,12 +74,9 @@ const Gallery = () => {
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    // SplitType word reveal on title
-    const titleEl = headerRef.current.querySelector('.title');
-    const splitH = new SplitType(titleEl, { types: 'words' });
-    entranceTl.fromTo(splitH.words,
-      { y: '110%', opacity: 0 },
-      { y: '0%', opacity: 1, stagger: 0.05, duration: 0.8, ease: 'power3.out' },
+    entranceTl.fromTo(headerRef.current.querySelector('.title'),
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
       '-=0.4'
     );
 
@@ -156,12 +152,12 @@ const Gallery = () => {
     // Scale image to 1.08
     gsap.to(img, { scale: 1.08, duration: 0.5, ease: 'power2.out' });
     // Lift card upward by 10px and add emerald shadow / glow
-    gsap.to(card, { 
-      y: -10, 
-      boxShadow: '0 25px 50px rgba(0, 168, 107, 0.12)', 
-      borderColor: 'rgba(0, 168, 107, 0.4)', 
-      duration: 0.5, 
-      ease: 'power2.out' 
+    gsap.to(card, {
+      y: -10,
+      boxShadow: '0 25px 50px rgba(0, 168, 107, 0.12)',
+      borderColor: 'rgba(0, 168, 107, 0.4)',
+      duration: 0.5,
+      ease: 'power2.out'
     });
     // Darken overlay
     gsap.to(overlay, { opacity: 0.85, duration: 0.4 });
@@ -180,12 +176,12 @@ const Gallery = () => {
     // Reset image scale
     gsap.to(img, { scale: 1, duration: 0.5, ease: 'power2.out' });
     // Reset card lift and shadow
-    gsap.to(card, { 
-      y: 0, 
-      boxShadow: '0 15px 45px rgba(0,0,0,0.08)', 
-      borderColor: 'rgba(0, 168, 107, 0.05)', 
-      duration: 0.5, 
-      ease: 'power2.out' 
+    gsap.to(card, {
+      y: 0,
+      boxShadow: '0 15px 45px rgba(0,0,0,0.08)',
+      borderColor: 'rgba(0, 168, 107, 0.05)',
+      duration: 0.5,
+      ease: 'power2.out'
     });
     // Reset overlay
     gsap.to(overlay, { opacity: 0.7, duration: 0.4 });
@@ -211,7 +207,7 @@ const Gallery = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-center">
-        
+
         {/* Header Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-20 flex flex-col items-center">
           <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5 opacity-0">
@@ -226,7 +222,7 @@ const Gallery = () => {
         </div>
 
         {/* Bento Grid */}
-        <div 
+        <div
           ref={gridRef}
           className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
         >
@@ -239,9 +235,9 @@ const Gallery = () => {
               className={`group relative overflow-hidden rounded-[32px] border border-emerald-500/5 bg-white shadow-[0_15px_45px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer flex-shrink-0 ${item.span}`}
             >
               {/* Card Background Image (Parallax movement) */}
-              <div 
+              <div
                 className="gallery-img absolute inset-[-12px] bg-cover bg-center transition-transform duration-700 ease-out"
-                style={{ 
+                style={{
                   backgroundImage: `url(${item.image})`
                 }}
               />

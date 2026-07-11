@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
-import { 
-  ArrowUpRight, 
-  Baby, 
-  Smile, 
-  Stethoscope, 
-  Dna, 
-  Sparkles, 
-  Heart, 
-  Eye, 
-  Activity, 
+import {
+  ArrowUpRight,
+  Baby,
+  Smile,
+  Stethoscope,
+  Dna,
+  Sparkles,
+  Heart,
+  Eye,
+  Activity,
   ActivitySquare,
   Shield,
   BriefcaseMedical
@@ -40,17 +39,19 @@ const Specialties = () => {
       rightBottomCardRef.current
     ];
 
-    // SplitType heading reveal
-    const splitH = new SplitType(headerRef.current?.querySelector('h2') || headerRef.current, { types: 'words' });
-    gsap.fromTo(headerRef.current?.querySelector('.header-label'),
-      { opacity: 0, y: 14 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 82%', toggleActions: 'play none none none' } }
-    );
-    gsap.fromTo(splitH.words,
-      { y: '110%', opacity: 0 },
-      { y: '0%', opacity: 1, stagger: 0.05, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%', toggleActions: 'play none none none' } }
+    gsap.fromTo(headerRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
+      }
     );
 
     gsap.fromTo(cards,
@@ -88,7 +89,6 @@ const Specialties = () => {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      splitH.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -132,10 +132,10 @@ const Specialties = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
-        
+
         {/* Header section (stagger/layout matched) */}
-        <div 
-          ref={headerRef} 
+        <div
+          ref={headerRef}
           className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-16"
         >
           <div className="max-w-3xl text-left">
@@ -163,15 +163,15 @@ const Specialties = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
           {/* COLUMN 1: Large Left Feature Card */}
-          <div 
+          <div
             ref={leftCardRef}
             className="group relative h-[500px] lg:h-[620px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 flex flex-col justify-end p-8"
           >
             {/* Background Consultation Image */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center parallax-bg transition-transform duration-700 ease-out group-hover:scale-105"
-              style={{ 
-                backgroundImage: `url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80')` 
+              style={{
+                backgroundImage: `url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80')`
               }}
             />
             {/* Ambient gradients */}
@@ -206,19 +206,19 @@ const Specialties = () => {
           <div className="flex flex-col gap-6">
 
             {/* Middle Top Card: Pediatrics */}
-            <div 
+            <div
               ref={midTopCardRef}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
             >
               {/* Background image */}
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ 
-                  backgroundImage: `url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80')` 
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              
+
               {/* Top Section Icon */}
               <div className="relative z-10 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center">
                 <Baby className="w-5 h-5 text-white" />
@@ -234,14 +234,14 @@ const Specialties = () => {
             </div>
 
             {/* Middle Bottom Card: Dental Care */}
-            <div 
+            <div
               ref={midBottomCardRef}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
             >
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ 
-                  backgroundImage: `url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80')` 
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -272,7 +272,7 @@ const Specialties = () => {
           <div className="flex flex-col gap-6">
 
             {/* Right Top Card: Department Marquee */}
-            <div 
+            <div
               ref={rightTopCardRef}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 p-6 flex flex-col justify-between"
             >
@@ -288,7 +288,7 @@ const Specialties = () => {
                 {/* Row 1 (scrolls left) */}
                 <div className="flex gap-2 w-max animate-marquee-left">
                   {[...departments, ...departments].map((dept, index) => (
-                    <div 
+                    <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm"
                     >
@@ -301,7 +301,7 @@ const Specialties = () => {
                 {/* Row 2 (scrolls right) */}
                 <div className="flex gap-2 w-max animate-marquee-right">
                   {[...departments, ...departments].reverse().map((dept, index) => (
-                    <div 
+                    <div
                       key={index}
                       className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm"
                     >
@@ -319,14 +319,14 @@ const Specialties = () => {
             </div>
 
             {/* Right Bottom Card: Group of Indian Doctors */}
-            <div 
+            <div
               ref={rightBottomCardRef}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
             >
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ 
-                  backgroundImage: `url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80')` 
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
@@ -342,7 +342,7 @@ const Specialties = () => {
               {/* Floating Department Pills bottom */}
               <div className="relative z-10 flex flex-wrap gap-1.5 max-h-[88px] overflow-hidden justify-start">
                 {departments.slice(0, 5).map((dept, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="px-2 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[9px] font-medium tracking-wide shadow-sm hover:bg-emerald-500 hover:border-emerald-400/40 transition-colors duration-300 cursor-pointer"
                   >

@@ -1,21 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Home, 
-  HelpCircle, 
-  Grid, 
-  Users, 
-  MessageSquare, 
-  PhoneCall, 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  Home,
+  HelpCircle,
+  Grid,
+  Users,
+  MessageSquare,
+  PhoneCall,
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Heart
 } from 'lucide-react';
 import { FaInstagram, FaFacebookF, FaYoutube, FaMapMarkerAlt } from 'react-icons/fa';
-import SplitType from 'split-type';
 import logoImg from '../assets/logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,9 +41,9 @@ const Footer = () => {
 
     // 1. Background glow & CURO background text fades in
     entranceTl.fromTo('.bg-glow', { opacity: 0 }, { opacity: 1, duration: 1.2 });
-    entranceTl.fromTo('.curo-bg-text', 
-      { opacity: 0, scale: 0.9 }, 
-      { opacity: 0.03, scale: 1, duration: 1.5, ease: 'power2.out' }, 
+    entranceTl.fromTo('.curo-bg-text',
+      { opacity: 0, scale: 0.9 },
+      { opacity: 0.03, scale: 1, duration: 1.5, ease: 'power2.out' },
       '-=1.0'
     );
 
@@ -120,12 +119,12 @@ const Footer = () => {
       <div className="float-particle-2 absolute bottom-20 right-10 w-4 h-4 bg-emerald-500/10 rounded-full blur-[2px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center">
-        
+
         {/* Top Brand Area */}
         <div ref={brandRef} className="flex flex-col items-center text-center max-w-2xl mb-10">
-          <img 
-            src={logoImg} 
-            alt="Curo Clinics logo" 
+          <img
+            src={logoImg}
+            alt="Curo Clinics logo"
             className="h-12 w-auto mb-6 select-none opacity-0"
           />
           <span className="opacity-0 tracking-[0.45em] text-emerald-700 font-semibold text-xs uppercase block mb-4">
@@ -140,7 +139,7 @@ const Footer = () => {
         <div className="w-full h-[1px] bg-emerald-500/10 mb-6" />
 
         {/* Navigation Strip */}
-        <nav 
+        <nav
           ref={navRef}
           className="w-full overflow-x-auto scrollbar-none flex justify-center pb-4 mb-10"
         >
@@ -164,12 +163,12 @@ const Footer = () => {
         </nav>
 
         {/* Contact Info Card */}
-        <div 
+        <div
           ref={contactCardRef}
           className="w-full bg-white/70 backdrop-blur-xl border border-emerald-500/10 rounded-[36px] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,168,107,0.04)] hover:shadow-[0_20px_50px_rgba(0,168,107,0.08)] hover:bg-white/80 transition-all duration-500 mb-10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 divide-y md:divide-y-0 lg:divide-x divide-emerald-500/10">
-            
+
             {/* Location */}
             <div className="flex items-start gap-4 text-left lg:px-6 first:pl-0">
               <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/15 text-emerald-600">
@@ -196,7 +195,7 @@ const Footer = () => {
                 <span className="text-[10px] tracking-widest text-slate-400 font-bold uppercase block mb-1">
                   CALL US
                 </span>
-                <a 
+                <a
                   href="tel:+918919942870"
                   className="text-[#0F172A] font-semibold text-base hover:text-emerald-600 transition-colors block mb-1 whitespace-nowrap"
                 >
@@ -217,7 +216,7 @@ const Footer = () => {
                 <span className="text-[10px] tracking-widest text-slate-400 font-bold uppercase block mb-1">
                   EMAIL US
                 </span>
-                <a 
+                <a
                   href="mailto:info@curoclinics.com"
                   className="text-[#0F172A] font-semibold text-base hover:text-emerald-600 transition-colors block mb-1"
                 >
@@ -284,7 +283,7 @@ const Footer = () => {
         <div className="w-full h-[1px] bg-emerald-500/10 mb-8" />
 
         {/* Bottom Bar Columns */}
-        <div 
+        <div
           ref={bottomRef}
           className="w-full flex flex-col md:flex-row items-center justify-between gap-6 text-slate-500 text-xs font-light"
         >

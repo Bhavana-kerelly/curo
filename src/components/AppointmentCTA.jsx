@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Phone, MapPin } from 'lucide-react';
-import SplitType from 'split-type';
 import hospitalBg from '../assets/hospital.png';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,18 +48,13 @@ const AppointmentCTA = () => {
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    // Heading lines: SplitType word reveal
+    // Heading lines reveal
     const headingLines = leftContentRef.current.querySelectorAll('.heading-line');
-    const splitHeadings = [];
-    headingLines.forEach(el => {
-      const s = new SplitType(el, { types: 'words' });
-      splitHeadings.push(s);
-      entranceTl.fromTo(s.words,
-        { y: '105%', opacity: 0 },
-        { y: '0%', opacity: 1, stagger: 0.05, duration: 0.75, ease: 'power3.out' },
-        '-=0.4'
-      );
-    });
+    entranceTl.fromTo(headingLines,
+      { opacity: 0, y: 35 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
+      '-=0.4'
+    );
 
     // Paragraph fades upward
     entranceTl.fromTo(leftContentRef.current.querySelector('.paragraph'),
@@ -134,7 +128,7 @@ const AppointmentCTA = () => {
       className="relative w-full min-h-[85vh] py-32 px-6 md:px-12 lg:px-24 bg-[#F8FBFA] flex items-center overflow-hidden"
     >
       {/* Background Image Layer */}
-      <div 
+      <div
         ref={bgImgRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[3px] brightness-[90%]"
         style={{ backgroundImage: `url(${hospitalBg})` }}
@@ -148,7 +142,7 @@ const AppointmentCTA = () => {
 
       {/* Main Grid Wrapper */}
       <div className="max-w-7xl mx-auto w-full relative z-20 grid grid-cols-1 lg:grid-cols-10 items-center gap-16 lg:gap-8">
-        
+
         {/* Left Side Content - 60% Width */}
         <div ref={leftContentRef} className="lg:col-span-6 flex flex-col text-left">
           <span className="label text-emerald-600 font-semibold text-xs tracking-[0.28em] uppercase block mb-5 opacity-0">
@@ -180,13 +174,13 @@ const AppointmentCTA = () => {
 
           {/* Secondary Contact Info */}
           <div className="contact-info opacity-0 mt-12 border-t border-emerald-500/10 pt-8 flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-12">
-            
+
             {/* Phone */}
             <div className="flex flex-col text-left group cursor-pointer">
               <span className="text-slate-500 font-semibold text-[10px] tracking-[0.18em] uppercase mb-1">
                 CALL US TODAY
               </span>
-              <a 
+              <a
                 href="tel:+918919942870"
                 className="flex items-center gap-2.5 text-2xl font-medium text-[#0F172A] group-hover:text-emerald-600 transition-colors duration-300"
               >
@@ -212,15 +206,15 @@ const AppointmentCTA = () => {
         </div>
 
         {/* Right Side Doctor Visual - 40% Width */}
-        <div 
-          ref={rightContentRef} 
+        <div
+          ref={rightContentRef}
           className="lg:col-span-4 flex items-center justify-center relative min-h-[380px] lg:min-h-[500px]"
         >
           {/* Large emerald radial glow behind doctor */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#10b981_0%,transparent_65%)] opacity-10 pointer-events-none" />
 
           {/* Doctor Portrait Image with gradient mask fade */}
-          <div 
+          <div
             ref={doctorRef}
             className="relative w-72 h-96 sm:w-80 sm:h-[420px] lg:w-[350px] lg:h-[480px] z-10 select-none pointer-events-none"
             style={{
@@ -228,9 +222,9 @@ const AppointmentCTA = () => {
               WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)'
             }}
           >
-            <img 
-              src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80" 
-              alt="Expert Doctor at Curo Clinics" 
+            <img
+              src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=600&q=80"
+              alt="Expert Doctor at Curo Clinics"
               className="w-full h-full object-cover rounded-3xl"
             />
           </div>

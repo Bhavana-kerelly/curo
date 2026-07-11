@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ChevronRight, Star, ArrowUpRight } from 'lucide-react';
-import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,21 +79,17 @@ const Testimonials = () => {
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    // SplitType word reveal on heading
-    const titleEl = headerRef.current.querySelector('.title');
-    const splitH = new SplitType(titleEl, { types: 'words' });
-    entranceTl.fromTo(splitH.words,
-      { y: '110%', opacity: 0 },
-      { y: '0%', opacity: 1, stagger: 0.05, duration: 0.85, ease: 'power3.out' },
+    entranceTl.fromTo(headerRef.current.querySelector('.title'),
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
       '-=0.4'
     );
 
     entranceTl.fromTo(headerRef.current.querySelector('.subtitle'),
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-      '-=0.5'
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+      '-=0.6'
     );
-
 
     entranceTl.fromTo(quoteContainerRef.current,
       { opacity: 0, y: 40 },
@@ -231,7 +226,7 @@ const Testimonials = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-center">
-        
+
         {/* Header Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-20 flex flex-col items-center">
           <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5 opacity-0">
@@ -247,8 +242,8 @@ const Testimonials = () => {
         </div>
 
         {/* Immersive Single Testimonial Quote */}
-        <div 
-          ref={quoteContainerRef} 
+        <div
+          ref={quoteContainerRef}
           className="relative w-full max-w-5xl text-center mb-12 flex flex-col items-center min-h-[280px] lg:min-h-[220px]"
         >
           {/* Huge quotation marks behind the text */}
@@ -283,14 +278,14 @@ const Testimonials = () => {
 
         {/* Circular Next/Prev Navigation */}
         <div ref={navRef} className="flex items-center gap-4 mb-16">
-          <button 
+          <button
             onClick={handlePrev}
             disabled={isTransitioning}
             className="w-[52px] h-[52px] bg-white border border-emerald-500/20 hover:bg-emerald-600 hover:text-white rounded-full flex items-center justify-center text-emerald-600 shadow-md transition-all duration-300 transform hover:scale-108 cursor-pointer disabled:opacity-50"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button 
+          <button
             onClick={handleNext}
             disabled={isTransitioning}
             className="w-[52px] h-[52px] bg-white border border-emerald-500/20 hover:bg-emerald-600 hover:text-white rounded-full flex items-center justify-center text-emerald-600 shadow-md transition-all duration-300 transform hover:scale-108 cursor-pointer disabled:opacity-50"

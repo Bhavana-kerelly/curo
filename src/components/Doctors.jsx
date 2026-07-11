@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight } from 'lucide-react';
-import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,18 +70,14 @@ const Doctors = () => {
       }
     });
 
-    const titleEl = headerRef.current.querySelector('.title');
-    const splitH = new SplitType(titleEl, { types: 'words' });
-    gsap.set(splitH.words, { overflow: 'hidden' });
-
     entranceTl.fromTo(headerRef.current.querySelector('.label'),
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    entranceTl.fromTo(splitH.words,
-      { y: '110%', opacity: 0 },
-      { y: '0%', opacity: 1, stagger: 0.06, duration: 0.85, ease: 'power3.out' },
+    entranceTl.fromTo(headerRef.current.querySelector('.title'),
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
       '-=0.4'
     );
 
@@ -142,7 +137,9 @@ const Doctors = () => {
 
     return () => {
       window.removeEventListener('resize', setupMarquee);
-      if (tweenRef.current) tweenRef.current.kill();
+      if (tweenRef.current) {
+        tweenRef.current.kill();
+      }
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -159,28 +156,31 @@ const Doctors = () => {
     }
   };
 
+  // Card Hover Animations using inline GSAP
   const onCardEnter = (e) => {
     const card = e.currentTarget;
-    const img  = card.querySelector('.doctor-img');
+    const img = card.querySelector('.doctor-img');
     const shine = card.querySelector('.shine-overlay');
-    gsap.to(img,  { scale: 1.07, duration: 0.4, ease: 'power2.out' });
-    gsap.to(card, { y: -12, scale: 1.015, boxShadow: '0 24px 48px rgba(0,168,107,0.1)', borderColor: 'rgba(0,168,107,0.3)', duration: 0.4, ease: 'power2.out' });
-    gsap.fromTo(shine, { x: '-120%', opacity: 0.4 }, { x: '120%', opacity: 0, duration: 0.9, ease: 'power2.out' });
-  };
 
-  const onCardMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const rx = ((e.clientY - rect.top  - rect.height / 2) / (rect.height / 2)) * -4;
-    const ry = ((e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)) *  4;
-    gsap.to(card, { rotateX: rx, rotateY: ry, duration: 0.3, ease: 'power2.out', transformPerspective: 900, overwrite: 'auto' });
+    // Scale image
+    gsap.to(img, { scale: 1.06, duration: 0.4, ease: 'power2.out' });
+    // Lift card
+    gsap.to(card, { y: -10, boxShadow: '0 20px 40px rgba(0, 168, 107, 0.08)', borderColor: 'rgba(0, 168, 107, 0.3)', duration: 0.4, ease: 'power2.out' });
+    // Shine effect
+    gsap.fromTo(shine,
+      { x: '-100%', opacity: 0.3 },
+      { x: '100%', opacity: 0, duration: 0.8, ease: 'power2.out' }
+    );
   };
 
   const onCardLeave = (e) => {
     const card = e.currentTarget;
-    const img  = card.querySelector('.doctor-img');
-    gsap.to(img,  { scale: 1, duration: 0.4, ease: 'power2.out' });
-    gsap.to(card, { y: 0, scale: 1, rotateX: 0, rotateY: 0, boxShadow: '0 4px 20px rgba(0,0,0,0.02)', borderColor: 'rgba(0,168,107,0.04)', duration: 0.5, ease: 'power2.out' });
+    const img = card.querySelector('.doctor-img');
+
+    // Reset scale
+    gsap.to(img, { scale: 1, duration: 0.4, ease: 'power2.out' });
+    // Reset lift
+    gsap.to(card, { y: 0, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.02)', borderColor: 'rgba(0, 168, 107, 0.04)', duration: 0.4, ease: 'power2.out' });
   };
 
   return (
@@ -197,7 +197,7 @@ const Doctors = () => {
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
-        
+
         {/* Heading Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-16 flex flex-col items-center">
           <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-3 opacity-0">
@@ -212,13 +212,13 @@ const Doctors = () => {
         </div>
 
         {/* Marquee Card Strip */}
-        <div 
+        <div
           ref={marqueeContainerRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className="w-full relative overflow-x-auto md:overflow-hidden snap-x snap-mandatory flex scrollbar-none py-6 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] md:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
         >
-          <div 
+          <div
             ref={marqueeTrackRef}
             className="flex gap-6 w-max select-none"
           >
@@ -226,15 +226,13 @@ const Doctors = () => {
               <div
                 key={idx}
                 onMouseEnter={onCardEnter}
-                onMouseMove={onCardMove}
                 onMouseLeave={onCardLeave}
                 className="group relative w-[280px] h-[380px] rounded-[28px] overflow-hidden border border-emerald-500/5 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-colors duration-400 ease-out cursor-pointer flex-shrink-0 snap-start"
-                style={{ transformStyle: 'preserve-3d' }}
               >
                 {/* Doctor Portrait Image */}
-                <img 
-                  src={doc.image} 
-                  alt={doc.name} 
+                <img
+                  src={doc.image}
+                  alt={doc.name}
                   className="doctor-img absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out"
                 />
 
