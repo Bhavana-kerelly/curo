@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import { ArrowUpRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -60,6 +61,22 @@ const Doctors = () => {
 
   useEffect(() => {
     // ----------------------------------------------------
+    // SPLIT TEXT: Title character wave animation
+    // ----------------------------------------------------
+    const titleEl = headerRef.current.querySelector('.title');
+    const subtitleEl = headerRef.current.querySelector('.subtitle');
+    const labelEl = headerRef.current.querySelector('.label');
+
+    const splitLabel = new SplitType(labelEl, { types: 'chars' });
+    gsap.set(splitLabel.chars, { opacity: 0, y: 10 });
+
+    const splitTitle = new SplitType(titleEl, { types: 'chars,words' });
+    gsap.set(splitTitle.chars, { opacity: 0, y: 50, rotateX: -60, transformOrigin: '0 50%' });
+
+    const splitSubtitle = new SplitType(subtitleEl, { types: 'words' });
+    gsap.set(splitSubtitle.words, { opacity: 0, y: 20 });
+
+    // ----------------------------------------------------
     // ENTRANCE ANIMATIONS (Heading, Subtitle, Cards)
     // ----------------------------------------------------
     const entranceTl = gsap.timeline({
@@ -70,22 +87,33 @@ const Doctors = () => {
       }
     });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.label'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-    );
+    // Label chars shimmer
+    entranceTl.to(splitLabel.chars, {
+      opacity: 1,
+      y: 0,
+      stagger: { amount: 0.3, from: 'start' },
+      duration: 0.4,
+      ease: 'power2.out'
+    });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.title'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.4'
-    );
+    // Title chars wave in
+    entranceTl.to(splitTitle.chars, {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      stagger: { amount: 0.7, from: 'center' },
+      duration: 0.6,
+      ease: 'back.out(1.3)'
+    }, '-=0.2');
 
-    entranceTl.fromTo(headerRef.current.querySelector('.subtitle'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
-    );
+    // Subtitle words cascade
+    entranceTl.to(splitSubtitle.words, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.03,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.4');
 
     entranceTl.fromTo(marqueeContainerRef.current,
       { opacity: 0, y: 45 },
@@ -136,6 +164,9 @@ const Doctors = () => {
     window.addEventListener('resize', setupMarquee);
 
     return () => {
+      splitLabel.revert();
+      splitTitle.revert();
+      splitSubtitle.revert();
       window.removeEventListener('resize', setupMarquee);
       if (tweenRef.current) {
         tweenRef.current.kill();
@@ -200,13 +231,13 @@ const Doctors = () => {
 
         {/* Heading Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-16 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-3 opacity-0">
+          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
             OUR DOCTORS
           </span>
-          <h2 className="title text-[#111827] text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4 opacity-0">
+          <h2 className="title text-[#111827] text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4">
             Meet Our Specialists
           </h2>
-          <p className="subtitle text-[#5F6B76] text-sm sm:text-base md:text-lg leading-[1.6] opacity-0 max-w-2xl font-light">
+          <p className="subtitle text-[#5F6B76] text-sm sm:text-base md:text-lg leading-[1.6] max-w-2xl font-light">
             Our experienced team of specialists combines advanced medical expertise with compassionate care to deliver personalized treatment for every patient.
           </p>
         </div>

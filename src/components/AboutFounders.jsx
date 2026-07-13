@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import card1Img from '../assets/card1.png';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const AboutFounders = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const descRef = useRef(null);
+  const cardsGridRef = useRef(null);
+
   const cards = [
     {
       value: "7+",
@@ -33,8 +43,64 @@ const AboutFounders = () => {
     }
   ];
 
+  useEffect(() => {
+    // -------------------------------------------------------
+    // SPLIT TEXT: Big heading character-by-character 3D reveal
+    // -------------------------------------------------------
+    const splitHeading = new SplitType(headingRef.current, { types: 'chars,lines' });
+    gsap.set(splitHeading.chars, { opacity: 0, y: 50, rotateY: -30, transformOrigin: '50% 50%' });
+
+    // Split description paragraphs into words
+    const paras = descRef.current.querySelectorAll('p');
+    const splitParas = Array.from(paras).map(p => new SplitType(p, { types: 'words' }));
+    splitParas.forEach(sp => gsap.set(sp.words, { opacity: 0, y: 15 }));
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 75%',
+        toggleActions: 'play none none none',
+      }
+    });
+
+    // Characters cascade in with slight 3D rotation
+    tl.to(splitHeading.chars, {
+      opacity: 1,
+      y: 0,
+      rotateY: 0,
+      stagger: { amount: 0.6, from: 'start' },
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+
+    // Description paragraphs words cascade
+    splitParas.forEach((sp, i) => {
+      tl.to(sp.words, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.03,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, i === 0 ? '-=0.4' : '-=0.6');
+    });
+
+    // Cards grid fades in
+    tl.fromTo(cardsGridRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+      '-=0.4'
+    );
+
+    return () => {
+      splitHeading.revert();
+      splitParas.forEach(sp => sp.revert());
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="about"
       className="relative bg-[#F8FBFA] py-16 sm:py-20 px-6 sm:px-10 overflow-hidden"
     >
@@ -45,14 +111,17 @@ const AboutFounders = () => {
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20 text-[#102A43]">
 
           {/* Left side -- Section heading */}
-          <div className="lg:w-1/2">
-            <h2 className="font-firs text-[38px] sm:text-[52px] lg:text-[60px] font-semibold uppercase tracking-tight leading-[0.95]">
+          <div className="lg:w-1/2" style={{ perspective: '800px' }}>
+            <h2
+              ref={headingRef}
+              className="font-firs text-[38px] sm:text-[52px] lg:text-[60px] font-semibold uppercase tracking-tight leading-[0.95]"
+            >
               ABOUT<br />CURO CLINICS
             </h2>
           </div>
 
           {/* Right side -- Description block */}
-          <div className="lg:w-1/2 flex flex-col max-w-xl">
+          <div ref={descRef} className="lg:w-1/2 flex flex-col max-w-xl">
             <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581]">
               Curo Clinics was founded with a simple vision — to make world-class healthcare accessible to every family in Kokapet and the surrounding communities. Our multidisciplinary team combines clinical expertise with compassionate care, creating a healthcare experience built around trust and patient wellbeing.
             </p>
@@ -82,7 +151,7 @@ const AboutFounders = () => {
         </div>
 
         {/* Stats cards grid */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div ref={cardsGridRef} className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {cards.map((card, idx) => (
             <div
               key={idx}

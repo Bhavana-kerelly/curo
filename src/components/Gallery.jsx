@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +59,20 @@ const Gallery = () => {
   ];
 
   useEffect(() => {
+    // SPLIT TEXT for gallery header
+    const labelEl = headerRef.current.querySelector('.label');
+    const titleEl = headerRef.current.querySelector('.title');
+    const subtitleEl = headerRef.current.querySelector('.subtitle');
+
+    const splitLabel = new SplitType(labelEl, { types: 'chars' });
+    gsap.set(splitLabel.chars, { opacity: 0, y: 8 });
+
+    const splitTitle = new SplitType(titleEl, { types: 'words' });
+    gsap.set(splitTitle.words, { opacity: 0, y: 40, skewY: 4 });
+
+    const splitSubtitle = new SplitType(subtitleEl, { types: 'words' });
+    gsap.set(splitSubtitle.words, { opacity: 0, y: 16 });
+
     // ----------------------------------------------------
     // ENTRANCE ANIMATIONS (ScrollTrigger)
     // ----------------------------------------------------
@@ -69,22 +84,33 @@ const Gallery = () => {
       }
     });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.label'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-    );
+    // Label chars shimmer
+    entranceTl.to(splitLabel.chars, {
+      opacity: 1,
+      y: 0,
+      stagger: { amount: 0.3, from: 'start' },
+      duration: 0.35,
+      ease: 'power2.out'
+    });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.title'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.4'
-    );
+    // Title words cascade
+    entranceTl.to(splitTitle.words, {
+      opacity: 1,
+      y: 0,
+      skewY: 0,
+      stagger: 0.08,
+      duration: 0.7,
+      ease: 'power3.out'
+    }, '-=0.2');
 
-    entranceTl.fromTo(headerRef.current.querySelector('.subtitle'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
-    );
+    // Subtitle words fade
+    entranceTl.to(splitSubtitle.words, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.025,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.5');
 
     // Cards reveal in staggered order
     entranceTl.fromTo(cardRefs.current,
@@ -137,6 +163,9 @@ const Gallery = () => {
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
+      splitLabel.revert();
+      splitTitle.revert();
+      splitSubtitle.revert();
       window.removeEventListener('mousemove', handleMouseMove);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -191,7 +220,7 @@ const Gallery = () => {
     <section
       ref={sectionRef}
       id="gallery"
-      className="relative w-full py-16 sm:py-20 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
+      className="relative w-full pt-10 sm:pt-12 pb-16 sm:pb-20 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
     >
       {/* Very subtle emerald radial glow behind gallery */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -210,13 +239,13 @@ const Gallery = () => {
 
         {/* Header Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-20 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5 opacity-0">
+          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5">
             HOSPITAL GALLERY
           </span>
-          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] opacity-0">
+          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
             Experience Our<br />Healing Environment
           </h2>
-          <p className="subtitle text-slate-600 text-lg leading-relaxed opacity-0 max-w-3xl mt-[28px] font-light">
+          <p className="subtitle text-slate-600 text-lg leading-relaxed max-w-3xl mt-[28px] font-light">
             Explore the thoughtfully designed spaces of Curo Clinics, where advanced healthcare meets comfort, cleanliness and a patient-first experience.
           </p>
         </div>

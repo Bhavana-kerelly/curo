@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import { Stethoscope, Dna, HeartHandshake, Clock } from 'lucide-react';
 import hospitalImg from '../assets/hospital.png';
 
@@ -37,45 +38,64 @@ const WhyCuro = () => {
     });
 
     // ----------------------------------------------------
+    // SPLIT TEXT: Label character-by-character reveal
+    // ----------------------------------------------------
+    const splitHeading = new SplitType(headingRef.current, { types: 'chars' });
+    gsap.set(splitHeading.chars, { opacity: 0, y: 15 });
+
+    // Split the large description text (big heading) into words
+    const splitDesc = new SplitType(descRef.current, { types: 'words,lines' });
+    gsap.set(splitDesc.words, { opacity: 0, y: 40, skewY: 3 });
+
+    // ----------------------------------------------------
     // SCROLL ANIMATIONS FOR CONTENT
     // ----------------------------------------------------
     const contentTl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top 85%',
+        start: 'top 80%',
         end: 'bottom 20%',
         toggleActions: 'play none none none',
       }
     });
 
-    // Heading fades upward
-    contentTl.fromTo(headingRef.current,
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
-    );
+    // Label chars shimmer in
+    contentTl.to(splitHeading.chars, {
+      opacity: 1,
+      y: 0,
+      stagger: { amount: 0.4, from: 'start' },
+      duration: 0.4,
+      ease: 'power2.out'
+    });
 
-    // Paragraph appears
-    contentTl.fromTo(descRef.current,
-      { opacity: 0, y: 25 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
-    );
+    // Large heading words cascade upward with skew correction
+    contentTl.to(splitDesc.words, {
+      opacity: 1,
+      y: 0,
+      skewY: 0,
+      stagger: 0.06,
+      duration: 0.7,
+      ease: 'power3.out'
+    }, '-=0.3');
 
     // Cards animate one after another (stagger)
     contentTl.fromTo(cardsRef.current,
-      { opacity: 0, y: 35 },
+      { opacity: 0, y: 35, scale: 0.96 },
       {
         opacity: 1,
         y: 0,
+        scale: 1,
         stagger: 0.12,
         duration: 0.8,
         ease: 'power3.out'
       },
-      '-=0.5'
+      '-=0.4'
     );
 
     // Clean up
     return () => {
+      splitHeading.revert();
+      splitDesc.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);

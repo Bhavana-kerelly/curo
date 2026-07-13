@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
   --font-display: "Outfit", system-ui, -apple-system, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
 
@@ -77,11 +77,12 @@ body {
   padding: 0;
   display: block;
   background-color: #F8FBFA;
+  overflow-x: hidden;
 }
 
 html,
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 

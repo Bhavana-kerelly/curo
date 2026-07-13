@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { Calendar, Menu, X } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import { useBooking } from '../context/BookingContext';
 
 const Navbar = ({ currentPage }) => {
+  const { openBookingModal } = useBooking();
   const [activeSection, setActiveSection] = useState('home');
   const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -208,7 +210,10 @@ const Navbar = ({ currentPage }) => {
         >
           <div className="flex items-center gap-1.5">
             {/* Book Appointment CTA */}
-            <button className="group relative h-[54px] px-6 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full flex items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer">
+            <button 
+              onClick={openBookingModal}
+              className="group relative h-[54px] px-6 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full flex items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
+            >
               <Calendar className="w-4 h-4" />
               <span>Book Appointment</span>
             </button>
@@ -265,7 +270,13 @@ const Navbar = ({ currentPage }) => {
           </div>
 
           <div>
-            <button className="w-full h-[50px] bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/10 cursor-pointer">
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openBookingModal();
+              }}
+              className="w-full h-[50px] bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/10 cursor-pointer"
+            >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book Appointment</span>
             </button>

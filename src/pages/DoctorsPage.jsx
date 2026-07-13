@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useBooking } from '../context/BookingContext';
 import { 
   Search, Calendar, Phone, Clock, Globe, Award, BookOpen, 
   CheckCircle2, Compass, Stethoscope, ChevronLeft, ChevronRight, X 
@@ -59,6 +60,7 @@ const LargeDoctorImage = ({ src, name }) => {
 };
 
 const DoctorsPage = () => {
+  const { openBookingModal } = useBooking();
   const pageRef = useRef(null);
   const scrollerTrackRef = useRef(null);
   
@@ -892,14 +894,16 @@ const DoctorsPage = () => {
 
                 {/* Footer CTAs inside Modal */}
                 <div className="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-8 mt-8">
-                  <a 
-                    href="/#schedule"
-                    onClick={() => setActiveDoctorOverlay(null)}
-                    className="flex-1 py-4 bg-[#053D38] hover:bg-emerald-950 text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.01]"
+                  <button 
+                    onClick={() => {
+                      setActiveDoctorOverlay(null);
+                      openBookingModal();
+                    }}
+                    className="flex-1 py-4 bg-[#053D38] hover:bg-emerald-950 text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.01] cursor-pointer"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Book Appointment</span>
-                  </a>
+                  </button>
                   <a 
                     href="tel:+918919942870"
                     className="flex-1 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import {
   ArrowUpRight,
   Baby,
@@ -29,6 +30,22 @@ const Specialties = () => {
 
   useEffect(() => {
     // ----------------------------------------------------
+    // SPLIT TEXT ANIMATIONS FOR HEADER
+    // ----------------------------------------------------
+    const labelEl = sectionRef.current.querySelector('.specialties-label');
+    const headingEl = sectionRef.current.querySelector('.specialties-heading');
+    const descEl = sectionRef.current.querySelector('.specialties-desc');
+
+    const splitLabel = new SplitType(labelEl, { types: 'chars' });
+    gsap.set(splitLabel.chars, { opacity: 0, y: 10 });
+
+    const splitHeading = new SplitType(headingEl, { types: 'words,lines' });
+    gsap.set(splitHeading.words, { opacity: 0, y: 40, skewY: 3 });
+
+    const splitDesc = new SplitType(descEl, { types: 'words' });
+    gsap.set(splitDesc.words, { opacity: 0, y: 20 });
+
+    // ----------------------------------------------------
     // GSAP SCROLL TRIGGER ENTRANCE ANIMATIONS
     // ----------------------------------------------------
     const cards = [
@@ -39,20 +56,41 @@ const Specialties = () => {
       rightBottomCardRef.current
     ];
 
-    gsap.fromTo(headerRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        }
+    const headerTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
       }
-    );
+    });
+
+    // Label chars shimmer in sequentially
+    headerTl.to(splitLabel.chars, {
+      opacity: 1,
+      y: 0,
+      stagger: { amount: 0.4, from: 'start' },
+      duration: 0.4,
+      ease: 'power2.out'
+    });
+
+    // Heading words cascade with skew correction
+    headerTl.to(splitHeading.words, {
+      opacity: 1,
+      y: 0,
+      skewY: 0,
+      stagger: 0.06,
+      duration: 0.7,
+      ease: 'power3.out'
+    }, '-=0.2');
+
+    // Description words fade in
+    headerTl.to(splitDesc.words, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.025,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.4');
 
     gsap.fromTo(cards,
       { opacity: 0, y: 40 },
@@ -88,6 +126,9 @@ const Specialties = () => {
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
+      splitLabel.revert();
+      splitHeading.revert();
+      splitDesc.revert();
       window.removeEventListener('mousemove', handleMouseMove);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -139,14 +180,14 @@ const Specialties = () => {
           className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-16"
         >
           <div className="max-w-3xl text-left">
-            <span className="text-emerald-500 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
+            <span className="specialties-label text-emerald-500 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
               OUR SPECIALTIES
             </span>
-            <h2 className="text-[#111827] text-[36px] sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.1] font-light tracking-tight mb-6">
+            <h2 className="specialties-heading text-[#111827] text-[36px] sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.1] font-light tracking-tight mb-6">
               Expert Care, <br />
               Across Every Stage of <span className="text-emerald-500 font-medium">Life</span>
             </h2>
-            <p className="text-[#5F6B76] text-base md:text-lg leading-[1.6] max-w-2xl font-light">
+            <p className="specialties-desc text-[#5F6B76] text-base md:text-lg leading-[1.6] max-w-2xl font-light">
               From preventive healthcare to advanced surgical procedures, our experienced specialists provide personalized treatment using modern medical technology under one roof.
             </p>
           </div>

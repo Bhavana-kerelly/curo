@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import { ArrowRight, Phone, MapPin } from 'lucide-react';
 import hospitalBg from '../assets/hospital.png';
+import { useBooking } from '../context/BookingContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AppointmentCTA = () => {
+  const { openBookingModal } = useBooking();
   const sectionRef = useRef(null);
   const bgImgRef = useRef(null);
   const leftContentRef = useRef(null);
@@ -32,6 +35,25 @@ const AppointmentCTA = () => {
     );
 
     // ----------------------------------------------------
+    // SPLIT TEXT: Dramatic heading reveal
+    // ----------------------------------------------------
+    const headingEl = leftContentRef.current.querySelector('h2');
+    const paraEl = leftContentRef.current.querySelector('.paragraph');
+
+    // Split the heading lines into individual chars
+    const splitHeading = new SplitType(headingEl, { types: 'chars,lines' });
+    gsap.set(splitHeading.chars, {
+      opacity: 0,
+      y: 80,
+      rotateX: -90,
+      transformOrigin: '0 50%'
+    });
+
+    // Split paragraph into words
+    const splitPara = new SplitType(paraEl, { types: 'words' });
+    gsap.set(splitPara.words, { opacity: 0, y: 20 });
+
+    // ----------------------------------------------------
     // GSAP ENTRANCE ANIMATIONS
     // ----------------------------------------------------
     const entranceTl = gsap.timeline({
@@ -48,26 +70,30 @@ const AppointmentCTA = () => {
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
     );
 
-    // Heading lines reveal
-    const headingLines = leftContentRef.current.querySelectorAll('.heading-line');
-    entranceTl.fromTo(headingLines,
-      { opacity: 0, y: 35 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
-      '-=0.4'
-    );
+    // Heading chars reveal dramatically line-by-line
+    entranceTl.to(splitHeading.chars, {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      stagger: { amount: 0.8, from: 'start' },
+      duration: 0.7,
+      ease: 'power3.out'
+    }, '-=0.3');
 
-    // Paragraph fades upward
-    entranceTl.fromTo(leftContentRef.current.querySelector('.paragraph'),
-      { opacity: 0, y: 25 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.5'
-    );
+    // Paragraph words cascade
+    entranceTl.to(splitPara.words, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.025,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.4');
 
     // Button scales in
     entranceTl.fromTo(leftContentRef.current.querySelector('.cta-btn'),
       { opacity: 0, scale: 0.9 },
       { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
-      '-=0.5'
+      '-=0.3'
     );
 
     // Phone / Location info fade upward
@@ -117,6 +143,8 @@ const AppointmentCTA = () => {
     });
 
     return () => {
+      splitHeading.revert();
+      splitPara.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -149,13 +177,13 @@ const AppointmentCTA = () => {
             CURO CLINICS
           </span>
 
-          <h2 className="text-[#0F172A] text-5xl sm:text-6xl lg:text-[72px] font-light tracking-tight leading-[1.0] mb-8">
-            <span className="heading-line block opacity-0">Your Health</span>
-            <span className="heading-line block opacity-0">Deserves</span>
-            <span className="heading-line block opacity-0 text-emerald-600 font-normal">Exceptional Care</span>
+          <h2 className="text-[#0F172A] text-5xl sm:text-6xl lg:text-[72px] font-light tracking-tight leading-[1.0] mb-8" style={{ perspective: '600px' }}>
+            Your Health
+            <br />Deserves
+            <br /><span className="text-emerald-600 font-normal">Exceptional Care</span>
           </h2>
 
-          <div className="paragraph text-slate-600 text-base md:text-lg leading-relaxed max-w-xl mb-10 opacity-0 space-y-4 font-light">
+          <div className="paragraph text-slate-600 text-base md:text-lg leading-relaxed max-w-xl mb-10 space-y-4 font-light">
             <p>
               Experience comprehensive, compassionate healthcare with trusted specialists, advanced diagnostic facilities, and personalized treatment—all under one roof at Curo Clinics.
             </p>
@@ -166,7 +194,10 @@ const AppointmentCTA = () => {
 
           {/* Primary Button */}
           <div className="cta-btn opacity-0 w-fit">
-            <button className="group relative inline-flex items-center gap-3 px-10 h-[64px] bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold text-base rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1 cursor-pointer">
+            <button 
+              onClick={openBookingModal}
+              className="group relative inline-flex items-center gap-3 px-10 h-[64px] bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold text-base rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all duration-500 hover:-translate-y-1 cursor-pointer"
+            >
               <span>Book an Appointment</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" />
             </button>

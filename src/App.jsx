@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import DoctorsPage from './pages/DoctorsPage';
+import BookingModal from './components/BookingModal';
+import { BookingProvider } from './context/BookingContext';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -31,20 +33,24 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#F8FBFA] text-[#1E293B] antialiased">
-      {/* Global Navigation Bar */}
-      <Navbar currentPage={page} />
+    <BookingProvider>
+      <div className="w-full min-h-screen bg-[#F8FBFA] text-[#1E293B] antialiased">
+        {/* Global Navigation Bar */}
+        <Navbar currentPage={page} />
 
-      {page === 'about' ? (
-        <AboutPage />
-      ) : page === 'services' ? (
-        <ServicesPage />
-      ) : page === 'doctors' ? (
-        <DoctorsPage />
-      ) : (
-        <Home />
-      )}
-    </div>
+        {page === 'about' ? (
+          <AboutPage />
+        ) : page === 'services' ? (
+          <ServicesPage />
+        ) : page === 'doctors' ? (
+          <DoctorsPage />
+        ) : (
+          <Home />
+        )}
+
+        <BookingModal />
+      </div>
+    </BookingProvider>
   );
 }
 

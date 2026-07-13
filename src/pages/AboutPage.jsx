@@ -6,10 +6,14 @@ import Footer from '../components/Footer';
 import VisionMission from '../components/VisionMission';
 import hospitalImg from '../assets/hospital.png';
 import card1Img from '../assets/card1.png';
+import SplitType from 'split-type';
+import { useBooking } from '../context/BookingContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutPage = () => {
+  const { openBookingModal } = useBooking();
+  const pageRef = useRef(null);
   const heroRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -34,18 +38,21 @@ const AboutPage = () => {
     );
 
     // Scroll reveal sections
-    gsap.from('.reveal-item', {
-      scrollTrigger: {
-        trigger: '.reveal-container',
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: 'power2.out'
-    });
+    gsap.fromTo('.reveal-item', 
+      { opacity: 0, y: 40 },
+      {
+        scrollTrigger: {
+          trigger: '.reveal-container',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out'
+      }
+    );
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -83,7 +90,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <main className="w-full bg-[#EBF1F5] text-[#1E293B] pt-[90px]">
+    <main ref={pageRef} className="w-full bg-[#EBF1F5] text-[#1E293B] pt-[90px]">
       {/* 1. Hero Section */}
       <section ref={heroRef} className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-16 pb-32 sm:pb-44 px-6 md:px-12 lg:px-20">
         {/* Ambient Glows */}
@@ -93,7 +100,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Heading and Stats */}
           <div className="lg:col-span-7 flex flex-col items-start text-left pb-10">
-            <h1 className="about-hero-title font-display text-[44px] sm:text-[58px] lg:text-[72px] font-bold text-white tracking-tight leading-[1.05] mb-6">
+            <h1 className="about-hero-title text-[44px] sm:text-[58px] lg:text-[72px] font-bold text-white tracking-tight leading-[1.05] mb-6">
               The Best Medical <br />
               and Treatment <br />
               Center for You
@@ -152,7 +159,7 @@ const AboutPage = () => {
           {/* Right: Story Text */}
           <div className="flex flex-col text-left">
             <span className="text-[11px] tracking-[0.25em] font-semibold text-emerald-700 uppercase block mb-3">OUR STORY</span>
-            <h2 className="font-firs text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-6">
               Accessible Care, <br />Every Single Day
             </h2>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-light mb-6">
@@ -178,7 +185,7 @@ const AboutPage = () => {
       <section className="reveal-container relative w-full py-16 sm:py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-transparent to-emerald-500/5 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full text-center flex flex-col items-center">
           <span className="text-[11px] tracking-[0.25em] font-semibold text-emerald-700 uppercase block mb-3">OUR CORE VALUES</span>
-          <h2 className="font-firs text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-12">
             The Pillars of Our Excellence
           </h2>
 
@@ -191,7 +198,7 @@ const AboutPage = () => {
                 <div className="mb-6 p-4 w-fit bg-emerald-500/10 rounded-2xl border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-colors duration-300">
                   {val.icon}
                 </div>
-                <h3 className="text-[#102A43] text-lg font-semibold mb-3 font-display">
+                <h3 className="text-[#102A43] text-lg font-semibold mb-3">
                   {val.title}
                 </h3>
                 <p className="text-slate-500 text-sm font-light leading-relaxed">
@@ -213,7 +220,7 @@ const AboutPage = () => {
 
             <div className="text-left relative z-10 max-w-2xl">
               <span className="text-[11px] tracking-[0.25em] font-semibold text-emerald-700 uppercase block mb-3">EXPERIENCE CURO CLINICS</span>
-              <h2 className="font-firs text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#102A43] mb-4">
                 Redefining Healthcare <br />For Your Whole Family
               </h2>
               <p className="text-slate-500 text-base font-light leading-relaxed">
@@ -222,13 +229,13 @@ const AboutPage = () => {
             </div>
 
             <div className="relative z-10 flex flex-col sm:flex-row gap-4 flex-shrink-0">
-              <a 
-                href="/#schedule"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-sm rounded-full shadow-md hover:shadow-lg hover:shadow-emerald-500/15 hover:scale-[1.02] transition-all duration-300"
+              <button 
+                onClick={openBookingModal}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-sm rounded-full shadow-md hover:shadow-lg hover:shadow-emerald-500/15 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
               >
                 <span>Book Appointment</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
               <a 
                 href="tel:+918919942870"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border border-emerald-500/20 text-emerald-600 font-semibold text-sm rounded-full shadow-sm hover:bg-emerald-500/5 transition-all duration-300"

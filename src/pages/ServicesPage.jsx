@@ -8,7 +8,9 @@ import {
   CheckCircle2, ClipboardList, Scissors, Eye, Target,
   X, Phone, Calendar, Clock, AlertCircle
 } from 'lucide-react';
+import SplitType from 'split-type';
 import Footer from '../components/Footer';
+import { useBooking } from '../context/BookingContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,6 +139,7 @@ const BentoCard = ({ dept, index, onClick }) => {
 };
 
 const ServicesPage = () => {
+  const { openBookingModal } = useBooking();
   const pageRef = useRef(null);
   const deptRowRef = useRef(null);
   const headingRef = useRef(null);
@@ -990,12 +993,12 @@ const ServicesPage = () => {
             >
               Call Frontdesk
             </a>
-            <a 
-              href="/#schedule"
-              className="px-8 py-4 bg-white border border-slate-200 text-[#053D38] hover:bg-slate-50 font-semibold text-sm rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-350"
+            <button 
+              onClick={openBookingModal}
+              className="px-8 py-4 bg-white border border-slate-200 text-[#053D38] hover:bg-slate-50 font-semibold text-sm rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-350 cursor-pointer"
             >
               Book Appointment
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -1050,14 +1053,16 @@ const ServicesPage = () => {
                 </div>
 
                 <div className="w-full mt-8 flex flex-col gap-3 z-10">
-                  <a 
-                    href="/#schedule"
-                    onClick={() => setSelectedDeptModal(null)}
-                    className="w-full py-4 bg-[#053D38] hover:bg-emerald-900 text-white font-bold text-xs rounded-full shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-emerald-500/25 hover:shadow-lg active:scale-95"
+                  <button 
+                    onClick={() => {
+                      setSelectedDeptModal(null);
+                      openBookingModal();
+                    }}
+                    className="w-full py-4 bg-[#053D38] hover:bg-emerald-900 text-white font-bold text-xs rounded-full shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-emerald-500/25 hover:shadow-lg active:scale-95 cursor-pointer"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Book Appointment</span>
-                  </a>
+                  </button>
                   <a 
                     href="tel:+918919942870"
                     className="w-full py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"

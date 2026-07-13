@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
 import { ChevronLeft, ChevronRight, Star, ArrowUpRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -66,6 +67,20 @@ const Testimonials = () => {
   // ENTRANCE ANIMATIONS (ScrollTrigger)
   // ----------------------------------------------------
   useEffect(() => {
+    // SPLIT TEXT for testimonials header
+    const labelEl = headerRef.current.querySelector('.label');
+    const titleEl = headerRef.current.querySelector('.title');
+    const subtitleEl = headerRef.current.querySelector('.subtitle');
+
+    const splitLabel = new SplitType(labelEl, { types: 'chars' });
+    gsap.set(splitLabel.chars, { opacity: 0, y: 8 });
+
+    const splitTitle = new SplitType(titleEl, { types: 'words,lines' });
+    gsap.set(splitTitle.words, { opacity: 0, y: 50, skewY: 4 });
+
+    const splitSubtitle = new SplitType(subtitleEl, { types: 'words' });
+    gsap.set(splitSubtitle.words, { opacity: 0, y: 18 });
+
     const entranceTl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -74,22 +89,33 @@ const Testimonials = () => {
       }
     });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.label'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
-    );
+    // Label chars appear
+    entranceTl.to(splitLabel.chars, {
+      opacity: 1,
+      y: 0,
+      stagger: { amount: 0.3, from: 'start' },
+      duration: 0.35,
+      ease: 'power2.out'
+    });
 
-    entranceTl.fromTo(headerRef.current.querySelector('.title'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.4'
-    );
+    // Title words cascade with skew correction
+    entranceTl.to(splitTitle.words, {
+      opacity: 1,
+      y: 0,
+      skewY: 0,
+      stagger: 0.07,
+      duration: 0.7,
+      ease: 'power3.out'
+    }, '-=0.1');
 
-    entranceTl.fromTo(headerRef.current.querySelector('.subtitle'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.6'
-    );
+    // Subtitle words fade
+    entranceTl.to(splitSubtitle.words, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.025,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.5');
 
     entranceTl.fromTo(quoteContainerRef.current,
       { opacity: 0, y: 40 },
@@ -110,6 +136,9 @@ const Testimonials = () => {
     );
 
     return () => {
+      splitLabel.revert();
+      splitTitle.revert();
+      splitSubtitle.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -212,7 +241,7 @@ const Testimonials = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full py-16 sm:py-20 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
+      className="relative w-full py-10 sm:py-12 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
     >
       {/* Background radial glow and floating circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -228,15 +257,15 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-center">
 
         {/* Header Section */}
-        <div ref={headerRef} className="text-center max-w-3xl mb-20 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5 opacity-0">
+        <div ref={headerRef} className="text-center max-w-3xl mb-12 flex flex-col items-center">
+          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5">
             PATIENT TESTIMONIALS
           </span>
-          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] opacity-0">
+          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
             Healing Experiences, <br />
             Shared by Our Patients
           </h2>
-          <p className="subtitle text-slate-600 text-lg leading-[1.6] opacity-0 max-w-3xl mt-[28px] font-light">
+          <p className="subtitle text-slate-600 text-lg leading-[1.6] max-w-3xl mt-[28px] font-light">
             Every patient journey reflects our commitment to compassionate care, clinical excellence, and personalized treatment across every specialty at Curo Clinics.
           </p>
         </div>
@@ -244,19 +273,19 @@ const Testimonials = () => {
         {/* Immersive Single Testimonial Quote */}
         <div
           ref={quoteContainerRef}
-          className="relative w-full max-w-5xl text-center mb-12 flex flex-col items-center min-h-[280px] lg:min-h-[220px]"
+          className="relative w-full max-w-5xl text-center mb-8 flex flex-col items-center min-h-[220px] lg:min-h-[160px]"
         >
           {/* Huge quotation marks behind the text */}
-          <div className="absolute top-[-40px] left-1/2 -translate-x-1/2 text-emerald-500/5 text-[150px] sm:text-[220px] font-serif pointer-events-none select-none">
+          <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 text-emerald-500/5 text-[150px] sm:text-[220px] font-serif pointer-events-none select-none">
             “
           </div>
 
-          <div ref={quoteRef} className="relative z-10 text-slate-800 text-2xl sm:text-3xl lg:text-[40px] font-light leading-[1.5] max-w-4xl px-4">
+          <div ref={quoteRef} className="relative z-10 text-slate-800 text-2xl sm:text-3xl lg:text-[32px] font-light leading-[1.5] max-w-4xl px-4">
             {current.quote}
           </div>
 
           {/* Patient Details & Consulted Doctor */}
-          <div ref={infoRef} className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+          <div ref={infoRef} className="mt-6 flex flex-col sm:flex-row items-center gap-4">
             {/* Initials Avatar */}
             <div className="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 rounded-full flex items-center justify-center font-semibold text-lg shadow-sm">
               {current.initials}
@@ -277,7 +306,7 @@ const Testimonials = () => {
         </div>
 
         {/* Circular Next/Prev Navigation */}
-        <div ref={navRef} className="flex items-center gap-4 mb-16">
+        <div ref={navRef} className="flex items-center gap-4 mb-8">
           <button
             onClick={handlePrev}
             disabled={isTransitioning}
@@ -294,30 +323,7 @@ const Testimonials = () => {
           </button>
         </div>
 
-        {/* Bottom trust section */}
-        <div ref={bottomRef} className="flex flex-col items-center border-t border-emerald-500/10 pt-12 w-full max-w-4xl text-center">
-          <div className="flex gap-1 mb-2 text-[#10B981]">
-            <Star className="w-4 h-4 fill-current" />
-            <Star className="w-4 h-4 fill-current" />
-            <Star className="w-4 h-4 fill-current" />
-            <Star className="w-4 h-4 fill-current" />
-            <Star className="w-4 h-4 fill-current" />
-          </div>
-          <span className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-2">
-            Trusted by Families Across Kokapet
-          </span>
-          <p className="text-slate-500 text-xs sm:text-sm font-light">
-            Compassionate Care • Advanced Facilities • Trusted Specialists
-          </p>
 
-          {/* Book Appointment CTA Button */}
-          <div className="mt-12">
-            <button className="group relative inline-flex items-center gap-3 px-8 py-3.5 bg-white border border-emerald-500/20 text-emerald-600 hover:text-white font-medium text-sm rounded-full shadow-md transition-all duration-300 hover:bg-emerald-600 hover:border-emerald-600 hover:shadow-lg hover:shadow-emerald-500/15 hover:-translate-y-0.5 cursor-pointer">
-              <span>Book an Appointment</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </div>
-        </div>
 
       </div>
     </section>
