@@ -73,22 +73,25 @@ const DoctorsPage = () => {
     {
       id: 'sivani-payneni',
       name: 'Dr. Sivani Payneni',
-      specialty: 'Physician & Diabetologist',
+      specialty: 'Consultant Physician & Diabetologist',
       department: 'General Medicine & Diabetes',
-      experience: '10+ Years Experience',
+      experience: '8+ Years Experience',
       image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Sivani Payneni is a dedicated Physician and Diabetologist with extensive training in chronic disease management and metabolic diagnostics. She specializes in crafting customized health plans that merge modern clinical therapeutics with preventive lifestyle counseling.',
+      about: 'Dr. Sivani Payneni is a highly dedicated and experienced Consultant Physician & Diabetologist with over 8 years of clinical experience in managing chronic lifestyle diseases and metabolic conditions. Based in Kondapur, Hyderabad, she is known for her patient-centric approach, combining accurate diagnosis with evidence-based treatment plans tailored to each individual.\n\nShe holds a Fellowship in Diabetology (F. DIAB) and specializes in the management of diabetes, hypertension, thyroid disorders, dyslipidemia, and obesity. Dr. Sivani provides both outpatient and inpatient care, focusing on long-term disease control and overall wellness. Her strong emphasis on lifestyle management, diet counseling, and non-communicable disease (NCD) prevention has made her a trusted health partner in the community.',
       education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.D. - General Medicine (Post Graduate Specialization)',
-        'Certified Diabetologist (Advanced Post-Graduate Program)'
+        'MBBS, Andhra Medical College, Visakhapatnam (2007)',
+        'PG Diploma in Clinical Endocrinology & Diabetes, Royal College of Physicians, London (2017-18)',
+        'Certificate in Gestational Diabetes Mellitus (CCGDM), Dr. Mohan’s, Hyderabad (2019)',
+        'Certificate in Management of Thyroid Disorders (CCMTD), PHFI (2017-18)',
+        'Certificate in Evidence-Based Diabetes Management (CCEBDM), Dr. Mohan’s (2016)',
+        'Certificate Course in Management of Hypertension (2018-19)'
       ],
       specializations: [
-        'Type 1 & Type 2 Diabetes Management',
-        'Gestational Diabetes Care & Prediabetes Intervention',
-        'Hypertension & Cardiovascular Risk Management',
-        'Thyroid Disorders, Obesity & Metabolic Health',
-        'Acute Fevers, Infections & Chronic Ailments'
+        'Diagnosing and Managing all general ailments including SARS COV 19 infections',
+        'Managing all types of Diabetes (Type 1, Type 2, GDM)',
+        'Managing acute and chronic complications of Diabetes',
+        'Comorbidities: Hypertension, Dyslipidemia, Thyroid disorders, Obesity',
+        'Comprehensive Diet Counselling'
       ],
       languages: ['English', 'Telugu', 'Hindi'],
       timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
@@ -101,111 +104,83 @@ const DoctorsPage = () => {
         'Viral Fevers & Chronic Internal Diseases'
       ],
       memberships: [
-        'Association of Physicians of India (API)',
-        'Research Society for the Study of Diabetes in India (RSSDI)'
+        'Lifetime member in RSSDI',
+        'House Physician in Gastroenterology at PGIMER - Chandigarh (2009-2010)',
+        'Consultant Physician at Dr. Mohan’s Diabetes Specialty Center (2016-2020)',
+        'Consultant Physician at Apollo Sugar Clinics, Kondapur (2021-date)',
+        'Consultant Physician for Zyla Health (2023-date)'
       ],
       awards: [
-        'Outstanding Physician & Diabetologist Excellence Award (2024)',
-        'Healthcare Pioneer Recognition in Kokapet Suburbs'
+        'Successfully helped numerous patients achieve better control over diabetes and lifestyle-related complications through comprehensive treatment plans.',
+        'Over 8 years of experience in internal medicine and diabetology, managing thousands of chronic disease cases with high patient satisfaction.',
+        'Attended National & Regional CMEs and Webinars as a Speaker.'
       ]
     },
     {
       id: 'feroz-basha',
       name: 'Dr. Feroz Basha Shaik',
-      specialty: 'ENT & Head and Neck Surgeon',
+      specialty: 'Consultant ENT / Otorhinolaryngologist',
       department: 'ENT Care',
       experience: '8+ Years Experience',
       image: '/feroz_basha.jpg',
-      about: 'Dr. Feroz Basha Shaik is a prominent ENT and Head & Neck Surgeon specializing in minimally invasive endoscopic sinus surgeries, hearing restoration, and snoring/obstructive sleep apnea treatments. He blends precise clinical skills with a patient-first methodology.',
+      about: 'Dr. Feroz Basha Shaik is a highly experienced ENT specialist with a focused approach to diagnosing and treating a wide range of ear, nose, and throat conditions. With over a decade of experience, he combines deep clinical knowledge with advanced techniques to deliver effective, patient-centered care.\n\nHe completed his MBBS from Dr. NTR University of Health Sciences, Andhra Pradesh in 2013, followed by his MS in ENT from NRI Medical College, Guntur in 2017. Dr. Feroz is known for his thorough diagnostic skills and individualized treatment plans that prioritize both recovery and comfort. His expertise covers a wide array of ENT issues—from common complaints like ear discharge and nasal congestion to complex cases involving head & neck masses, voice disorders, and swallowing difficulties.',
       education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.S. - ENT (Otorhinolaryngology Specialization)',
-        'Fellowship in Endoscopic Sinus Surgery (FESS)'
+        'MBBS from Dr. NTR University of Health Sciences (2013)',
+        'MS in ENT from NRI Medical College, Guntur (2017)'
       ],
       specializations: [
-        'Functional Endoscopic Sinus Surgery (FESS)',
-        'Tympanoplasty & Auditory Canal Reconstruction',
-        'Coblation-assisted Adenotonsillectomy',
-        'Thyroidectomy & Head/Neck Mass Resections',
-        'Snoring & Obstructive Sleep Apnea Clinic'
+        'Hernia Surgery (Open and Laparoscopic)',
+        'Appendix Surgery (Appendectomy)',
+        'Hemorrhoids Treatments (Laser/stapler/conventional)',
+        'Fistula-in-ano (Fistulotomy) & Fissure-in-ano (Sphincterotomy)',
+        'Gall Bladder Surgery (Laparoscopic Cholecystectomy)',
+        'Thyroid Disorders (Medical Management, Thyroidectomy)',
+        'Wound Care (Debridement, Skin Grafting, Diabetic Foot)',
+        'G.I, Biliary Tract & Pancreatic Disorders'
       ],
       languages: ['English', 'Telugu', 'Hindi', 'Urdu'],
       timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
       conditions: [
-        'Sinusitis, Nasal Blockages & Septal Deviations',
-        'Hearing Loss, Ringing Sensation (Tinnitus) & Ear Discharge',
-        'Tonsillitis & Adenoid Hypertrophy',
-        'Thyroid Nodules & Vocal Cord Pathologies',
-        'Obstructive Sleep Apnea & Severe Snoring',
-        'Foreign Bodies in Ear, Nose, & Throat'
+        'Ear Discharge & Nasal Congestion',
+        'Head & Neck Masses',
+        'Voice Disorders',
+        'Swallowing Difficulties',
+        'Allergic Rhinitis',
+        'Sensorineural Hearing Loss'
       ],
       memberships: [
-        'Association of Otolaryngologists of India (AOI)',
-        'All India Rhinology Society'
+        'Known for patient care, understanding, and treatment with minimal pain and best recovery possible.',
+        'Over 8 years of clinical experience treating ENT-related disorders across diverse age groups.'
       ],
       awards: [
-        'Best Paper Award - State ENT Conference (2022)',
-        'Clinical Excellence Award in ENT Surgery'
+        'GARLAPATI SARABANDI GOLD MEDAL (2015)',
+        'A Comparative Study of Cetirizine vs. Nasal Spray in Allergic Rhinitis (Publication)',
+        'Association between Diabetes Mellitus and Sensorineural Hearing Loss (Publication)',
+        'Comprehensive Clinical Analysis of Non-Malignant Laryngeal Lesions (Publication)',
+        'A Clinical Study of Laryngeal Cysts (Publication)',
+        'Foreign Bodies of External Auditory Canal in Children (Publication)',
+        'Comparison of the Efficacy between Ginkgo Biloba and Caroverine in Idiopathic Tinnitus (Publication)',
+        'Schwannoma of the Submandibular Gland: A Rare Case Report (Publication)',
+        'Type I Tympanoplasty: Five Golden Rules for 100% Success (Publication)'
       ]
     },
-    {
-      id: 'anand-urologist',
-      name: 'Dr. Anand',
-      specialty: 'Consultant Urologist & General Surgeon',
-      department: 'Urology',
-      experience: '8+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Anand is a highly accomplished Consultant Urologist with extensive expertise in advanced laser keyhole surgeries (RIRS, HoLEP) for kidney stones and prostate conditions. He holds MCh in Urology and is dedicated to evidence-based precision medicine.',
-      education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.S. - General Surgery (Post Graduate Specialization)',
-        'M.Ch. - Urology (Super Specialty Degree)'
-      ],
-      specializations: [
-        'Kidney Stone Laser Removal (RIRS & PCNL)',
-        'Laser Prostatectomy (HoLEP) & BPH Management',
-        'Urinary Tract Infection & Incontinence Therapeutics',
-        'Reconstructive Urology & Uro-Oncology',
-        'Male Infertility & Sexual Dysfunction Management'
-      ],
-      languages: ['English', 'Telugu', 'Hindi', 'Tamil'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      conditions: [
-        'Kidney Stones (Renal Calculi)',
-        'Prostate Enlargement (BPH)',
-        'Recurrent Urinary Tract Infections (UTI)',
-        'Male Erectile Dysfunction & Infertility',
-        'Overactive Bladder & Urinary Incontinence',
-        'Congenital Urological Disorders in Children'
-      ],
-      memberships: [
-        'Urological Society of India (USI)',
-        'South Zone Urology Association'
-      ],
-      awards: [
-        'Young Urologist Achievement Award (2023)',
-        'Gold Medalist in M.Ch. Urology Residency'
-      ]
-    },
+
     {
       id: 'nagarjuna-doppalapudi',
       name: 'Dr. Nagarjuna Doppalapudi',
-      specialty: 'Consultant General & Laparoscopic Surgeon',
+      specialty: 'General & Laparoscopic Surgery',
       department: 'General & Laparoscopic Surgery',
-      experience: '10+ Years Experience',
+      experience: '8+ Years Experience',
       image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Nagarjuna Doppalapudi is an expert General and Laparoscopic Surgeon with credentials in minimal access surgeries (FIAGES). He is recognized for performing over 5,000 successful keyhole surgeries including gallbladder removal and hernia repairs, minimizing recovery times.',
+      about: 'Dr. Nagarjuna Doppalapudi is a highly skilled and experienced General and Laparoscopic Surgeon with over 8+ years of clinical expertise. A graduate of Southern Medical University (MBBS, 2013), he completed his DNB in General Surgery from the Southern Railway Headquarters Hospital in 2018 and holds a Fellowship in Minimal Access Surgery (FIAGES), enhancing his proficiency in advanced laparoscopic procedures.\n\nKnown for his precision and dedication, Dr. Nagarjuna has worked at several reputed institutions, including Mahavir Institute of Medical Sciences (Vikarabad), GR Hospital (Coimbatore), PRK Hospitals (Chanda Nagar), and Citi Neuro Centre (Miyapur). His practice focuses on both conventional and minimally invasive surgical techniques, offering safe and effective solutions for a wide spectrum of surgical conditions.',
       education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'D.N.B. - General Surgery (National Board Specialization)',
-        'F.I.A.G.E.S. - Fellowship in Minimal Access Surgery'
+        'MBBS - Southern Medical University (2013)',
+        'DNB in General Surgery - Southern Railway Headquarters Hospital (2018)',
+        'Fellowship in Minimal Access Surgery (FIAGES) (2018)'
       ],
       specializations: [
-        'Laparoscopic Cholecystectomy (Gallstones Removal)',
-        'Laparoscopic & Open Hernia Repair (Inguinal, Umbilical)',
-        'Keyhole Appendectomy & Gastrointestinal Surgeries',
-        'Laser Proctology (Painless Piles, Fissure, Fistula treatment)',
-        'Varicose Veins Laser Therapy & Sclerotherapy'
+        'Over 8 years of surgical experience in high-volume hospitals and multi-specialty centers.',
+        'Successfully performed numerous laparoscopic and open surgeries with excellent outcomes.'
       ],
       languages: ['English', 'Telugu', 'Hindi'],
       timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
@@ -218,72 +193,38 @@ const DoctorsPage = () => {
         'Thyroid Goiters & Skin/Subcutaneous Swellings'
       ],
       memberships: [
-        'Association of Surgeons of India (ASI)',
-        'Indian Association of Gastrointestinal Endo-Surgeons (IAGES)'
+        'Mahavir Institute of Medical Sciences (Vikarabad)',
+        'GR Hospital (Coimbatore)',
+        'PRK Hospitals (Chanda Nagar)',
+        'Citi Neuro Centre (Miyapur)'
       ],
       awards: [
-        'Special Recognition for Laparoscopic Excellence (2024)',
-        'Outstanding Surgical Consultant Merit Award'
+        'Dr. Nagarjuna Doppalapudi is a highly skilled and experienced Consultant General & Laparoscopic Surgeon with over 8+ years of clinical expertise.',
+        'Fellowship in Minimal Access Surgery (FIAGES) (2018) - Completed the prestigious FIAGES Fellowship, specializing in advanced laparoscopic techniques.',
+        'Overall Expertise (2019) - Recognized for his patient-first approach, surgical precision, and ethical clinical practice.'
       ]
     },
-    {
-      id: 'neha-pediatrician',
-      name: 'Dr. Neha',
-      specialty: 'Consultant Pediatrician',
-      department: 'Pediatrics',
-      experience: '10+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Neha is a compassionate Consultant Pediatrician providing complete clinical care for infants, children, and adolescents. She is highly praised for her child-friendly communication approach, helping parents track and navigate developmental milestones with absolute ease.',
-      education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.D. - Pediatrics (Post Graduate Child Care Specialization)',
-        'Post Graduate Diploma in Developmental Pediatrics'
-      ],
-      specializations: [
-        'Newborn Health Screening & Lactation Guidance',
-        'Well-Child Preventive Health Checks & Immunizations',
-        'Childhood Asthma, Bronchitis & Allergies Care',
-        'Growth and Development Milestone Assessments',
-        'Behavioral Pediatrics (ADHD, Sleep Hygiene)'
-      ],
-      languages: ['English', 'Telugu', 'Hindi', 'Punjabi'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      conditions: [
-        'Common Childhood Fevers, Infections & Coughs',
-        'Pediatric Asthma, Wheezing & Allergic Bronchitis',
-        'Growth Delays & Nutritional Deficiencies',
-        'Behavioral Challenges & Milestones Delay',
-        'Childhood Asthma & Seasonal Allergies',
-        'Infantile Colic & Pediatric Gastro Disorders'
-      ],
-      memberships: [
-        'Indian Academy of Pediatrics (IAP)',
-        'National Neonatology Forum (NNF)'
-      ],
-      awards: [
-        'Gentle Pediatrician Commendation (2023)',
-        'Kokapet Child Wellness Campaign Leader Recognition'
-      ]
-    },
+
     {
       id: 'sivaharika-rayudu',
       name: 'Dr. Sivaharika Rayudu',
-      specialty: 'Consultant Obstetrician & Gynecologist',
+      specialty: 'Obstetrician & Gynecologist',
       department: "Gynaecology & Women's Health",
-      experience: '12+ Years Experience',
+      experience: '7+ Years Experience',
       image: '/sivaharika.jpg',
-      about: 'Dr. Sivaharika Rayudu is a leading Consultant Obstetrician and Gynecologist with over 12 years of specialized experience. She provides holistic healthcare solutions from teen reproductive health clinic to high-risk pregnancy and post-menopausal guidance.',
+      about: 'Dr. Sivaharika Rayudu, MBBS, DNB, holds advanced qualifications including a Diploma in Assisted Reproductive Technology (ART) from KIEL, Germany, and a Diploma in Cosmetic Gynaecology from ICCG. With a compassionate approach and a deep commitment to women’s health, she offers a wide range of gynecological and reproductive care services. Her expertise spans menstrual disorders, PCOS, endometriosis, adolescent gynecology, and infertility treatments. She provides comprehensive pre-conceptional counseling, antenatal care, and specializes in managing high-risk pregnancies, painless deliveries, and LSCS.\n\nDr. Sivaharika Rayudu also focuses on postnatal rehabilitation, family planning, and cervical cancer screening, ensuring holistic care for women at every stage of life. Her personalized and confidential care makes her a trusted choice for women seeking modern, evidence-based gynecological solutions.',
       education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.D. - Obstetrics & Gynaecology (Post Graduate Specialization)',
-        'Diplomate of National Board (D.N.B.) - OBG'
+        'MBBS from Southern Medical University (2013)',
+        'DNB OBG from Kuppuswamy Naidu Memorial Hospital (2019)',
+        'Advance Diploma in ART (KIEL-Germany)',
+        'Diploma in Cosmetic Gynaecology (ICCG)'
       ],
       specializations: [
-        'Comprehensive High-Risk Pregnancy Care & Safe Delivery',
-        'Laparoscopic Gynecological Surgeries',
-        'PCOS Management & Hormonal Regularity Treatments',
-        'Preconception Counseling & Infertility Diagnostics',
-        'Cervical Cancer Screening (Pap Smear & Colposcopy)'
+        'Menstrual Disorders & PCOS',
+        'Endometriosis & Adolescent Gynecology',
+        'Infertility Treatments',
+        'High-risk Pregnancies & Painless Deliveries',
+        'Postnatal Rehabilitation & Family Planning'
       ],
       languages: ['English', 'Telugu', 'Hindi'],
       timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
@@ -300,68 +241,27 @@ const DoctorsPage = () => {
         'Hyderabad Obstetric and Gynaecological Society (HOGS)'
       ],
       awards: [
-        'Women Healthcare Excellence Recognition (2024)',
-        'Distinguished Obstetric Specialist Award'
+        'Regularly invited to speak at national and international conferences on reproductive medicine and women’s wellness.',
+        'Acknowledged for her patient-centric approach and clinical excellence by peers and patients alike.',
+        'Recognized for excellence in women’s healthcare and infertility management with several accolades university.',
+        'Actively involved in community outreach programs promoting adolescent health, cervical cancer awareness, and preventive gynecology.'
       ]
     },
-    {
-      id: 'ravinder-raja',
-      name: 'Dr. Ravinder Raja',
-      specialty: 'Consultant ENT Specialist',
-      department: 'ENT Care',
-      experience: '12+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Ravinder Raja is a highly regarded Consultant ENT Specialist with 12+ years of clinical and surgical experience. He is dedicated to advanced treatment pathways for chronic sinusitis, allergic rhinitis, and hearing disorders, utilizing state-of-the-art diagnostic microscopes.',
-      education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.S. - ENT (Otorhinolaryngology Specialization)',
-        'Fellowship in Otology & Audiology diagnostics'
-      ],
-      specializations: [
-        'Endoscopic Tympanoplasty & Myringoplasty',
-        'Surgical management of chronic middle ear infections',
-        'Functional Endoscopic Sinus Surgery (FESS)',
-        'Allergic Rhinitis immunotherapy profiles',
-        'Video Laryngoscopy (VLS) & Throat evaluations'
-      ],
-      languages: ['English', 'Telugu', 'Hindi', 'Kannada'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      conditions: [
-        'Chronic Ear Discharge & Otitis Media',
-        'Hearing Loss, Conductive Deafness & Wax buildup',
-        'Sinusitis, Nasal Polyps & Allergic Sniffling',
-        'Laryngeal issues, Dysphonia & Throat discomfort',
-        'Obstructive sleep disturbances',
-        'Aural Vertigo & Balance disorders'
-      ],
-      memberships: [
-        'Association of Otolaryngologists of India (AOI)',
-        'Indian Society of Otology'
-      ],
-      awards: [
-        'Clinical Excellence in Otology Studies (2021)',
-        'Senior Consultant Recognition - ENT Care Hyderabad'
-      ]
-    },
+
     {
       id: 'yogini-khetawat',
       name: 'Dr. Yogini Khetawat',
-      specialty: 'Dental Surgeon & Cosmetologist',
+      specialty: 'Dentist',
       department: 'Dental Care',
-      experience: '12+ Years Experience',
+      experience: '12 Years Experience',
       image: '/yogini.jpg',
-      about: 'Dr. Yogini Khetawat is a premier Dental Surgeon and Cosmetologist who blends clinical precision with artistic insight. She is dedicated to creating beautiful, healthy smiles, utilizing modern digital intraoral scanning, pain-free root canals, and cosmetic dental veneers.',
+      about: 'With over a decade of clinical experience, Dr. Yogini Khetawat is a skilled and compassionate Dentist and Cosmetologist, renowned for her work, specialized in Dental related surgeries. Her advanced expertise covers a wide range of complex procedures.\n\nPreviously associated with Mark Hospitals, Suncity, Dr. Yogini is known for blending clinical precision with artistic insight, helping restore both function and appearance for patients with dental enhancement. Her deep commitment to patient care, especially in dental field and has earned her respect and trust from both patients and peers.',
       education: [
-        'B.D.S. - Bachelor of Dental Surgery',
-        'Advanced Fellowship in Aesthetic Dentistry & Cosmetology',
-        'Certified Implantologist (Premium Implantology Systems)'
+        'Dental Surgeon'
       ],
       specializations: [
-        'Preventive & Family Dental Care programs',
-        'Pain-free Root Canal Treatments (Microscopic RCT)',
-        'Premium Dental Implants & Crown placements',
-        'Teeth Whitening, Ceramic Veneers & Smile Makeovers',
-        'Invisalign Clear Aligners orthodontic plans'
+        'Over 7 years of experience in dental, reconstructive, and cosmetic surgical care.',
+        'Widely appreciated for complex surgeries.'
       ],
       languages: ['English', 'Telugu', 'Hindi', 'Gujarati'],
       timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
@@ -374,51 +274,13 @@ const DoctorsPage = () => {
         'Impacted Wisdom Teeth pain'
       ],
       memberships: [
-        'Indian Dental Association (IDA)',
-        'American Academy of Cosmetic Dentistry (AACD)'
+        'Mark Hospitals (2018) - Valued team member known for empathetic approach and multidisciplinary collaboration.',
+        'Expertise in Field (2020) - Regularly attends national surgical and cosmetic conferences to stay at the forefront of modern techniques.'
       ],
       awards: [
-        'Smile Designer of the Year Commendation (2024)',
-        'Excellence in Restorative & Aesthetic Dental Surgery'
-      ]
-    },
-    {
-      id: 'sanjay-mehta',
-      name: 'Dr. Sanjay Mehta',
-      specialty: 'Consultant Pulmonologist',
-      department: 'Pulmonology',
-      experience: '12+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=550&q=80',
-      about: 'Dr. Sanjay Mehta is an expert Consultant Pulmonologist specializing in acute and chronic lung conditions, asthma, and sleep-related breathing disorders. He manages Curo Clinics advanced PFT cabins and diagnostic sleep studies.',
-      education: [
-        'M.B.B.S. - Professional Medical Graduate Degree',
-        'M.D. - Pulmonology & Respiratory Medicine',
-        'Fellow of the American College of Chest Physicians (F.C.C.P.)'
-      ],
-      specializations: [
-        'Asthma & Allergy Desensitization protocols',
-        'Chronic Obstructive Pulmonary Disease (COPD) long-term care',
-        'Spirometry & Pulmonary Function Testing (PFT)',
-        'Sleep Apnea Diagnostics (Polysomnography)',
-        'Post-COVID Lung Assessment & Rehabilitation'
-      ],
-      languages: ['English', 'Telugu', 'Hindi', 'Marathi'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      conditions: [
-        'Bronchial Asthma & Allergic Bronchitis',
-        'COPD, Emphysema & Chronic Bronchitis',
-        'Pneumonia, Pleurisy & Pulmonary Infections',
-        'Pulmonary Tuberculosis (TB)',
-        'Snoring & Obstructive Sleep Apnea (OSA)',
-        'Occupational & Environmental lung ailments'
-      ],
-      memberships: [
-        'Indian Chest Society (ICS)',
-        'American College of Chest Physicians (ACCP)'
-      ],
-      awards: [
-        'Outstanding Achievement in Respiratory Care (2023)',
-        'Pioneer in Sleep Apnea Screenings Kokapet'
+        'Dr Yogini is a highly skilled and experienced Dental specialist known for her skills and experience.',
+        'Valued team member at Mark Hospitals, Suncity, known for her empathetic approach and multidisciplinary collaboration.',
+        'Regularly attends national surgical and cosmetic conferences to stay at the forefront of modern techniques.'
       ]
     }
   ];
@@ -502,10 +364,10 @@ const DoctorsPage = () => {
   };
 
   return (
-    <main ref={pageRef} className="w-full bg-transparent text-[#1E293B] pt-[95px] overflow-hidden">
+    <main ref={pageRef} className="w-full bg-transparent text-white overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full py-20 lg:py-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
+      <section className="relative w-full pt-[175px] pb-20 lg:pt-[207px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
         {/* Ambient Blur spheres */}
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
@@ -534,28 +396,25 @@ const DoctorsPage = () => {
           <div className="lg:col-span-6 flex justify-center items-center h-[350px] sm:h-[400px] relative">
             {/* Overlay Circle 1 (Dr. Sivani) */}
             <div className="hero-avatar absolute top-[10%] left-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[0].image} alt="" className="w-full h-full object-cover" />
+              <img src={doctorsData[0].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 2 (Dr. Feroz) */}
             <div className="hero-avatar absolute top-[5%] right-[20%] w-28 h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[1].image} alt="" className="w-full h-full object-cover" />
+              <img src={doctorsData[1].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 3 (Dr. Anand) */}
             <div className="hero-avatar absolute top-[40%] left-[38%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[2].image} alt="" className="w-full h-full object-cover" />
+              <img src={doctorsData[2].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 4 (Dr. Nagarjuna) */}
             <div className="hero-avatar absolute bottom-[8%] left-[12%] w-26 h-26 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[3].image} alt="" className="w-full h-full object-cover" />
+              <img src={doctorsData[3].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 5 (Dr. Neha) */}
             <div className="hero-avatar absolute bottom-[10%] right-[12%] w-24 h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[4].image} alt="" className="w-full h-full object-cover" />
+              <img src={doctorsData[4].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
-            {/* Overlay Circle 6 (Dr. Sivaharika) */}
-            <div className="hero-avatar absolute top-[35%] right-[5%] w-28 h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[5].image} alt="" className="w-full h-full object-cover" />
-            </div>
+
           </div>
         </div>
       </section>
@@ -586,7 +445,7 @@ const DoctorsPage = () => {
                     `}
                   >
                     <div className="w-20 h-20 rounded-full overflow-hidden mb-3.5 border-2 border-white shadow-md relative">
-                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover" />
+                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover object-top" />
                       {isActive && (
                         <div className="absolute inset-0 border-2 border-emerald-500 rounded-full animate-ping opacity-60" />
                       )}
@@ -644,13 +503,13 @@ const DoctorsPage = () => {
       </section>
 
       {/* 4. FEATURED DOCTOR (MAIN SECTION) */}
-      <section id="featured-doctor-spotlight" className="relative w-full py-20 px-6 md:px-12 lg:px-20 bg-[#F8FBFA]">
+      <section id="featured-doctor-spotlight" className="relative w-full py-20 px-6 md:px-12 lg:px-20 bg-transparent">
         <div className="max-w-6xl mx-auto">
           
           {filteredDoctors.length === 0 ? (
             <div className="w-full text-center py-16">
               <Stethoscope className="w-12 h-12 text-slate-300 mx-auto mb-4 animate-bounce" />
-              <h3 className="text-xl font-medium text-slate-700 mb-2">No Specialists Found</h3>
+              <h3 className="text-xl font-medium text-white mb-2">No Specialists Found</h3>
               <p className="text-slate-400 text-sm">Try resetting your search query or department filters.</p>
             </div>
           ) : selectedDoctor ? (
@@ -672,31 +531,31 @@ const DoctorsPage = () => {
                 <span className="text-[10px] font-bold text-emerald-600 tracking-[0.2em] uppercase mb-2 block">
                   Featured Specialist
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-slate-800 mb-1 leading-tight">
+                <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-white mb-1 leading-tight">
                   {selectedDoctor.name}
                 </h2>
-                <p className="text-emerald-700 text-sm font-semibold mb-3">
-                  {selectedDoctor.specialty} — <span className="text-slate-400 font-light">{selectedDoctor.experience}</span>
+                <p className="text-emerald-400 text-sm font-semibold mb-3">
+                  {selectedDoctor.specialty} — <span className="text-gray-300 font-light">{selectedDoctor.experience}</span>
                 </p>
 
-                <div className="w-full h-[1px] bg-slate-100 my-4" />
+                <div className="w-full h-[1px] bg-white/20 my-4" />
 
-                <p className="text-[#64748B] text-sm leading-relaxed font-light mb-6">
+                <p className="text-gray-200 text-sm leading-relaxed font-light mb-6">
                   {selectedDoctor.about}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-xs text-slate-600">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-xs text-gray-300">
                   <div className="flex gap-3">
-                    <BookOpen className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <BookOpen className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <div>
-                      <span className="font-bold text-slate-800 block mb-1">Education</span>
+                      <span className="font-bold text-white block mb-1">Education</span>
                       <p className="font-light leading-relaxed">{selectedDoctor.education[1] || selectedDoctor.education[0]}</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <Clock className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <div>
-                      <span className="font-bold text-slate-800 block mb-1">Hospital Timings</span>
+                      <span className="font-bold text-white block mb-1">Hospital Timings</span>
                       <p className="font-light leading-relaxed">{selectedDoctor.timings}</p>
                     </div>
                   </div>

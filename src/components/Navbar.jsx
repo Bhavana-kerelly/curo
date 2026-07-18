@@ -30,8 +30,8 @@ const Navbar = ({ currentPage }) => {
     { label: 'About Us', href: '#/about-us', id: 'about' },
     { label: 'Services', href: '#/services', id: 'specialties' },
     { label: 'Our Doctors', href: '#/doctors', id: 'doctors' },
-    { label: 'Blogs', href: currentPage !== 'home' ? '/#gallery' : '#gallery', id: 'gallery' },
-    { label: 'Contact Us', href: currentPage !== 'home' ? '/#schedule' : '#schedule', id: 'schedule' }
+    { label: 'Blogs', href: '#/blogs', id: 'blogs' },
+    { label: 'Contact Us', href: '#/contact', id: 'contact' }
   ];
 
   // ----------------------------------------------------
@@ -133,6 +133,27 @@ const Navbar = ({ currentPage }) => {
       e.preventDefault();
       setMobileMenuOpen(false);
       window.location.hash = '#/services';
+      return;
+    }
+
+    if (id === 'doctors') {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      window.location.hash = '#/doctors';
+      return;
+    }
+
+    if (id === 'blogs') {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      window.location.hash = '#/blogs';
+      return;
+    }
+
+    if (id === 'contact') {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      window.location.hash = '#/contact';
       return;
     }
 

@@ -164,6 +164,7 @@ const Hero = () => {
             </button>
             <button
               ref={addToButtonsRef}
+              onClick={() => window.location.hash = '#/doctors'}
               className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-medium rounded-full border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
             >
               Meet Our Doctors

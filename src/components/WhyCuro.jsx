@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import { Stethoscope, Dna, HeartHandshake, Clock } from 'lucide-react';
-import hospitalImg from '../assets/hospital.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -148,7 +147,7 @@ const WhyCuro = () => {
         ref={bgRef}
         className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center pointer-events-none"
         style={{
-          backgroundImage: `url(${hospitalImg})`,
+          backgroundImage: `url('/curo-hero.jpg')`,
         }}
       />
 

@@ -138,8 +138,6 @@ const Specialties = () => {
     { name: 'Gynecology', icon: <Heart className="w-6 h-6 text-emerald-500" /> },
     { name: 'ENT', icon: <Stethoscope className="w-6 h-6 text-emerald-500" /> },
     { name: 'Dental', icon: <Smile className="w-6 h-6 text-emerald-500" /> },
-    { name: 'Pediatrics', icon: <Baby className="w-6 h-6 text-emerald-500" /> },
-    { name: 'Urology', icon: <Activity className="w-6 h-6 text-emerald-500" /> },
     { name: 'General Medicine', icon: <BriefcaseMedical className="w-6 h-6 text-emerald-500" /> },
     { name: 'Diabetic Care', icon: <ActivitySquare className="w-6 h-6 text-emerald-500" /> },
     { name: 'Laparoscopic Surgery', icon: <Shield className="w-6 h-6 text-emerald-500" /> }
@@ -151,8 +149,7 @@ const Specialties = () => {
       id="specialties"
       className="glass-section relative w-full py-16 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 overflow-hidden font-sans"
     >
-      {/* Subtle radial light mint gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,#EAF9F2_0%,transparent_60%)] pointer-events-none" />
+      {/* Gradient background removed to reveal global image */}
 
       {/* Faint oversized DNA strand representation on top right */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none select-none">
@@ -180,14 +177,14 @@ const Specialties = () => {
           className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-16"
         >
           <div className="max-w-3xl text-left">
-            <span className="specialties-label text-emerald-500 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
+            <span className="specialties-label text-emerald-400 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
               OUR SPECIALTIES
             </span>
-            <h2 className="specialties-heading text-[#111827] text-[36px] sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.1] font-light tracking-tight mb-6">
+            <h2 className="specialties-heading text-white text-[36px] sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.1] font-light tracking-tight mb-6">
               Expert Care, <br />
-              Across Every Stage of <span className="text-emerald-500 font-medium">Life</span>
+              Across Every Stage of <span className="text-emerald-400 font-medium">Life</span>
             </h2>
-            <p className="specialties-desc text-[#5F6B76] text-base md:text-lg leading-[1.6] max-w-2xl font-light">
+            <p className="specialties-desc text-gray-200 text-base md:text-lg leading-[1.6] max-w-2xl font-light">
               From preventive healthcare to advanced surgical procedures, our experienced specialists provide personalized treatment using modern medical technology under one roof.
             </p>
           </div>
@@ -212,7 +209,7 @@ const Specialties = () => {
             <div
               className="absolute inset-0 bg-cover bg-center parallax-bg transition-transform duration-700 ease-out group-hover:scale-105"
               style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80')`
+                backgroundImage: `url('/family-healthcare.jpg')`
               }}
             />
             {/* Ambient gradients */}
@@ -246,7 +243,7 @@ const Specialties = () => {
           {/* COLUMN 2: Stacked Middle Cards */}
           <div className="flex flex-col gap-6">
 
-            {/* Middle Top Card: Pediatrics */}
+            {/* Middle Top Card: Gynecology */}
             <div
               ref={midTopCardRef}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
@@ -255,21 +252,21 @@ const Specialties = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80')`
+                  backgroundImage: `url('/gynecology-card.jpg')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
               {/* Top Section Icon */}
               <div className="relative z-10 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center">
-                <Baby className="w-5 h-5 text-white" />
+                <Heart className="w-5 h-5 text-white" />
               </div>
 
               {/* Bottom text */}
               <div className="relative z-10 text-left text-white">
-                <h3 className="text-xl font-bold mb-1">Pediatrics</h3>
+                <h3 className="text-xl font-bold mb-1">Gynecology</h3>
                 <p className="text-white/85 text-xs font-light max-w-xs">
-                  Compassionate healthcare for infants, children and adolescents.
+                  Comprehensive care for women's health, from adolescence to menopause.
                 </p>
               </div>
             </div>
@@ -282,7 +279,7 @@ const Specialties = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80')`
+                  backgroundImage: `url('/dental-chair.jpg')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

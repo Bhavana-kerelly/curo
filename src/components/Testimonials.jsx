@@ -241,7 +241,7 @@ const Testimonials = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="bg-[#F8FBFA] relative w-full py-16 sm:py-24 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="bg-transparent relative w-full py-10 sm:py-14 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* Background radial glow and floating circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -254,18 +254,18 @@ const Testimonials = () => {
         <div className="absolute bottom-20 left-10 w-3 h-3 bg-emerald-500/20 rounded-full blur-[2px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-center">
+      <div className="max-w-7xl mx-auto w-full relative z-20 flex flex-col items-center bg-black/40 backdrop-blur-md rounded-[28px] p-6 md:p-10 border border-white/10 shadow-2xl">
 
         {/* Header Section */}
-        <div ref={headerRef} className="text-center max-w-3xl mb-12 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5">
+        <div ref={headerRef} className="text-center max-w-3xl mb-8 flex flex-col items-center">
+          <span className="label text-emerald-400 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
             PATIENT TESTIMONIALS
           </span>
-          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+          <h2 className="title text-white text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-[1.05]">
             Healing Experiences, <br />
             Shared by Our Patients
           </h2>
-          <p className="subtitle text-slate-600 text-lg leading-[1.6] max-w-3xl mt-[28px] font-light">
+          <p className="subtitle text-gray-200 text-base sm:text-lg leading-[1.6] max-w-3xl mt-4 font-light">
             Every patient journey reflects our commitment to compassionate care, clinical excellence, and personalized treatment across every specialty at Curo Clinics.
           </p>
         </div>
@@ -273,14 +273,14 @@ const Testimonials = () => {
         {/* Immersive Single Testimonial Quote */}
         <div
           ref={quoteContainerRef}
-          className="relative w-full max-w-5xl text-center mb-8 flex flex-col items-center min-h-[220px] lg:min-h-[160px]"
+          className="relative w-full max-w-5xl text-center mb-6 flex flex-col items-center min-h-[160px] lg:min-h-[120px]"
         >
           {/* Huge quotation marks behind the text */}
           <div className="absolute top-[-30px] left-1/2 -translate-x-1/2 text-emerald-500/5 text-[150px] sm:text-[220px] font-serif pointer-events-none select-none">
             “
           </div>
 
-          <div ref={quoteRef} className="relative z-10 text-slate-800 text-2xl sm:text-3xl lg:text-[32px] font-light leading-[1.5] max-w-4xl px-4">
+          <div ref={quoteRef} className="relative z-10 text-white text-2xl sm:text-3xl lg:text-[32px] font-light leading-[1.5] max-w-4xl px-4">
             {current.quote}
           </div>
 
@@ -293,12 +293,12 @@ const Testimonials = () => {
 
             <div className="text-left flex flex-col items-center sm:items-start">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <span className="font-semibold text-lg text-slate-900">{current.patient}</span>
+                <span className="font-semibold text-lg text-white">{current.patient}</span>
                 <span className="px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-[10px] font-semibold rounded-full uppercase tracking-wider">
                   Consulted {current.doctor}
                 </span>
               </div>
-              <span className="text-xs text-slate-500 mt-1 sm:mt-0">
+              <span className="text-xs text-gray-300 mt-1 sm:mt-0">
                 {current.profession} · {current.specialty}
               </span>
             </div>

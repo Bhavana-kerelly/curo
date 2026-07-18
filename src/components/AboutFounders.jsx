@@ -15,10 +15,10 @@ const AboutFounders = () => {
 
   const cards = [
     {
-      value: "7+",
+      value: "5+",
       title: "Specialties Under One Roof",
-      desc: "ENT, Pediatrics, Gynecology, Dental Care, Urology, General Medicine and General Surgery—all working together for complete family healthcare.",
-      image: card1Img,
+      desc: "ENT, Gynecology, Dental Care, General Medicine and General Surgery—all working together for complete family healthcare.",
+      image: '/family-doctor.jpg',
       placement: "left-6 right-6 bottom-6",
       clipPath: "polygon(64px 0, calc(100% - 14px) 0, calc(100% - 4px) 4px, 100% 14px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 4px), calc(100% - 14px) 100%, 14px 100%, 4px calc(100% - 4px), 0 calc(100% - 14px), 0 64px)",
       offset: false
@@ -27,7 +27,7 @@ const AboutFounders = () => {
       value: "100%",
       title: "Patient-First Care",
       desc: "Every consultation is built around compassion, transparency and personalized treatment plans tailored to each patient's health journey.",
-      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=80",
+      image: "/patient-care.jpg",
       placement: "left-6 bottom-20",
       clipPath: "polygon(0 14px, 4px 4px, 14px 0, calc(100% - 64px) 0, 100% 64px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 4px), calc(100% - 14px) 100%, 64px 100%, 0 calc(100% - 64px))",
       offset: true
@@ -108,7 +108,7 @@ const AboutFounders = () => {
       <div className="max-w-7xl mx-auto w-full relative z-20">
 
         {/* Top row -- heading + description */}
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20 text-[#102A43]">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20 text-white">
 
           {/* Left side -- Section heading */}
           <div className="lg:w-1/2" style={{ perspective: '800px' }}>
@@ -116,16 +116,17 @@ const AboutFounders = () => {
               ref={headingRef}
               className="font-firs text-[38px] sm:text-[52px] lg:text-[60px] font-semibold uppercase tracking-tight leading-[0.95]"
             >
-              ABOUT<br />CURO CLINICS
+              <span className="text-white">ABOUT</span><br />
+              <span className="text-emerald-400">CURO CLINICS</span>
             </h2>
           </div>
 
           {/* Right side -- Description block */}
           <div ref={descRef} className="lg:w-1/2 flex flex-col max-w-xl">
-            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581]">
+            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-gray-200">
               Curo Clinics was founded with a simple vision — to make world-class healthcare accessible to every family in Kokapet and the surrounding communities. Our multidisciplinary team combines clinical expertise with compassionate care, creating a healthcare experience built around trust and patient wellbeing.
             </p>
-            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-[#486581] mt-5">
+            <p className="text-[17px] sm:text-[18px] leading-[1.7] text-gray-200 mt-5">
               With advanced diagnostics, experienced specialists and modern treatment facilities under one roof, Curo Clinics delivers comprehensive healthcare that is accessible, transparent and personalized for every patient.
             </p>
 
@@ -133,11 +134,11 @@ const AboutFounders = () => {
             <div className="mt-6">
               <a
                 href="#story"
-                className="group inline-flex items-center gap-4 text-[14px] font-medium text-[#102A43] hover:opacity-80 transition-opacity"
+                className="group inline-flex items-center gap-4 text-[14px] font-medium text-white hover:opacity-80 transition-opacity"
               >
                 <span>Discover Our Story</span>
                 <span
-                  className="flex items-center justify-center w-8 h-8 border border-[#102A43] transition-transform group-hover:-translate-y-0.5"
+                  className="flex items-center justify-center w-8 h-8 border border-white transition-transform group-hover:-translate-y-0.5"
                   style={{
                     clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)"
                   }}
@@ -173,8 +174,8 @@ const AboutFounders = () => {
                 }}
               >
                 {/* Soft darken overlay for readability */}
-                <div className="absolute inset-0 bg-[#102A43]/15 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
+                <div className="absolute inset-0 bg-[#102A43]/10 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 to-transparent" />
 
                 {/* Text overlay inside each card */}
                 <div className={`absolute ${card.placement} max-w-[66%] z-10 text-left`}>

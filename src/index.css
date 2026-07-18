@@ -27,7 +27,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   background-color: transparent;
-  color: #1E293B;
+  color: white;
   font-family: var(--font-sans);
   scroll-behavior: smooth;
 }

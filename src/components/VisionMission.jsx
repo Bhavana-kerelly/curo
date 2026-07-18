@@ -74,13 +74,13 @@ const VisionMission = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full bg-[#F8FBFA] py-20 lg:py-24 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="relative w-full bg-transparent py-20 lg:py-24 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* ----------------------------------------------------
           STATIC DECORATIVE BACKGROUNDS (NO ANIMATION)
          ---------------------------------------------------- */}
       {/* Mesh background gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#E2F5F0]/50 via-[#F8FBFA] to-[#F8FBFA] pointer-events-none" />
+      {/* Mesh background removed to show global image */}
 
       {/* Breathing emerald glow behind the heading */}
       <div 
@@ -121,11 +121,11 @@ const VisionMission = () => {
           ref={addToElementsRef}
           className="text-center w-full"
         >
-          <span className="text-[11px] font-semibold text-emerald-600 tracking-[0.35em] uppercase block mb-4">
+          <span className="text-[11px] font-semibold text-emerald-400 tracking-[0.35em] uppercase block mb-4">
             ABOUT CURO CLINICS
           </span>
 
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-[300] text-[#0F172A] leading-[1.1] mb-5">
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-[300] text-white leading-[1.1] mb-5">
             Our{' '}
             <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-[#00895A]">
               Purpose
@@ -136,7 +136,7 @@ const VisionMission = () => {
             </span>
           </h2>
 
-          <p className="text-[#64748B] text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto mt-5">
+          <p className="text-gray-200 text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto mt-5">
             A clear vision and a strong mission guide everything we do—from compassionate patient care to continuous medical excellence.
           </p>
         </div>

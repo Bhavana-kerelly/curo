@@ -25,29 +25,14 @@ const Doctors = () => {
       image: '/feroz_basha.jpg'
     },
     {
-      name: 'Dr. Anand',
-      specialty: 'Urologist',
-      image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&h=550&q=80'
-    },
-    {
       name: 'Dr. Nagarjuna Doppalapudi',
       specialty: 'General & Laparoscopic Surgeon',
       image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&h=550&q=80'
     },
     {
-      name: 'Dr. Neha',
-      specialty: 'General Pediatrics',
-      image: 'https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=400&h=550&q=80'
-    },
-    {
       name: 'Dr. Sivaharika Rayudu',
       specialty: 'Gynecologist',
       image: '/sivaharika.jpg'
-    },
-    {
-      name: 'Dr. Ravinder Raja',
-      specialty: 'Consultant ENT Specialist',
-      image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?auto=format&fit=crop&w=400&h=550&q=80'
     },
     {
       name: 'Dr. Yogini Khetawat',
@@ -230,13 +215,13 @@ const Doctors = () => {
 
         {/* Heading Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-16 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
+          <span className="label text-emerald-400 font-semibold text-xs tracking-[0.25em] uppercase block mb-3">
             OUR DOCTORS
           </span>
-          <h2 className="title text-[#111827] text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4">
+          <h2 className="title text-white text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4">
             Meet Our Specialists
           </h2>
-          <p className="subtitle text-[#5F6B76] text-sm sm:text-base md:text-lg leading-[1.6] max-w-2xl font-light">
+          <p className="subtitle text-gray-200 text-sm sm:text-base md:text-lg leading-[1.6] max-w-2xl font-light">
             Our experienced team of specialists combines advanced medical expertise with compassionate care to deliver personalized treatment for every patient.
           </p>
         </div>

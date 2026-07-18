@@ -93,11 +93,21 @@ const BentoCard = ({ dept, index, onClick }) => {
       }}
     >
       <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
         style={{
           background: `radial-gradient(circle 180px at var(--mx, 50%) var(--my, 50%), rgba(24,200,160,0.15), transparent 70%)`
         }}
       />
+
+      {dept.bgImage && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-60"
+            style={{ backgroundImage: `url(${dept.bgImage})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/60 to-white/30 backdrop-blur-[2px]" />
+        </div>
+      )}
 
       <div 
         className="absolute right-[-10px] bottom-[-10px] w-48 h-48 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500 ease-out pointer-events-none z-0"
@@ -147,70 +157,18 @@ const ServicesPage = () => {
   const exploreHeadingRef = useRef(null);
   const exploreSectionRef = useRef(null);
   
-  const [activeDept, setActiveDept] = useState('urology');
+  const [activeDept, setActiveDept] = useState('gynaecology');
   const [selectedDeptModal, setSelectedDeptModal] = useState(null);
 
   const departments = [
-    {
-      id: 'urology',
-      name: 'Urology',
-      category: 'Kidney & Urinary Care',
-      bentoClass: 'lg:col-span-1',
-      illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
-          <path d="M22 20C14 20 12 32 18 42C22 48 26 48 26 42C26 36 26 26 22 20Z" stroke="currentColor" />
-          <path d="M42 20C50 20 52 32 46 42C42 48 38 48 38 42C38 36 38 26 42 20Z" stroke="currentColor" />
-          <path d="M25 40C25 46 29 48 30 52" stroke="currentColor" strokeDasharray="2 2" />
-          <path d="M39 40C39 46 35 48 34 52" stroke="currentColor" strokeDasharray="2 2" />
-          <path d="M30 52H34V56C34 58 30 58 30 56V52Z" stroke="currentColor" />
-        </svg>
-      ),
-      icon: <Activity className="w-5 h-5 text-emerald-600" />,
-      introduction: 'Comprehensive care for the renal system and urinary tract. Our specialized urologists offer high-end laser surgeries and treatment of prostate and kidney conditions, combining precision diagnostics with a patient-first approach.',
-      doctor: {
-        name: 'Dr. Anand',
-        image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&h=400&q=80',
-        qualification: 'MBBS, MS (General Surgery), MCh (Urology)',
-        experience: '8+ Years of Clinical & Surgical Experience'
-      },
-      treatments: [
-        'Kidney Stone Laser Removal (RIRS)',
-        'Laser Prostatectomy (HoLEP)',
-        'Urinary Tract Infection Management',
-        'Keyhole Reconstructive Urology',
-        'Urodynamic studies & flowmetry',
-        'Male fertility assessments'
-      ],
-      conditions: [
-        'Kidney Stones (Renal Calculi)',
-        'Urinary Tract Infections (UTI)',
-        'Prostate Enlargement (BPH)',
-        'Erectile Dysfunction & Male Infertility',
-        'Overactive Bladder & Incontinence',
-        'Pediatric Urology Conditions'
-      ],
-      procedures: [
-        'Minimally invasive urological surgeries',
-        'RIRS (Retrograde Intrarenal Surgery) for stones',
-        'Laser Prostatectomy',
-        'Advanced Urodynamics studies'
-      ],
-      whyChooseUs: [
-        'Led by consultant Dr. Anand with 8+ years of specialized MCh expertise.',
-        'Kokapet’s premier facility featuring state-of-the-art diagnostic urology equipment.',
-        'Evidence-based clinical guidelines with custom treatment pathways.',
-        'Transparent, clear pricing with no hidden charges.'
-      ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      emergency: '24/7 Emergency Surgical Support'
-    },
     {
       id: 'gynaecology',
       name: "Gynaecology & Women's Health",
       category: 'Maternal & Women\'s Health',
       bentoClass: 'lg:col-span-2',
+      bgImage: '/gynecology-card.jpg',
       illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
+        <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <circle cx="32" cy="24" r="12" stroke="currentColor" />
           <path d="M32 36V52" stroke="currentColor" />
           <path d="M24 44H40" stroke="currentColor" />
@@ -260,9 +218,10 @@ const ServicesPage = () => {
       id: 'dental',
       name: 'Dental Care',
       category: 'Oral Aesthetics & Care',
-      bentoClass: 'lg:col-span-1',
+      bentoClass: 'lg:col-span-2',
+      bgImage: '/dental-chair.jpg',
       illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
+        <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <path d="M18 18C18 15 24 12 32 15C40 12 46 15 46 18C46 28 44 38 40 44C38 47 34 44 32 41C30 44 26 47 24 44C20 38 18 28 18 18Z" stroke="currentColor" />
           <path d="M26 22 C28 24, 36 24, 38 22" stroke="currentColor" />
         </svg>
@@ -311,8 +270,9 @@ const ServicesPage = () => {
       name: 'ENT Care',
       category: 'Ear, Nose & Throat Clinics',
       bentoClass: 'lg:col-span-2',
+      bgImage: '/ent-care.jpg',
       illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
+        <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <path d="M42 48 C42 46, 44 42, 44 38 C44 34, 42 30, 42 22 C42 14, 34 12, 28 12 C20 12, 18 20, 18 26 C18 30, 20 32, 22 34 L18 38 C16 40, 18 42, 22 42 L24 44 C24 46, 22 48, 20 50 L34 50" stroke="currentColor" />
           <path d="M38 26 C41 26, 41 32, 38 34 C36 34, 36 26, 38 26" stroke="currentColor" />
         </svg>
@@ -320,10 +280,10 @@ const ServicesPage = () => {
       icon: <Eye className="w-5 h-5 text-emerald-600" />,
       introduction: 'World-class care for conditions affecting the ear, nose, throat, sinuses, and related structures of the head and neck, utilizing advanced diagnostic tools and minimally invasive therapies.',
       doctor: {
-        name: 'Dr. Feroz Basha Shaik / Dr. Ravinder Raja',
+        name: 'Dr. Feroz Basha Shaik',
         image: '/feroz_basha.jpg',
-        qualification: 'MBBS, MS (ENT), Head & Neck Surgeons',
-        experience: '8+ to 12+ Years of Clinical Excellence'
+        qualification: 'MBBS, MS (ENT), Head & Neck Surgeon',
+        experience: '8+ Years of Clinical Excellence'
       },
       treatments: [
         'Diagnostic Nasal Endoscopy (DNE)',
@@ -349,7 +309,7 @@ const ServicesPage = () => {
         'Thyroidectomy & Sleep Apnea Surgery'
       ],
       whyChooseUs: [
-        'Staffed by veteran ENT surgeons Dr. Feroz Basha Shaik and Dr. Ravinder Raja.',
+        'Staffed by veteran ENT surgeon Dr. Feroz Basha Shaik.',
         'Advanced, minimally invasive diagnostics including video endoscopy units.',
         'High-end coblation and debrider surgical technology.',
         '24/7 support for ENT foreign body removals.'
@@ -361,9 +321,10 @@ const ServicesPage = () => {
       id: 'surgery',
       name: 'General & Laparoscopic Surgery',
       category: 'Minimally Invasive Surgery',
-      bentoClass: 'lg:col-span-2',
+      bentoClass: 'lg:col-span-3',
+      bgImage: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80',
       illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
+        <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <line x1="24" y1="40" x2="40" y2="24" stroke="currentColor" />
           <line x1="40" y1="40" x2="24" y2="24" stroke="currentColor" />
           <circle cx="21" cy="43" r="4" stroke="currentColor" />
@@ -412,68 +373,15 @@ const ServicesPage = () => {
       hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
       emergency: '24/7 Emergency Surgery Support'
     },
-    {
-      id: 'pediatrics',
-      name: 'Pediatrics',
-      category: 'Child Development & Immunization',
-      bentoClass: 'lg:col-span-1',
-      illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="34" r="16" stroke="currentColor" />
-          <path d="M16 32 C13 32, 13 38, 16 38" stroke="currentColor" />
-          <path d="M48 32 C51 32, 51 38, 48 38" stroke="currentColor" />
-          <circle cx="26" cy="30" r="1.5" fill="currentColor" />
-          <circle cx="38" cy="30" r="1.5" fill="currentColor" />
-          <path d="M25 38 Q32 44 39 38" stroke="currentColor" />
-          <path d="M32 18 C30 12, 36 10, 32 6" stroke="currentColor" />
-        </svg>
-      ),
-      icon: <Baby className="w-5 h-5 text-emerald-600" />,
-      introduction: 'Providing holistic primary and specialized pediatric clinical care for children, infants, and newborns. We track developmental milestones and offer child-friendly assessments in Kokapet.',
-      doctor: {
-        name: 'Dr. Neha',
-        image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?auto=format&fit=crop&w=400&h=400&q=80',
-        qualification: 'MBBS, MD (Pediatrics), Consultant Pediatrician',
-        experience: '10+ Years of Child Care Experience'
-      },
-      treatments: [
-        'Newborn Assessments & Feeding Guidance',
-        'Well-Child Health Checkups',
-        'Comprehensive Immunization & Vaccination Schedules',
-        'Pediatric Asthma & Allergy Management',
-        'Growth and Development Milestones Tracking',
-        'Adolescent Health Support'
-      ],
-      conditions: [
-        'Common Childhood Fevers & Infections',
-        'Pediatric Asthma, Bronchitis & Cough',
-        'Growth & Development Delays',
-        'Behavioral Concerns (ADHD, Sleep Apnea)',
-        'Childhood Obesity & Nutritional Deficiencies',
-        'Special Needs Pediatric Support'
-      ],
-      procedures: [
-        'Neonatal screening panels',
-        'Pediatric developmental milestones screening',
-        'Allergy panel screening',
-        'Behavioral counseling programs'
-      ],
-      whyChooseUs: [
-        'Led by Consultant Dr. Neha with 10+ years of dedicated child healthcare experience.',
-        'Warm, inviting child-friendly OPD and play area.',
-        'Strict hygiene and sterile clinical pathways for child safety.',
-        'Gentle, compassionate guidance for pediatric developmental concerns.'
-      ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      emergency: '24/7 Pediatric Emergency Care'
-    },
+
     {
       id: 'medicine',
       name: 'General Medicine & Diabetes',
       category: 'Comprehensive Medicine',
-      bentoClass: 'lg:col-span-2',
+      bentoClass: 'lg:col-span-3',
+      bgImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
       illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
+        <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <circle cx="26" cy="32" r="13" stroke="currentColor" />
           <path d="M26 24V40 M18 32H34" stroke="currentColor" />
           <rect x="42" y="28" width="12" height="18" rx="2" stroke="currentColor" />
@@ -518,69 +426,11 @@ const ServicesPage = () => {
       ],
       hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
       emergency: '24/7 Emergency Medical Support'
-    },
-    {
-      id: 'pulmonology',
-      name: 'Pulmonology',
-      category: 'Respiratory Diagnostics',
-      bentoClass: 'lg:col-span-1',
-      illustration: (
-        <svg className="w-full h-full text-emerald-500/10 stroke-emerald-500/25 stroke-[1] overflow-visible" viewBox="0 0 64 64" fill="none">
-          <path d="M32 14V26" stroke="currentColor" />
-          <path d="M30 26 C24 24, 12 28, 14 44 C16 52, 26 52, 30 46 Z" stroke="currentColor" />
-          <path d="M34 26 C40 24, 52 28, 50 44 C48 52, 38 52, 34 46 Z" stroke="currentColor" />
-        </svg>
-      ),
-      icon: <Activity className="w-5 h-5 text-emerald-600" />,
-      introduction: 'Offering complete diagnostics and clinical treatments for respiratory conditions, asthma, COPD, and sleep breathing disorders, focusing on long-term airway health and lifestyle improvement.',
-      doctor: {
-        name: 'Dr. Sanjay Mehta',
-        image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80',
-        qualification: 'MBBS, MD (Pulmonology), Consultant Pulmonologist',
-        experience: '12+ Years of Respiratory & Lung Care'
-      },
-      treatments: [
-        'Asthma & Allergy Desensitization',
-        'COPD & Allergic Bronchitis Management',
-        'Inhaler and Nebulizer Training',
-        'Diagnostic Sleep Studies (Polysomnography)',
-        'Post-COVID Lung Assessment & Rehabilitation',
-        'Smoking Cessation Support'
-      ],
-      conditions: [
-        'Asthma & Allergic Rhinitis',
-        'Chronic Obstructive Pulmonary Disease (COPD)',
-        'Pneumonia, Bronchitis & Lung Infections',
-        'Pulmonary Tuberculosis (TB)',
-        'Snoring & Obstructive Sleep Apnea (OSA)',
-        'Occupational & Environmental Lung Disorders'
-      ],
-      procedures: [
-        'Spirometry (Pulmonary Function Testing - PFT)',
-        'Polysomnography (Sleep Studies) diagnostics',
-        'Aerosol and Inhalation therapies',
-        'Comprehensive respiratory allergy profiling'
-      ],
-      whyChooseUs: [
-        'Dedicated consultant pulmonologists with over 10 years of respiratory experience.',
-        'Advanced Spirometry and sleep study diagnostic cabins.',
-        'Integrated diagnostic protocols with cardiology and ENT specialties.',
-        'Personalized care including home respiratory management guidance.'
-      ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
-      emergency: 'Acute Asthma & Respiratory Distress Support'
     }
   ];
 
 
   const clinicalServices = [
-    {
-      id: 'urology',
-      title: 'Urology Department',
-      desc: 'Specialized medical and surgical care for disorders of the kidneys, urinary bladder, and male reproductive system.',
-      doctorsCount: 5,
-      treatments: ['Kidney Stone Laser Treatment', 'Prostate Care & TURP Diagnostics', 'Urinary Incontinence Therapy']
-    },
     {
       id: 'gynaecology',
       title: "Gynaecology & Women's Health",
@@ -609,26 +459,13 @@ const ServicesPage = () => {
       doctorsCount: 7,
       treatments: ['Laparoscopic Gallbladder', 'Hernia Mesh Repair', 'Laser Piles & Fistula Care']
     },
-    {
-      id: 'pediatrics',
-      title: 'Pediatrics Department',
-      desc: 'Dedicated clinical care for children, newborn screening, immunizations, and growth development tracking.',
-      doctorsCount: 6,
-      treatments: ['Childhood Immunizations', 'Pediatric Asthma Clinic', 'Newborn Screening Panels']
-    },
+
     {
       id: 'medicine',
       title: 'General Medicine & Diabetes',
       desc: 'Comprehensive primary care for chronic diseases, diabetes management, hypertension, and family health wellness.',
       doctorsCount: 10,
       treatments: ['Advanced Diabetes Panel', 'Hypertension & Lipid Care', 'Wellness Checkup Program']
-    },
-    {
-      id: 'pulmonology',
-      title: 'Pulmonology & Respiratory Care',
-      desc: 'Expert care for respiratory diseases, asthma, COPD, tuberculosis, and advanced sleep study evaluations.',
-      doctorsCount: 5,
-      treatments: ['Pulmonary Function Test (PFT)', 'Asthma & Allergy Clinic', 'Sleep Study Diagnostics']
     }
   ];
 
@@ -779,9 +616,9 @@ const ServicesPage = () => {
   };
 
   return (
-    <main ref={pageRef} className="w-full bg-transparent text-[#1E293B] pt-[90px] overflow-hidden">
+    <main ref={pageRef} className="w-full bg-transparent text-white overflow-hidden">
       {/* 1. Services Hero Section */}
-      <section className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-20 pb-36 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-[170px] pb-36 px-6 md:px-12 lg:px-20 overflow-hidden">
         {/* Glow Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[140px] pointer-events-none" />
@@ -829,7 +666,7 @@ const ServicesPage = () => {
           {/* Heading */}
           <h2 
             ref={headingRef}
-            className="font-serif text-4xl sm:text-5xl font-light text-[#0F172A] leading-tight text-center mb-5 perspective-[1000px]"
+            className="font-serif text-4xl sm:text-5xl font-light text-white leading-tight text-center mb-5 perspective-[1000px]"
           >
             {"Choose Your ".split("").map((char, i) => (
               <span key={i} className="char-reveal inline-block origin-bottom">{char === " " ? "\u00A0" : char}</span>
@@ -840,7 +677,7 @@ const ServicesPage = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="text-[#64748B] text-sm sm:text-base font-light text-center max-w-[620px] mb-16">
+          <p className="text-gray-200 text-sm sm:text-base font-light text-center max-w-[620px] mb-16">
             Select a department below to explore expert care, treatments and specialists.
           </p>
 
@@ -948,7 +785,7 @@ const ServicesPage = () => {
           {/* Heading */}
           <h2 
             ref={exploreHeadingRef}
-            className="font-serif text-4xl sm:text-5xl font-light text-[#0F172A] leading-tight text-center mb-5"
+            className="font-serif text-4xl sm:text-5xl font-light text-white leading-tight text-center mb-5"
           >
             Explore Every{' '}
             <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-[#00895A]">
@@ -957,10 +794,10 @@ const ServicesPage = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="text-[#64748B] text-sm sm:text-base font-light text-center max-w-[620px] mb-16">
+          <p className="text-gray-200 text-sm sm:text-base font-light text-center max-w-[620px] mb-16">
             Select any department to learn about our specialists, treatments and facilities.
           </p>          {/* Bento Grid */}
-          <div className="bento-grid-trigger w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[28px] items-stretch">
+          <div className="bento-grid-trigger w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-[28px] items-stretch">
             {departments.map((dept, index) => (
               <BentoCard 
                 key={dept.id} 
@@ -980,10 +817,10 @@ const ServicesPage = () => {
       <section className="relative w-full py-20 px-6 md:px-12 lg:px-20 text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           <ClipboardList className="w-10 h-10 text-emerald-600 mb-6" />
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">
             Need consultation from our experts?
           </h2>
-          <p className="text-[#64748B] text-base font-light leading-relaxed max-w-xl mb-8">
+          <p className="text-gray-200 text-base font-light leading-relaxed max-w-xl mb-8">
             Connect with our frontdesk team to schedule an appointment with one of our specialized doctors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

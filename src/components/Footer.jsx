@@ -106,7 +106,7 @@ const Footer = () => {
   return (
     <footer
       ref={sectionRef}
-      className="relative w-full py-12 sm:py-16 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] flex flex-col justify-between overflow-hidden"
+      className="relative w-full py-4 sm:py-6 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] flex flex-col justify-between overflow-hidden"
     >
       {/* Huge subtle transparent back logo text */}
       <div className="curo-bg-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#00A86B] font-extrabold text-[320px] sm:text-[450px] lg:text-[600px] tracking-[0.15em] select-none pointer-events-none opacity-0 blur-[1px] leading-none">
@@ -121,13 +121,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center">
 
         {/* Top Brand Area */}
-        <div ref={brandRef} className="flex flex-col items-center text-center max-w-2xl mb-10">
+        <div ref={brandRef} className="flex flex-col items-center text-center max-w-2xl mb-6">
           <img
             src={logoImg}
             alt="Curo Clinics logo"
             className="h-12 w-auto mb-6 select-none opacity-0"
           />
-          <span className="opacity-0 tracking-[0.45em] text-emerald-700 font-semibold text-xs uppercase block mb-4">
+          <span className="opacity-0 tracking-[0.45em] text-emerald-600 font-semibold text-xs uppercase block mb-4">
             COMPASSION • CARE • EXCELLENCE
           </span>
           <p className="opacity-0 text-slate-600 text-base leading-relaxed font-light">
@@ -141,7 +141,7 @@ const Footer = () => {
         {/* Navigation Strip */}
         <nav
           ref={navRef}
-          className="w-full overflow-x-auto scrollbar-none flex justify-center pb-4 mb-10"
+          className="w-full overflow-x-auto scrollbar-none flex justify-center pb-2 mb-4"
         >
           <div className="flex items-center gap-12 sm:gap-16 px-4">
             {menuItems.map((item, idx) => (
@@ -165,7 +165,7 @@ const Footer = () => {
         {/* Contact Info Card */}
         <div
           ref={contactCardRef}
-          className="w-full bg-white/70 backdrop-blur-xl border border-emerald-500/10 rounded-[36px] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,168,107,0.04)] hover:shadow-[0_20px_50px_rgba(0,168,107,0.08)] hover:bg-white/80 transition-all duration-500 mb-10"
+          className="w-full bg-white/70 backdrop-blur-xl border border-emerald-500/10 rounded-[28px] p-6 md:p-8 shadow-[0_20px_50px_rgba(0,168,107,0.04)] hover:shadow-[0_20px_50px_rgba(0,168,107,0.08)] hover:bg-white/80 transition-all duration-500 mb-6"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 divide-y md:divide-y-0 lg:divide-x divide-emerald-500/10">
 
@@ -237,11 +237,14 @@ const Footer = () => {
                 <span className="text-[10px] tracking-widest text-slate-400 font-bold uppercase block mb-1">
                   WORKING HOURS
                 </span>
-                <p className="text-slate-600 text-sm leading-relaxed font-light mb-1">
-                  <strong>Mon – Sat:</strong> 9:00 AM – 8:00 PM
+                <p className="text-slate-600 text-[13px] leading-relaxed font-light mb-1">
+                  <strong>Mon - Fri:</strong> 10:00am - 1:00pm & 5:00pm - 9:00pm
                 </p>
-                <p className="text-slate-500 text-xs font-light">
-                  <strong>Sunday:</strong> By Appointment Only
+                <p className="text-slate-600 text-[13px] leading-relaxed font-light mb-1">
+                  <strong>Saturday:</strong> 10:00am - 1:00pm & 5:00pm - 9:00pm
+                </p>
+                <p className="text-slate-600 text-[13px] leading-relaxed font-light">
+                  <strong>Sunday:</strong> 10:00am - 1:00pm
                 </p>
               </div>
             </div>

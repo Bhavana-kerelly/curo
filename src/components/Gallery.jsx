@@ -23,37 +23,37 @@ const Gallery = () => {
     {
       title: 'Reception Area',
       caption: 'A welcoming space designed for patient comfort.',
-      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+      image: '/reception.jpg',
       span: 'lg:col-span-8 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Consultation Room',
       caption: 'Private and comfortable specialist consultations.',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+      image: '/consultation-room.jpg',
       span: 'lg:col-span-4 h-[380px] lg:h-[450px]'
     },
     {
-      title: 'Diagnostics Lab',
-      caption: 'Advanced diagnostic technology for accurate results.',
-      image: 'https://images.unsplash.com/photo-1579154341098-e4e158cc7f55?auto=format&fit=crop&w=800&q=80',
+      title: 'Gynecology Clinic',
+      caption: 'Comprehensive care and advanced diagnostics for women\'s health.',
+      image: '/gynecology-clinic.jpg',
       span: 'lg:col-span-4 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Operation Theatre',
       caption: 'Modern surgical suites equipped for precision.',
-      image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80',
+      image: '/operation-theatre.jpg',
       span: 'lg:col-span-8 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Patient Lounge',
       caption: 'Comfortable waiting areas for families and visitors.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80',
+      image: '/patient-lounge.jpg',
       span: 'lg:col-span-6 h-[300px] lg:h-[380px]'
     },
     {
       title: 'Dental Clinic',
       caption: 'Modern dental care in a calm environment.',
-      image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80',
+      image: '/dental-clinic.jpg',
       span: 'lg:col-span-6 h-[300px] lg:h-[380px]'
     }
   ];
@@ -238,13 +238,13 @@ const Gallery = () => {
 
         {/* Header Section */}
         <div ref={headerRef} className="text-center max-w-3xl mb-20 flex flex-col items-center">
-          <span className="label text-emerald-600 font-semibold text-xs tracking-[0.25em] uppercase block mb-5">
+          <span className="label text-emerald-400 font-semibold text-xs tracking-[0.25em] uppercase block mb-5">
             HOSPITAL GALLERY
           </span>
-          <h2 className="title text-[#0F172A] text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+          <h2 className="title text-white text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
             Experience Our<br />Healing Environment
           </h2>
-          <p className="subtitle text-slate-600 text-lg leading-relaxed max-w-3xl mt-[28px] font-light">
+          <p className="subtitle text-gray-200 text-lg leading-relaxed max-w-3xl mt-[28px] font-light">
             Explore the thoughtfully designed spaces of Curo Clinics, where advanced healthcare meets comfort, cleanliness and a patient-first experience.
           </p>
         </div>
