@@ -502,7 +502,7 @@ const DoctorsPage = () => {
   };
 
   return (
-    <main ref={pageRef} className="w-full bg-[#F8FBFA] text-[#1E293B] pt-[95px] overflow-hidden">
+    <main ref={pageRef} className="w-full bg-transparent text-[#1E293B] pt-[95px] overflow-hidden">
       
       {/* 1. HERO SECTION */}
       <section className="relative w-full py-20 lg:py-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
@@ -561,7 +561,7 @@ const DoctorsPage = () => {
       </section>
 
       {/* 2. HORIZONTAL DOCTOR CAROUSEL */}
-      <section className="relative w-full py-8 bg-[#F0F6F4] border-b border-slate-100 overflow-hidden">
+      <section className="glass-section relative w-full py-8 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
           <div 
             ref={scrollerTrackRef}
@@ -611,7 +611,7 @@ const DoctorsPage = () => {
       </section>
 
       {/* 3. SEARCH & SPECIALIST FILTER */}
-      <section className="relative w-full py-10 bg-white border-b border-slate-100/50">
+      <section className="glass-section relative w-full py-10">
         <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row gap-4 items-center">
           {/* Search Box */}
           <div className="relative flex-1 w-full">

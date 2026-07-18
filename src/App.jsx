@@ -6,6 +6,7 @@ import ServicesPage from './pages/ServicesPage';
 import DoctorsPage from './pages/DoctorsPage';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
+import hospitalImg from './assets/hospital.png';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -34,7 +35,13 @@ function App() {
 
   return (
     <BookingProvider>
-      <div className="w-full min-h-screen bg-[#F8FBFA] text-[#1E293B] antialiased">
+      <div className="w-full min-h-screen bg-transparent text-[#1E293B] antialiased relative">
+        {/* Fixed Global Background */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none">
+          <img src={hospitalImg} alt="Curo Clinics Background" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-white/10" />
+        </div>
+
         {/* Global Navigation Bar */}
         <Navbar currentPage={page} />
 

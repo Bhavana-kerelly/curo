@@ -90,7 +90,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <main ref={pageRef} className="w-full bg-[#EBF1F5] text-[#1E293B] pt-[90px]">
+    <main ref={pageRef} className="w-full bg-transparent text-[#1E293B] pt-[90px]">
       {/* 1. Hero Section */}
       <section ref={heroRef} className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-16 pb-32 sm:pb-44 px-6 md:px-12 lg:px-20">
         {/* Ambient Glows */}
@@ -143,7 +143,7 @@ const AboutPage = () => {
       <section className="relative w-full py-16 sm:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Interactive Image Box */}
-          <div className="relative group rounded-[36px] overflow-hidden border border-emerald-500/10 shadow-xl bg-white p-2">
+          <div className="relative group rounded-[36px] overflow-hidden border border-white/30 shadow-xl p-2" style={{background: 'rgba(248,251,250,0.25)', backdropFilter: 'blur(12px)'}}>
             <img 
               src={hospitalImg} 
               alt="Curo Clinics Hospital Exterior" 
@@ -193,7 +193,7 @@ const AboutPage = () => {
             {values.map((val, idx) => (
               <div 
                 key={idx}
-                className="reveal-item group bg-white border border-emerald-500/5 hover:border-emerald-500/30 p-8 rounded-[28px] text-left transition-all duration-300 transform hover:-translate-y-1.5 shadow-sm hover:shadow-md"
+                className="reveal-item group border border-white/30 hover:border-emerald-500/30 p-8 rounded-[28px] text-left transition-all duration-300 transform hover:-translate-y-1.5 shadow-sm hover:shadow-md" style={{background: 'rgba(248,251,250,0.25)', backdropFilter: 'blur(12px)'}}
               >
                 <div className="mb-6 p-4 w-fit bg-emerald-500/10 rounded-2xl border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-colors duration-300">
                   {val.icon}
@@ -213,7 +213,7 @@ const AboutPage = () => {
       {/* 4. Luxury CTA */}
       <section className="relative w-full py-16 sm:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="relative w-full bg-white border border-emerald-500/10 rounded-[48px] p-8 md:p-16 shadow-lg overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div className="relative w-full border border-white/30 rounded-[48px] p-8 md:p-16 shadow-lg overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10" style={{background: 'rgba(248,251,250,0.25)', backdropFilter: 'blur(12px)'}}>
             {/* Ambient glows */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-600/5 rounded-full blur-[100px] pointer-events-none" />

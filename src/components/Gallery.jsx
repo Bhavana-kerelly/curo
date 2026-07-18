@@ -217,10 +217,9 @@ const Gallery = () => {
   };
 
   return (
-    <section
+    <section 
       ref={sectionRef}
-      id="gallery"
-      className="relative w-full pt-10 sm:pt-12 pb-16 sm:pb-20 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
+      className="glass-section relative w-full pt-10 sm:pt-12 pb-16 sm:pb-20 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* Very subtle emerald radial glow behind gallery */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />

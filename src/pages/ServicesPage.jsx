@@ -779,7 +779,7 @@ const ServicesPage = () => {
   };
 
   return (
-    <main ref={pageRef} className="w-full bg-[#F8FBFA] text-[#1E293B] pt-[90px] overflow-hidden">
+    <main ref={pageRef} className="w-full bg-transparent text-[#1E293B] pt-[90px] overflow-hidden">
       {/* 1. Services Hero Section */}
       <section className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-20 pb-36 px-6 md:px-12 lg:px-20 overflow-hidden">
         {/* Glow Effects */}
@@ -809,7 +809,7 @@ const ServicesPage = () => {
       {/* 2. Apple VisionOS-inspired Selector Section */}
       <section 
         ref={sectionRef}
-        className="relative w-full py-24 px-6 lg:px-20 overflow-visible bg-[#F8FBFA]"
+        className="glass-section relative w-full py-24 px-6 lg:px-20 overflow-visible"
       >
         {/* Ambient Glows */}
         <div className="ambient-glow-circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(24,200,160,0.06)_0%,_rgba(255,255,255,0)_70%)] pointer-events-none filter blur-2xl" />
@@ -931,7 +931,7 @@ const ServicesPage = () => {
       {/* 3. Explore Our Specialities (Bento Grid Section) */}
       <section 
         ref={exploreSectionRef}
-        className="relative w-full py-24 px-6 lg:px-20 overflow-visible bg-[#F8FBFA] border-t border-slate-100/80"
+        className="glass-section relative w-full py-24 px-6 lg:px-20 overflow-visible"
       >
         {/* Soft mint glows */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(24,200,160,0.05)_0%,_rgba(255,255,255,0)_70%)] pointer-events-none filter blur-3xl" />

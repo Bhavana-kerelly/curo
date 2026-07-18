@@ -26,7 +26,7 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  background-color: #F8FBFA;
+  background-color: transparent;
   color: #1E293B;
   font-family: var(--font-sans);
   scroll-behavior: smooth;
@@ -76,8 +76,15 @@ body {
   margin: 0;
   padding: 0;
   display: block;
-  background-color: #F8FBFA;
+  background-color: transparent;
   overflow-x: hidden;
+}
+
+/* Glass section that lets the fixed background image show through */
+.glass-section {
+  background: rgba(248, 251, 250, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 html,

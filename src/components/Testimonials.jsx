@@ -241,7 +241,7 @@ const Testimonials = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full py-10 sm:py-12 px-6 md:px-12 lg:px-20 bg-[#F8FBFA] overflow-hidden"
+      className="bg-[#F8FBFA] relative w-full py-16 sm:py-24 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* Background radial glow and floating circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />

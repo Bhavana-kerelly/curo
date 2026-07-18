@@ -99,10 +99,10 @@ const AboutFounders = () => {
   }, []);
 
   return (
-    <section
+    <section 
       ref={sectionRef}
       id="about"
-      className="relative bg-[#F8FBFA] py-16 sm:py-20 px-6 sm:px-10 overflow-hidden"
+      className="glass-section relative py-16 sm:py-20 px-6 sm:px-10 overflow-hidden"
     >
       {/* Inner wrapper */}
       <div className="max-w-7xl mx-auto w-full relative z-20">

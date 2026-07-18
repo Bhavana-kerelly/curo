@@ -150,20 +150,10 @@ const AppointmentCTA = () => {
   }, []);
 
   return (
-    <section
+    <section 
       ref={sectionRef}
-      id="schedule"
       className="relative w-full min-h-[85vh] py-32 px-6 md:px-12 lg:px-24 bg-[#F8FBFA] flex items-center overflow-hidden"
     >
-      {/* Background Image Layer */}
-      <div
-        ref={bgImgRef}
-        className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[3px] brightness-[90%]"
-        style={{ backgroundImage: `url(${hospitalBg})` }}
-      />
-
-      {/* Glass overlay covering the entire background */}
-      <div className="absolute inset-0 bg-white/75 backdrop-blur-[20px] pointer-events-none" />
 
       {/* Radial soft emerald glow behind contents */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />

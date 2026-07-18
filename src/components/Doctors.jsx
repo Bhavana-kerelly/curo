@@ -215,10 +215,9 @@ const Doctors = () => {
   };
 
   return (
-    <section
+    <section 
       ref={sectionRef}
-      id="doctors"
-      className="relative w-full py-14 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-14 bg-[#F8FBFA] overflow-hidden"
+      className="glass-section relative w-full py-14 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-14 overflow-hidden"
     >
       {/* Soft emerald radial glow behind header */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />

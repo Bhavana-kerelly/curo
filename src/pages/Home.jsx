@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <main className="relative w-full bg-[#F8FBFA]">
+    <main className="relative w-full bg-transparent">
       {/* Cinematic Video Background Hero Section */}
       <div id="home">
         <Hero />

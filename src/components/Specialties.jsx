@@ -149,7 +149,7 @@ const Specialties = () => {
     <section
       ref={sectionRef}
       id="specialties"
-      className="relative w-full bg-[#FAFCFB] py-16 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 overflow-hidden font-sans"
+      className="glass-section relative w-full py-16 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 overflow-hidden font-sans"
     >
       {/* Subtle radial light mint gradient background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,#EAF9F2_0%,transparent_60%)] pointer-events-none" />
