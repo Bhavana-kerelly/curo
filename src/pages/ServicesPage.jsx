@@ -102,10 +102,10 @@ const BentoCard = ({ dept, index, onClick }) => {
       {dept.bgImage && (
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-60"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-95"
             style={{ backgroundImage: `url(${dept.bgImage})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/60 to-white/30 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/30 to-transparent" />
         </div>
       )}
 
@@ -166,7 +166,7 @@ const ServicesPage = () => {
       name: "Gynaecology & Women's Health",
       category: 'Maternal & Women\'s Health',
       bentoClass: 'lg:col-span-2',
-      bgImage: '/gynecology-card.jpg',
+      bgImage: './images/gynecology-card.jpg',
       illustration: (
         <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <circle cx="32" cy="24" r="12" stroke="currentColor" />
@@ -179,7 +179,7 @@ const ServicesPage = () => {
       introduction: 'Empowering women with comprehensive health solutions from adolescence through pregnancy, childbirth, and menopause. We emphasize patient-centered evidence-based care in private, comfortable consultation rooms.',
       doctor: {
         name: 'Dr. Sivaharika Rayudu',
-        image: '/sivaharika.jpg',
+        image: './images/sivaharika.jpg',
         qualification: 'MBBS, MD (Obstetrics & Gynaecology), DNB',
         experience: '12+ Years of Medical Experience'
       },
@@ -219,7 +219,7 @@ const ServicesPage = () => {
       name: 'Dental Care',
       category: 'Oral Aesthetics & Care',
       bentoClass: 'lg:col-span-2',
-      bgImage: '/dental-chair.jpg',
+      bgImage: './images/dental-chair.jpg',
       illustration: (
         <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <path d="M18 18C18 15 24 12 32 15C40 12 46 15 46 18C46 28 44 38 40 44C38 47 34 44 32 41C30 44 26 47 24 44C20 38 18 28 18 18Z" stroke="currentColor" />
@@ -230,7 +230,7 @@ const ServicesPage = () => {
       introduction: 'Providing holistic dental care services ranging from preventive maintenance to modern cosmetic dentistry and implants, blending clinical precision with artistic insight to restore your smile.',
       doctor: {
         name: 'Dr. Yogini Khetawat',
-        image: '/yogini.jpg',
+        image: './images/yogini.jpg',
         qualification: 'B.D.S., Dental Surgeon & Cosmetologist',
         experience: '12+ Years of Dental & Cosmetology Practice'
       },
@@ -270,7 +270,7 @@ const ServicesPage = () => {
       name: 'ENT Care',
       category: 'Ear, Nose & Throat Clinics',
       bentoClass: 'lg:col-span-2',
-      bgImage: '/ent-care.jpg',
+      bgImage: './images/ent-care.jpg',
       illustration: (
         <svg className="w-full h-full text-emerald-500/30 stroke-emerald-500/80 stroke-[2] overflow-visible" viewBox="0 0 64 64" fill="none">
           <path d="M42 48 C42 46, 44 42, 44 38 C44 34, 42 30, 42 22 C42 14, 34 12, 28 12 C20 12, 18 20, 18 26 C18 30, 20 32, 22 34 L18 38 C16 40, 18 42, 22 42 L24 44 C24 46, 22 48, 20 50 L34 50" stroke="currentColor" />
@@ -281,7 +281,7 @@ const ServicesPage = () => {
       introduction: 'World-class care for conditions affecting the ear, nose, throat, sinuses, and related structures of the head and neck, utilizing advanced diagnostic tools and minimally invasive therapies.',
       doctor: {
         name: 'Dr. Feroz Basha Shaik',
-        image: '/feroz_basha.jpg',
+        image: './images/feroz_basha.jpg',
         qualification: 'MBBS, MS (ENT), Head & Neck Surgeon',
         experience: '8+ Years of Clinical Excellence'
       },
@@ -338,7 +338,7 @@ const ServicesPage = () => {
       introduction: 'Providing advanced laparoscopic and keyhole surgeries that offer patient benefits such as less pain, minimal scarring, and faster discharge, ensuring optimal surgical outcomes.',
       doctor: {
         name: 'Dr. Nagarjuna Doppalapudi',
-        image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&h=400&q=80',
+        image: './images/nagarjuna_doppalapudi.jpg',
         qualification: 'MBBS, DNB (General Surgery), FIAGES',
         experience: '10+ Years of Surgical Practice'
       },
@@ -393,7 +393,7 @@ const ServicesPage = () => {
       introduction: 'The primary clinical contact for adults, offering comprehensive medical screening, chronic disease management, and customized wellness profiles, with a strong focus on diabetology.',
       doctor: {
         name: 'Dr. Sivani Payneni',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=400&q=80',
+        image: './images/sivani_payneni.jpg',
         qualification: 'MBBS, MD (General Medicine), Diabetologist',
         experience: '10+ Years of Academic & Clinical Practice'
       },
@@ -618,7 +618,7 @@ const ServicesPage = () => {
   return (
     <main ref={pageRef} className="w-full bg-transparent text-white overflow-hidden">
       {/* 1. Services Hero Section */}
-      <section className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-[170px] pb-36 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative w-full bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] pt-[170px] pb-64 px-6 md:px-12 lg:px-20 overflow-hidden">
         {/* Glow Effects */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[140px] pointer-events-none" />
@@ -824,12 +824,20 @@ const ServicesPage = () => {
             Connect with our frontdesk team to schedule an appointment with one of our specialized doctors.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:+918919942870"
-              className="px-8 py-4 bg-[#053D38] text-white hover:bg-emerald-950 font-semibold text-sm rounded-full shadow-md hover:scale-[1.02] transition-transform duration-350"
-            >
-              Call Frontdesk
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-2">
+              <a 
+                href="tel:+918919942870"
+                className="px-6 py-4 bg-[#053D38] text-white hover:bg-emerald-950 font-semibold text-xs rounded-full shadow-md hover:scale-[1.02] transition-transform duration-350"
+              >
+                Call +91 89199 42870
+              </a>
+              <a 
+                href="tel:+918106770862"
+                className="px-6 py-4 bg-[#053D38] text-white hover:bg-emerald-950 font-semibold text-xs rounded-full shadow-md hover:scale-[1.02] transition-transform duration-350"
+              >
+                Call +91 81067 70862
+              </a>
+            </div>
             <button 
               onClick={openBookingModal}
               className="px-8 py-4 bg-white border border-slate-200 text-[#053D38] hover:bg-slate-50 font-semibold text-sm rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-350 cursor-pointer"
@@ -890,22 +898,29 @@ const ServicesPage = () => {
                 </div>
 
                 <div className="w-full mt-8 flex flex-col gap-3 z-10">
-                  <button 
-                    onClick={() => {
-                      setSelectedDeptModal(null);
-                      openBookingModal();
-                    }}
-                    className="w-full py-4 bg-[#053D38] hover:bg-emerald-900 text-white font-bold text-xs rounded-full shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-emerald-500/25 hover:shadow-lg active:scale-95 cursor-pointer"
+                  <a 
+                    href={`https://wa.me/918919942870?text=${encodeURIComponent(`Hello Curo Clinics,\n\nI would like to book an appointment for ${selectedDeptModal.name} with ${selectedDeptModal.doctor.name}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setSelectedDeptModal(null)}
+                    className="w-full py-4 bg-[#053D38] hover:bg-emerald-900 text-white font-bold text-xs rounded-full shadow-md flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-emerald-500/25 hover:shadow-lg active:scale-95 cursor-pointer text-center"
                   >
                     <Calendar className="w-4 h-4" />
-                    <span>Book Appointment</span>
-                  </button>
+                    <span>Book Appointment via WhatsApp</span>
+                  </a>
                   <a 
                     href="tel:+918919942870"
-                    className="w-full py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"
+                    className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>Call Clinic Now</span>
+                    <span>Call +91 89199 42870</span>
+                  </a>
+                  <a 
+                    href="tel:+918106770862"
+                    className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>Call +91 81067 70862</span>
                   </a>
                 </div>
               </div>

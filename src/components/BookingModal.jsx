@@ -12,7 +12,8 @@ const doctors = [
   "Dr. Neha",
   "Dr. Sivaharika Rayudu",
   "Dr. Ravinder Raja",
-  "Dr. Yogini Khetawat"
+  "Dr. Yogini Khetawat",
+  "Dr. Sharatchandra Reddy Atla"
 ];
 
 const departments = [
@@ -129,7 +130,7 @@ const BookingModal = () => {
       
       setTimeout(() => {
         setIsLoading(false);
-        const phoneNumber = '919876543210'; // Placeholder
+        const phoneNumber = '918919942870';
         const message = `Hello Curo Clinics,\n\nI would like to book an appointment.\n\nPatient Name:\n${formData.name}\n\nDoctor:\n${formData.doctor}\n\nDepartment:\n${formData.department}\n\nMobile Number:\n${formData.mobile}\n\nKindly let me know the available appointment slots.\n\nThank you.`;
         
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

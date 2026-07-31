@@ -76,7 +76,7 @@ const DoctorsPage = () => {
       specialty: 'Consultant Physician & Diabetologist',
       department: 'General Medicine & Diabetes',
       experience: '8+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&h=550&q=80',
+      image: './images/sivani_payneni.jpg',
       about: 'Dr. Sivani Payneni is a highly dedicated and experienced Consultant Physician & Diabetologist with over 8 years of clinical experience in managing chronic lifestyle diseases and metabolic conditions. Based in Kondapur, Hyderabad, she is known for her patient-centric approach, combining accurate diagnosis with evidence-based treatment plans tailored to each individual.\n\nShe holds a Fellowship in Diabetology (F. DIAB) and specializes in the management of diabetes, hypertension, thyroid disorders, dyslipidemia, and obesity. Dr. Sivani provides both outpatient and inpatient care, focusing on long-term disease control and overall wellness. Her strong emphasis on lifestyle management, diet counseling, and non-communicable disease (NCD) prevention has made her a trusted health partner in the community.',
       education: [
         'MBBS, Andhra Medical College, Visakhapatnam (2007)',
@@ -122,7 +122,7 @@ const DoctorsPage = () => {
       specialty: 'Consultant ENT / Otorhinolaryngologist',
       department: 'ENT Care',
       experience: '8+ Years Experience',
-      image: '/feroz_basha.jpg',
+      image: './images/feroz_basha.jpg',
       about: 'Dr. Feroz Basha Shaik is a highly experienced ENT specialist with a focused approach to diagnosing and treating a wide range of ear, nose, and throat conditions. With over a decade of experience, he combines deep clinical knowledge with advanced techniques to deliver effective, patient-centered care.\n\nHe completed his MBBS from Dr. NTR University of Health Sciences, Andhra Pradesh in 2013, followed by his MS in ENT from NRI Medical College, Guntur in 2017. Dr. Feroz is known for his thorough diagnostic skills and individualized treatment plans that prioritize both recovery and comfort. His expertise covers a wide array of ENT issues—from common complaints like ear discharge and nasal congestion to complex cases involving head & neck masses, voice disorders, and swallowing difficulties.',
       education: [
         'MBBS from Dr. NTR University of Health Sciences (2013)',
@@ -171,7 +171,7 @@ const DoctorsPage = () => {
       specialty: 'General & Laparoscopic Surgery',
       department: 'General & Laparoscopic Surgery',
       experience: '8+ Years Experience',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&h=550&q=80',
+      image: './images/nagarjuna_doppalapudi.jpg',
       about: 'Dr. Nagarjuna Doppalapudi is a highly skilled and experienced General and Laparoscopic Surgeon with over 8+ years of clinical expertise. A graduate of Southern Medical University (MBBS, 2013), he completed his DNB in General Surgery from the Southern Railway Headquarters Hospital in 2018 and holds a Fellowship in Minimal Access Surgery (FIAGES), enhancing his proficiency in advanced laparoscopic procedures.\n\nKnown for his precision and dedication, Dr. Nagarjuna has worked at several reputed institutions, including Mahavir Institute of Medical Sciences (Vikarabad), GR Hospital (Coimbatore), PRK Hospitals (Chanda Nagar), and Citi Neuro Centre (Miyapur). His practice focuses on both conventional and minimally invasive surgical techniques, offering safe and effective solutions for a wide spectrum of surgical conditions.',
       education: [
         'MBBS - Southern Medical University (2013)',
@@ -211,7 +211,7 @@ const DoctorsPage = () => {
       specialty: 'Obstetrician & Gynecologist',
       department: "Gynaecology & Women's Health",
       experience: '7+ Years Experience',
-      image: '/sivaharika.jpg',
+      image: './images/sivaharika.jpg',
       about: 'Dr. Sivaharika Rayudu, MBBS, DNB, holds advanced qualifications including a Diploma in Assisted Reproductive Technology (ART) from KIEL, Germany, and a Diploma in Cosmetic Gynaecology from ICCG. With a compassionate approach and a deep commitment to women’s health, she offers a wide range of gynecological and reproductive care services. Her expertise spans menstrual disorders, PCOS, endometriosis, adolescent gynecology, and infertility treatments. She provides comprehensive pre-conceptional counseling, antenatal care, and specializes in managing high-risk pregnancies, painless deliveries, and LSCS.\n\nDr. Sivaharika Rayudu also focuses on postnatal rehabilitation, family planning, and cervical cancer screening, ensuring holistic care for women at every stage of life. Her personalized and confidential care makes her a trusted choice for women seeking modern, evidence-based gynecological solutions.',
       education: [
         'MBBS from Southern Medical University (2013)',
@@ -254,7 +254,7 @@ const DoctorsPage = () => {
       specialty: 'Dentist',
       department: 'Dental Care',
       experience: '12 Years Experience',
-      image: '/yogini.jpg',
+      image: './images/yogini.jpg',
       about: 'With over a decade of clinical experience, Dr. Yogini Khetawat is a skilled and compassionate Dentist and Cosmetologist, renowned for her work, specialized in Dental related surgeries. Her advanced expertise covers a wide range of complex procedures.\n\nPreviously associated with Mark Hospitals, Suncity, Dr. Yogini is known for blending clinical precision with artistic insight, helping restore both function and appearance for patients with dental enhancement. Her deep commitment to patient care, especially in dental field and has earned her respect and trust from both patients and peers.',
       education: [
         'Dental Surgeon'
@@ -281,6 +281,64 @@ const DoctorsPage = () => {
         'Dr Yogini is a highly skilled and experienced Dental specialist known for her skills and experience.',
         'Valued team member at Mark Hospitals, Suncity, known for her empathetic approach and multidisciplinary collaboration.',
         'Regularly attends national surgical and cosmetic conferences to stay at the forefront of modern techniques.'
+      ]
+    },
+
+    {
+      id: 'sharatchandra-reddy-atla',
+      name: 'Dr. Sharatchandra Reddy Atla',
+      specialty: 'Consultant – Internal Medicine',
+      department: 'General Medicine & Diabetes',
+      experience: '6+ Years Experience',
+      image: './images/sharatchandra_reddy.jpg',
+      about: 'Dr. Sharatchandra Reddy Atla is a dedicated Consultant Physician and Internal Medicine Specialist with over 6 years of experience in diagnosing and treating a wide range of acute and chronic medical conditions. He is committed to providing comprehensive, evidence-based healthcare with a strong focus on accurate diagnosis, preventive medicine, and long-term disease management.\n\nHe completed his DNB in Internal Medicine from the National Board of Examinations (NBE), New Delhi, and has extensive experience in both academic and clinical practice. Currently serving as a Consultant in Internal Medicine at Kadimi Nursing Home, Hyderabad, and Assistant Professor at Maheshwara Medical College, he combines clinical expertise with medical education to deliver high-quality patient care.\n\nKnown for his patient-centered approach, Dr. Sharatchandra emphasizes preventive healthcare, early diagnosis, lifestyle modification, and personalized treatment plans to help patients achieve better long-term health outcomes.',
+      education: [
+        'Diplomate of National Board (DNB) – Internal Medicine, National Board of Examinations (NBE), New Delhi (2016–2019)',
+        'MBBS – Dr. NTR University of Health Sciences (NTRUHS), Andhra Pradesh (2008–2014)'
+      ],
+      specializations: [
+        'General Internal Medicine',
+        'Diagnosis & Treatment of Acute Medical Conditions',
+        'Management of Chronic Diseases',
+        'Diabetes Mellitus',
+        'Hypertension',
+        'Thyroid Disorders',
+        'Respiratory Infections',
+        'Viral Fevers',
+        'Gastrointestinal Disorders',
+        'Preventive Health Check-ups',
+        'Lifestyle Disease Management',
+        'Inpatient & Outpatient Care'
+      ],
+      languages: ['English', 'Telugu', 'Hindi', 'Marathi'],
+      timings: 'Mon – Sat: 10:00 AM – 4:00 PM',
+      conditions: [
+        'Diabetes Mellitus (Type 1 & Type 2)',
+        'Hypertension (High Blood Pressure)',
+        'Thyroid Disorders',
+        'Viral Fever',
+        'Dengue & Typhoid',
+        'Respiratory Tract Infections',
+        'Asthma & COPD',
+        'Gastrointestinal Disorders',
+        'Kidney-related Medical Disorders',
+        'Anemia',
+        'Dyslipidemia (High Cholesterol)',
+        'Infectious Diseases',
+        'General Medical Emergencies'
+      ],
+      memberships: [
+        'Consultant – Internal Medicine, Kadimi Nursing Home, Hyderabad (June 2024 – Present)',
+        'Assistant Professor, Maheshwara Medical College, Hyderabad (October 2022 – Present)',
+        'Senior Resident, Maheshwara Medical College, Hyderabad (October 2021 – September 2022)',
+        'Junior Resident, Maheshwara Medical College, Hyderabad (February 2020 – September 2021)'
+      ],
+      awards: [
+        'Over 6 years of experience in Internal Medicine with expertise in diagnosing and managing a broad spectrum of medical conditions.',
+        'DNB Thesis: Clinical Study of Atrial Fibrillation: Rate vs Rhythm Control — Conducted as part of the DNB in Internal Medicine, focusing on evidence-based management strategies for patients with atrial fibrillation.',
+        'Experienced in both academic teaching and clinical practice.',
+        'Dedicated to evidence-based medicine and comprehensive patient care.',
+        'Recognized for compassionate, patient-focused treatment and preventive healthcare.'
       ]
     }
   ];
@@ -367,54 +425,57 @@ const DoctorsPage = () => {
     <main ref={pageRef} className="w-full bg-transparent text-white overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full pt-[175px] pb-20 lg:pt-[207px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
+      <section className="relative w-full pt-[130px] pb-20 lg:pt-[150px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
         {/* Ambient Blur spheres */}
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left -mt-8 lg:-mt-16">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-sm">
               <Compass className="w-4 h-4 text-teal-100 animate-spin-slow" />
-              <span className="text-[10px] font-bold text-white tracking-[0.25em] uppercase">
+              <span className="text-xs font-bold text-white tracking-[0.25em] uppercase">
                 Kokapet's Medical Center
               </span>
             </div>
             
-            <h1 className="font-serif text-4xl sm:text-6xl font-[300] tracking-tight leading-[1.1] mb-6">
+            <h1 className="font-serif text-5xl sm:text-7xl font-[300] tracking-tight leading-[1.1] mb-8">
               Meet Our <br />
-              <span className="font-semibold text-teal-500 bg-white px-4 py-1 rounded-[24px] inline-block shadow-sm text-teal-950 mt-2">Specialists</span>
+              <span className="font-semibold text-teal-500 bg-white px-5 py-2 rounded-[30px] inline-block shadow-sm text-teal-950 mt-3">Specialists</span>
             </h1>
             
-            <p className="text-white/90 text-sm sm:text-base font-light leading-relaxed max-w-md">
+            <p className="text-white/90 text-base sm:text-lg lg:text-xl font-light leading-relaxed max-w-lg">
               Our experienced specialists provide personalized, compassionate care under one roof. Consult with Hyderabad's leading healthcare experts today.
             </p>
           </div>
 
           {/* Right Floating Doctors Column */}
-          <div className="lg:col-span-6 flex justify-center items-center h-[350px] sm:h-[400px] relative">
+          <div className="lg:col-span-6 flex justify-center items-center h-[450px] sm:h-[500px] relative mt-10 lg:mt-0">
             {/* Overlay Circle 1 (Dr. Sivani) */}
-            <div className="hero-avatar absolute top-[10%] left-[10%] w-24 h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
+            <div className="hero-avatar absolute top-[5%] left-[5%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
               <img src={doctorsData[0].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 2 (Dr. Feroz) */}
-            <div className="hero-avatar absolute top-[5%] right-[20%] w-28 h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
+            <div className="hero-avatar absolute top-[0%] right-[15%] w-36 h-36 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
               <img src={doctorsData[1].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 3 (Dr. Anand) */}
-            <div className="hero-avatar absolute top-[40%] left-[38%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl bg-emerald-500/10 backdrop-blur-[5px]">
+            <div className="hero-avatar absolute top-[35%] left-[32%] w-48 h-48 rounded-full overflow-hidden border-[6px] border-white/80 shadow-2xl bg-emerald-500/10 backdrop-blur-[5px] z-10">
               <img src={doctorsData[2].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
             {/* Overlay Circle 4 (Dr. Nagarjuna) */}
-            <div className="hero-avatar absolute bottom-[8%] left-[12%] w-26 h-26 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
+            <div className="hero-avatar absolute bottom-[5%] left-[10%] w-36 h-36 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
               <img src={doctorsData[3].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
-            {/* Overlay Circle 5 (Dr. Neha) */}
-            <div className="hero-avatar absolute bottom-[10%] right-[12%] w-24 h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
+            {/* Overlay Circle 5 (Dr. Yogini) */}
+            <div className="hero-avatar absolute bottom-[10%] right-[25%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
               <img src={doctorsData[4].image} alt="" className="w-full h-full object-cover object-top" />
             </div>
-
+            {/* Overlay Circle 6 (Dr. Sharatchandra) */}
+            <div className="hero-avatar absolute top-[55%] right-[0%] w-28 h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
+              <img src={doctorsData[5].image} alt="" className="w-full h-full object-cover object-top" />
+            </div>
           </div>
         </div>
       </section>
@@ -573,10 +634,17 @@ const DoctorsPage = () => {
                   
                   <a 
                     href="tel:+918919942870"
-                    className="px-6 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-colors duration-300"
+                    className="px-4 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-1.5 transition-colors duration-300"
                   >
-                    <Phone className="w-4 h-4" />
-                    <span>Call Now</span>
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Call 89199 42870</span>
+                  </a>
+                  <a 
+                    href="tel:+918106770862"
+                    className="px-4 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-1.5 transition-colors duration-300"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Call 81067 70862</span>
                   </a>
                 </div>
 
@@ -753,23 +821,32 @@ const DoctorsPage = () => {
 
                 {/* Footer CTAs inside Modal */}
                 <div className="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-8 mt-8">
-                  <button 
-                    onClick={() => {
-                      setActiveDoctorOverlay(null);
-                      openBookingModal();
-                    }}
-                    className="flex-1 py-4 bg-[#053D38] hover:bg-emerald-950 text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.01] cursor-pointer"
+                  <a 
+                    href={`https://wa.me/918919942870?text=${encodeURIComponent(`Hello Curo Clinics,\n\nI would like to book an appointment with ${activeDoctorOverlay.name} (${activeDoctorOverlay.specialty}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setActiveDoctorOverlay(null)}
+                    className="flex-grow py-4 bg-[#053D38] hover:bg-emerald-950 text-white font-bold text-xs rounded-full flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.01] cursor-pointer text-center"
                   >
                     <Calendar className="w-4 h-4" />
-                    <span>Book Appointment</span>
-                  </button>
-                  <a 
-                    href="tel:+918919942870"
-                    className="flex-1 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"
-                  >
-                    <Phone className="w-4 h-4" />
-                    <span>Call Clinic Now</span>
+                    <span>Book Appointment via WhatsApp</span>
                   </a>
+                  <div className="flex flex-col gap-2 flex-grow">
+                    <a 
+                      href="tel:+918919942870"
+                      className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span>Call +91 89199 42870</span>
+                    </a>
+                    <a 
+                      href="tel:+918106770862"
+                      className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"
+                    >
+                      <Phone className="w-4 h-4" />
+                      <span>Call +91 81067 70862</span>
+                    </a>
+                  </div>
                 </div>
 
               </div>

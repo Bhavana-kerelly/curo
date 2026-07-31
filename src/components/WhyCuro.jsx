@@ -147,7 +147,7 @@ const WhyCuro = () => {
         ref={bgRef}
         className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center pointer-events-none"
         style={{
-          backgroundImage: `url('/curo-hero.jpg')`,
+          backgroundImage: `url('./images/curo-hero.jpg')`,
         }}
       />
 

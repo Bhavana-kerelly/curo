@@ -113,7 +113,7 @@ const Hero = () => {
       {/* Background Video */}
       <video
         ref={videoRef}
-        src="/curo-hero.mp4"
+        src="./curo-hero.mp4"
         autoPlay
         muted
         loop
@@ -143,8 +143,8 @@ const Hero = () => {
             className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6"
             style={{ perspective: '600px' }}
           >
-            <span className="block whitespace-nowrap">Complete Care</span>
-            <span className="block whitespace-nowrap">for Every <span className="text-brand-accent">Family</span></span>
+            <span className="block md:whitespace-nowrap">Complete Care</span>
+            <span className="block md:whitespace-nowrap">for Every <span className="text-brand-accent">Family</span></span>
           </h1>
 
           <p

@@ -209,7 +209,7 @@ const Specialties = () => {
             <div
               className="absolute inset-0 bg-cover bg-center parallax-bg transition-transform duration-700 ease-out group-hover:scale-105"
               style={{
-                backgroundImage: `url('/family-healthcare.jpg')`
+                backgroundImage: `url('./images/family-healthcare.jpg')`
               }}
             />
             {/* Ambient gradients */}
@@ -252,7 +252,7 @@ const Specialties = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('/gynecology-card.jpg')`
+                  backgroundImage: `url('./images/gynecology-card.jpg')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -279,7 +279,7 @@ const Specialties = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('/dental-chair.jpg')`
+                  backgroundImage: `url('./images/dental-chair.jpg')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -362,9 +362,9 @@ const Specialties = () => {
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                className="absolute inset-0 bg-contain bg-top bg-no-repeat bg-[#053D38] transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80')`
+                  backgroundImage: `url('./images/doctors_group.jpg')`
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />

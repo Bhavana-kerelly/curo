@@ -17,27 +17,32 @@ const Doctors = () => {
     {
       name: 'Dr. Sivani Payneni',
       specialty: 'Physician & Diabetologist',
-      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&h=550&q=80'
+      image: './images/sivani_payneni.jpg'
     },
     {
       name: 'Dr. Feroz Basha Shaik',
       specialty: 'ENT & Head and Neck Surgeon',
-      image: '/feroz_basha.jpg'
+      image: './images/feroz_basha.jpg'
     },
     {
       name: 'Dr. Nagarjuna Doppalapudi',
       specialty: 'General & Laparoscopic Surgeon',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&h=550&q=80'
+      image: './images/nagarjuna_doppalapudi.jpg'
     },
     {
       name: 'Dr. Sivaharika Rayudu',
       specialty: 'Gynecologist',
-      image: '/sivaharika.jpg'
+      image: './images/sivaharika.jpg'
     },
     {
       name: 'Dr. Yogini Khetawat',
       specialty: 'Dentist',
-      image: '/yogini.jpg'
+      image: './images/yogini.jpg'
+    },
+    {
+      name: 'Dr. Sharatchandra Reddy Atla',
+      specialty: 'Consultant – Internal Medicine',
+      image: './images/sharatchandra_reddy.jpg'
     }
   ];
 

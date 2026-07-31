@@ -51,11 +51,21 @@ const ContactPage = () => {
     <main ref={pageRef} className="w-full bg-white text-slate-800 overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative w-full pt-[175px] pb-20 lg:pt-[207px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
+      <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center pt-[120px] pb-10 px-6 md:px-12 lg:px-20 bg-[#085249] overflow-hidden text-white">
+        
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30 mix-blend-luminosity"
+          style={{ backgroundImage: 'url("/images/contact-hero-bg.jpg")' }}
+        />
+        
+        {/* Subtle Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#085249]/90 via-[#085249]/40 to-transparent pointer-events-none" />
+
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10 w-full">
           <div className="contact-fade inline-flex items-center justify-center mb-6">
             <span className="text-[11px] font-bold text-white tracking-[0.25em] uppercase px-4 py-1 border border-white/30 rounded-full">
               Get in Touch
@@ -96,8 +106,9 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-bold text-slate-800 text-lg mb-1">Clinic Address</h3>
                   <p className="text-slate-600 font-light leading-relaxed">
-                    210 & 211, 2nd Floor,<br />
-                    Kokapet One Mall, Narsingi,<br />
+                    2nd Floor, Kokapet One Mall,<br />
+                    210, 211, Kokapet X Road,<br />
+                    Narsingi, Gandipet,<br />
                     Hyderabad, Telangana 500075
                   </p>
                 </div>
@@ -110,9 +121,14 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-800 text-lg mb-1">Phone Number</h3>
-                  <a href="tel:+918919942870" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
-                    +91 89199 42870
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    <a href="tel:+918919942870" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
+                      +91 89199 42870
+                    </a>
+                    <a href="tel:+918106770862" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
+                      +91 81067 70862
+                    </a>
+                  </div>
                   <p className="text-slate-500 font-light text-sm mt-1">Available during working hours</p>
                 </div>
               </div>
@@ -124,8 +140,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-800 text-lg mb-1">Email Address</h3>
-                  <a href="mailto:info@curoclinics.com" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
-                    info@curoclinics.com
+                  <a href="mailto:curoclinicskokapet@gmail.com" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
+                    curoclinicskokapet@gmail.com
                   </a>
                   <p className="text-slate-500 font-light text-sm mt-1">We'll respond within 24 hours</p>
                 </div>
@@ -138,9 +154,9 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-800 text-lg mb-1">Working Hours</h3>
-                  <p className="text-slate-600 font-medium">Mon - Fri: <span className="font-light text-slate-500 text-sm">10:00am - 1:00pm & 5:00pm - 9:00pm</span></p>
-                  <p className="text-slate-600 font-medium mt-1">Saturday: <span className="font-light text-slate-500 text-sm">10:00am - 1:00pm & 5:00pm - 9:00pm</span></p>
-                  <p className="text-slate-600 font-medium mt-1">Sunday: <span className="font-light text-slate-500 text-sm">10:00am - 1:00pm</span></p>
+                  <p className="text-slate-600 font-medium">Monday - Friday: <span className="font-light text-slate-500 text-sm">10:00am - 9:00pm</span></p>
+                  <p className="text-slate-600 font-medium mt-1">Saturday: <span className="font-light text-slate-500 text-sm">9:00am - 9:00pm</span></p>
+                  <p className="text-slate-600 font-medium mt-1">Sunday: <span className="font-light text-slate-500 text-sm">9:00am - 4:00pm</span></p>
                 </div>
               </div>
 

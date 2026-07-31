@@ -9,6 +9,7 @@ import SingleBlogPage from './pages/SingleBlogPage';
 import ContactPage from './pages/ContactPage';
 import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -52,7 +53,7 @@ function App() {
       <div className="w-full min-h-screen bg-transparent text-white antialiased relative">
         {/* Fixed Global Background */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
-          <img src="/curo-hero.jpg" alt="Curo Clinics Background" className="w-full h-full object-cover blur-[6px] scale-105" />
+          <img src="./images/curo-hero.jpg" alt="Curo Clinics Background" className="w-full h-full object-cover blur-[6px] scale-105" />
           <div className="absolute inset-0 bg-white/10" />
         </div>
 
@@ -76,6 +77,7 @@ function App() {
         )}
 
         <BookingModal />
+        <WhatsAppWidget />
       </div>
     </BookingProvider>
   );

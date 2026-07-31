@@ -179,8 +179,9 @@ const Footer = () => {
                   LOCATION
                 </span>
                 <p className="text-slate-600 text-sm leading-relaxed font-light">
-                  210 & 211, 2nd Floor, <br />
-                  Kokapet One Mall, Narsingi, <br />
+                  2nd Floor, Kokapet One Mall, <br />
+                  210, 211, Kokapet X Road, <br />
+                  Narsingi, Gandipet, <br />
                   Hyderabad, Telangana 500075
                 </p>
               </div>
@@ -201,6 +202,12 @@ const Footer = () => {
                 >
                   +91 89199 42870
                 </a>
+                <a
+                  href="tel:+918106770862"
+                  className="text-[#0F172A] font-semibold text-base hover:text-emerald-600 transition-colors block mb-1 whitespace-nowrap"
+                >
+                  +91 81067 70862
+                </a>
                 <p className="text-slate-500 text-xs font-light">
                   We are here to assist you with care.
                 </p>
@@ -217,10 +224,10 @@ const Footer = () => {
                   EMAIL US
                 </span>
                 <a
-                  href="mailto:info@curoclinics.com"
-                  className="text-[#0F172A] font-semibold text-base hover:text-emerald-600 transition-colors block mb-1"
+                  href="mailto:curoclinicskokapet@gmail.com"
+                  className="text-[#0F172A] font-semibold text-sm sm:text-base hover:text-emerald-600 transition-colors block mb-1 break-all"
                 >
-                  info@curoclinics.com
+                  curoclinicskokapet@gmail.com
                 </a>
                 <p className="text-slate-500 text-xs font-light">
                   We'll respond as quickly as we can.
@@ -238,13 +245,13 @@ const Footer = () => {
                   WORKING HOURS
                 </span>
                 <p className="text-slate-600 text-[13px] leading-relaxed font-light mb-1">
-                  <strong>Mon - Fri:</strong> 10:00am - 1:00pm & 5:00pm - 9:00pm
+                  <strong>Monday - Friday:</strong> 10:00am - 9:00pm
                 </p>
                 <p className="text-slate-600 text-[13px] leading-relaxed font-light mb-1">
-                  <strong>Saturday:</strong> 10:00am - 1:00pm & 5:00pm - 9:00pm
+                  <strong>Saturday:</strong> 9:00am - 9:00pm
                 </p>
                 <p className="text-slate-600 text-[13px] leading-relaxed font-light">
-                  <strong>Sunday:</strong> 10:00am - 1:00pm
+                  <strong>Sunday:</strong> 9:00am - 4:00pm
                 </p>
               </div>
             </div>

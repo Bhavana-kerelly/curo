@@ -26,7 +26,7 @@ const Navbar = ({ currentPage }) => {
   };
 
   const navItems = [
-    { label: 'Home', href: currentPage !== 'home' ? '/#home' : '#home', id: 'home' },
+    { label: 'Home', href: currentPage !== 'home' ? '#/' : '#home', id: 'home' },
     { label: 'About Us', href: '#/about-us', id: 'about' },
     { label: 'Services', href: '#/services', id: 'specialties' },
     { label: 'Our Doctors', href: '#/doctors', id: 'doctors' },
@@ -122,6 +122,13 @@ const Navbar = ({ currentPage }) => {
   }, [activeSection]);
 
   const handleLinkClick = (e, id) => {
+    if (id === 'home' && currentPage !== 'home') {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      window.location.hash = '#/';
+      return;
+    }
+
     if (id === 'about') {
       e.preventDefault();
       setMobileMenuOpen(false);
@@ -233,7 +240,7 @@ const Navbar = ({ currentPage }) => {
             {/* Book Appointment CTA */}
             <button 
               onClick={openBookingModal}
-              className="group relative h-[54px] px-6 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full flex items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
+              className="hidden md:flex group relative h-[54px] px-6 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
             >
               <Calendar className="w-4 h-4" />
               <span>Book Appointment</span>

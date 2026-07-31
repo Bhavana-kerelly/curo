@@ -42,12 +42,22 @@ const BlogsPage = () => {
     <main ref={pageRef} className="w-full bg-white text-slate-800 overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section ref={heroRef} className="relative w-full pt-[175px] pb-20 lg:pt-[207px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
+      <section ref={heroRef} className="relative w-full h-screen min-h-[600px] flex items-center justify-center pt-[120px] pb-10 px-6 md:px-12 lg:px-20 bg-[#085249] overflow-hidden text-white">
+        
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-30 mix-blend-luminosity"
+          style={{ backgroundImage: 'url("/images/blogs-hero-bg.jpg")' }}
+        />
+        
+        {/* Subtle Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#085249]/90 via-[#085249]/40 to-transparent pointer-events-none" />
+
         {/* Ambient Blur spheres */}
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10 w-full">
           <div className="blogs-hero-text inline-flex items-center justify-center mb-6">
             <span className="text-[11px] font-bold text-white tracking-[0.25em] uppercase px-4 py-1 border border-white/30 rounded-full">
               Health & Wellness Insights
@@ -74,39 +84,26 @@ const BlogsPage = () => {
                 <article className="blog-card flex flex-col bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,168,107,0.08)] hover:-translate-y-2 cursor-pointer group h-full">
                 
                 {/* Blog Image */}
-                <div className="relative w-full h-60 overflow-hidden">
-                  <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
-                    {blog.category}
-                  </div>
+                <div className="relative w-full overflow-hidden bg-[#F4F9F8]">
                   <img 
                     src={blog.image} 
                     alt={blog.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Blog Content */}
                 <div className="p-8 flex flex-col flex-1">
                   
-                  {/* Meta Data */}
-                  <div className="flex items-center gap-4 text-xs font-medium text-slate-500 mb-4">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{blog.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5" />
-                      <span>{blog.author}</span>
-                    </div>
-                  </div>
+
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-slate-800 leading-snug mb-3 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-800 leading-snug mb-3 group-hover:text-emerald-600 transition-colors line-clamp-3">
                     {blog.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                     {blog.excerpt}
                   </p>
 

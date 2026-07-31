@@ -23,37 +23,37 @@ const Gallery = () => {
     {
       title: 'Reception Area',
       caption: 'A welcoming space designed for patient comfort.',
-      image: '/reception.jpg',
+      image: './images/reception.jpg',
       span: 'lg:col-span-8 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Consultation Room',
       caption: 'Private and comfortable specialist consultations.',
-      image: '/consultation-room.jpg',
+      image: './images/consultation-room.jpg',
       span: 'lg:col-span-4 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Gynecology Clinic',
       caption: 'Comprehensive care and advanced diagnostics for women\'s health.',
-      image: '/gynecology-clinic.jpg',
+      image: './images/gynecology-clinic.jpg',
       span: 'lg:col-span-4 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Operation Theatre',
       caption: 'Modern surgical suites equipped for precision.',
-      image: '/operation-theatre.jpg',
+      image: './images/operation-theatre.jpg',
       span: 'lg:col-span-8 h-[380px] lg:h-[450px]'
     },
     {
       title: 'Patient Lounge',
       caption: 'Comfortable waiting areas for families and visitors.',
-      image: '/patient-lounge.jpg',
+      image: './images/patient-lounge.jpg',
       span: 'lg:col-span-6 h-[300px] lg:h-[380px]'
     },
     {
       title: 'Dental Clinic',
       caption: 'Modern dental care in a calm environment.',
-      image: '/dental-clinic.jpg',
+      image: './images/dental-clinic.jpg',
       span: 'lg:col-span-6 h-[300px] lg:h-[380px]'
     }
   ];

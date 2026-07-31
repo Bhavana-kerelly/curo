@@ -135,35 +135,14 @@ const AboutPage = () => {
           {/* Right Column: Image and Blob */}
           <div className="lg:col-span-7 relative flex justify-center lg:justify-end items-end h-[400px] sm:h-[480px] mt-8 lg:mt-0 z-10">
             
-            {/* Background Blob */}
-            <div className="absolute right-0 sm:right-10 bottom-0 w-[95%] sm:w-[75%] h-[95%] bg-[#E0EFEA] rounded-tl-[120px] rounded-br-[20px] rounded-tr-[40px] rounded-bl-[20px] z-0" />
-            
-            {/* Dot Pattern (Top Right) */}
-            <div className="absolute top-10 right-12 sm:right-20 grid grid-cols-2 gap-x-2.5 gap-y-2.5 opacity-60 z-10">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#8BB8AE]" />
-              ))}
-            </div>
-
             {/* Doctor Image */}
             <img 
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&h=800&q=80" 
-              alt="Professional Doctor" 
-              className="absolute bottom-0 right-10 sm:right-24 h-[98%] w-auto object-contain z-10 drop-shadow-sm"
+              src="./images/doctors_group.jpg" 
+              alt="Curo Clinics Medical Team" 
+              className="absolute bottom-6 right-[-40px] sm:right-[-20px] lg:right-[-60px] h-[98%] w-auto object-contain z-10 drop-shadow-sm rounded-[28px]"
             />
 
-            {/* Floating Glass Card */}
-            <div className="absolute bottom-12 right-[-10px] sm:right-0 bg-white/70 backdrop-blur-xl border border-white/80 rounded-[28px] p-6 shadow-[0_20px_40px_rgba(0,0,0,0.04)] z-20 flex flex-col gap-3 min-w-[190px]">
-              <div className="w-12 h-12 rounded-2xl bg-[#E5F3F0] flex items-center justify-center text-[#009B8E] mb-1">
-                <Heart className="w-6 h-6" />
-              </div>
-              <div className="flex flex-col text-[#162E3B] font-medium text-[17px] leading-[1.35] tracking-tight">
-                <span>Care.</span>
-                <span>Compassion.</span>
-                <span>Commitment.</span>
-              </div>
-              <div className="w-6 h-[2px] bg-[#009B8E] mt-1" />
-            </div>
+
 
           </div>
         </div>
@@ -178,14 +157,14 @@ const AboutPage = () => {
           {/* Left: Interactive Image Box */}
           <div className="relative group rounded-[36px] overflow-hidden border border-white/30 shadow-xl p-2" style={{background: 'rgba(248,251,250,0.25)', backdropFilter: 'blur(12px)'}}>
             <img 
-              src="/curo-hero.jpg" 
+              src="./images/curo-hero.jpg" 
               alt="Curo Clinics Hospital Exterior" 
               className="w-full h-[400px] sm:h-[500px] object-cover rounded-[28px] transition-transform duration-700 group-hover:scale-[1.03]"
             />
             {/* Embedded Capsule details */}
             <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md border border-white/60 p-6 rounded-3xl shadow-lg">
               <span className="text-[10px] tracking-wider text-emerald-700 font-bold uppercase block mb-1">OUR LOCATION</span>
-              <p className="text-sm font-semibold text-[#102A43]">Kokapet One Mall, Narsingi, Hyderabad</p>
+              <p className="text-xs font-semibold text-[#102A43] leading-relaxed">2nd floor, Kokapet one mall, 210, 211, Kokapet X Road, Narsingi, Gandipet, Hyderabad, Telangana 500075</p>
             </div>
           </div>
 
@@ -271,9 +250,15 @@ const AboutPage = () => {
               </button>
               <a 
                 href="tel:+918919942870"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border border-emerald-500/20 text-emerald-600 font-semibold text-sm rounded-full shadow-sm hover:bg-emerald-500/5 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white border border-emerald-500/20 text-emerald-600 font-semibold text-xs rounded-full shadow-sm hover:bg-emerald-500/5 transition-all duration-300"
               >
                 <span>Call +91 89199 42870</span>
+              </a>
+              <a 
+                href="tel:+918106770862"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white border border-emerald-500/20 text-emerald-600 font-semibold text-xs rounded-full shadow-sm hover:bg-emerald-500/5 transition-all duration-300"
+              >
+                <span>Call +91 81067 70862</span>
               </a>
             </div>
           </div>
