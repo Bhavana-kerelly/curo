@@ -4,9 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/demo/curoclinic/',
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
   ],
+  server: {
+    watch: {
+      ignored: ['**/curo-clinic-live/**']
+    }
+  }
 })
+

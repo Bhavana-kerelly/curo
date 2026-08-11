@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
+import SingleSpecialtyPage from './pages/SingleSpecialtyPage';
 import DoctorsPage from './pages/DoctorsPage';
 import BlogsPage from './pages/BlogsPage';
 import SingleBlogPage from './pages/SingleBlogPage';
@@ -14,6 +15,7 @@ import WhatsAppWidget from './components/WhatsAppWidget';
 function App() {
   const [page, setPage] = useState('home');
   const [blogId, setBlogId] = useState(null);
+  const [specialtyId, setSpecialtyId] = useState('gynaecology');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -22,6 +24,11 @@ function App() {
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (window.location.hash.startsWith('#/services')) {
         setPage('services');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (window.location.hash.startsWith('#/specialty/')) {
+        const id = window.location.hash.split('#/specialty/')[1];
+        setSpecialtyId(id);
+        setPage('single-specialty');
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else if (window.location.hash.startsWith('#/doctors')) {
         setPage('doctors');
@@ -64,6 +71,8 @@ function App() {
           <AboutPage />
         ) : page === 'services' ? (
           <ServicesPage />
+        ) : page === 'single-specialty' ? (
+          <SingleSpecialtyPage key={specialtyId} deptId={specialtyId} />
         ) : page === 'doctors' ? (
           <DoctorsPage />
         ) : page === 'blogs' ? (

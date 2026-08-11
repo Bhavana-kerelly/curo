@@ -32,7 +32,7 @@ const Doctors = () => {
     {
       name: 'Dr. Sivaharika Rayudu',
       specialty: 'Gynecologist',
-      image: './images/sivaharika.jpg'
+      image: './images/sivaharika.jpg?v=2'
     },
     {
       name: 'Dr. Yogini Khetawat',
@@ -41,7 +41,7 @@ const Doctors = () => {
     },
     {
       name: 'Dr. Sharatchandra Reddy Atla',
-      specialty: 'Consultant – Internal Medicine',
+      specialty: 'General physician and Diabetologist',
       image: './images/sharatchandra_reddy.jpg'
     }
   ];

@@ -39,9 +39,7 @@ const DoctorProfileImage = ({ src, name }) => {
       ref={imgRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ y: [0, -8, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-      className="w-44 h-44 rounded-full overflow-hidden border-[6px] border-white shadow-2xl relative group cursor-pointer transition-all duration-300 ease-out"
+      className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-[6px] border-white shadow-2xl relative group cursor-pointer transition-all duration-300 ease-out"
       style={{
         boxShadow: '0 20px 40px rgba(0,0,0,0.1), 0 0 30px rgba(16,185,129,0.15)',
         transformStyle: 'preserve-3d'
@@ -50,7 +48,7 @@ const DoctorProfileImage = ({ src, name }) => {
       <img
         src={src}
         alt={name}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-108"
       />
       <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </motion.div>
@@ -179,7 +177,7 @@ const ServicesPage = () => {
       introduction: 'Empowering women with comprehensive health solutions from adolescence through pregnancy, childbirth, and menopause. We emphasize patient-centered evidence-based care in private, comfortable consultation rooms.',
       doctor: {
         name: 'Dr. Sivaharika Rayudu',
-        image: './images/sivaharika.jpg',
+        image: './images/sivaharika.jpg?v=2',
         qualification: 'MBBS, MD (Obstetrics & Gynaecology), DNB',
         experience: '12+ Years of Medical Experience'
       },
@@ -211,7 +209,7 @@ const ServicesPage = () => {
         'Holistic programs including Teen Health Clinic & PCOS Management Clinic.',
         'Emotional support and evidence-based clinical protocols.'
       ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      hours: 'Mon - Sat: 10:00 AM - 2:00 PM & 5:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       emergency: '24/7 Emergency Labor & Gynae Room Support'
     },
     {
@@ -262,7 +260,7 @@ const ServicesPage = () => {
         'Highly sterile clinical environment following strict safety protocols.',
         'Gentle and customized family and senior care.'
       ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      hours: 'Mon - Sat: 10:00 AM - 2:00 PM & 5:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       emergency: 'Dental Pain & Fracture Emergency Services'
     },
     {
@@ -286,12 +284,15 @@ const ServicesPage = () => {
         experience: '8+ Years of Clinical Excellence'
       },
       treatments: [
-        'Diagnostic Nasal Endoscopy (DNE)',
-        'Video Laryngoscopy (VLS) & Otoscopy',
-        'Audiological Hearing Evaluations',
-        'Tonsillectomy & Adenoidectomy',
-        'Snoring & Obstructive Sleep Apnea Clinic',
-        'Minor Ear & Throat Procedures'
+        'Wax Removal / Ear Wax Cleaning',
+        'Ear, Nose & Throat Foreign Body Removal',
+        'Diagnostic Nasal Endoscopy',
+        'Videolaryngoscopy',
+        'Otoscopy',
+        'Keloid Excision',
+        'Ear Lobe Repair',
+        'Auricular (Aural) Hematoma – Incision & Drainage (I&D)',
+        'Audiological Evaluation for Hearing Loss'
       ],
       conditions: [
         'Sinusitis, Allergic Rhinitis & Nasal Blockages',
@@ -302,11 +303,15 @@ const ServicesPage = () => {
         'Thyroid Enlargement & Nodules'
       ],
       procedures: [
-        'Functional Endoscopic Sinus Surgery (FESS)',
-        'Endoscopic & Microscopic Tympanoplasty',
-        'Coblation-assisted Adenotonsillectomy',
-        'Coblation Turbinate reduction',
-        'Thyroidectomy & Sleep Apnea Surgery'
+        'FESS (Functional Endoscopic Sinus Surgery)',
+        'Septoplasty',
+        'Turbinate Reduction',
+        'Adenotonsillectomy (Coblation & Debrider Assisted)',
+        'Thyroid & Head and Neck Surgeries',
+        'OSA (Obstructive Sleep Apnea) Surgeries',
+        'Tympanoplasty & Mastoidectomy',
+        'Other Ear Surgeries',
+        'Endonasal DCR (Dacryocystorhinostomy)'
       ],
       whyChooseUs: [
         'Staffed by veteran ENT surgeon Dr. Feroz Basha Shaik.',
@@ -314,7 +319,7 @@ const ServicesPage = () => {
         'High-end coblation and debrider surgical technology.',
         '24/7 support for ENT foreign body removals.'
       ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      hours: 'Mon - Sat: 10:00 AM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       emergency: 'Foreign Body Removals Available 24/7'
     },
     {
@@ -370,7 +375,7 @@ const ServicesPage = () => {
         'Advanced laparoscopic towers and clean laminar-flow operating theaters.',
         'Excellent post-op recovery care and minimum hospital stay.'
       ],
-      hours: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      hours: 'Mon - Sat: 6:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       emergency: '24/7 Emergency Surgery Support'
     },
 
@@ -596,6 +601,26 @@ const ServicesPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const checkHashDept = () => {
+      const hash = window.location.hash;
+      if (hash.includes('dept=')) {
+        const deptId = hash.split('dept=')[1]?.split('&')[0];
+        if (deptId) {
+          setActiveDept(deptId);
+          const foundDept = departments.find(d => d.id === deptId);
+          if (foundDept) {
+            setSelectedDeptModal(foundDept);
+          }
+        }
+      }
+    };
+
+    checkHashDept();
+    window.addEventListener('hashchange', checkHashDept);
+    return () => window.removeEventListener('hashchange', checkHashDept);
+  }, []);
+
   // Horizontal mouse wheel scroll translation
   const handleWheel = (e) => {
     if (e.deltaY !== 0 && deptRowRef.current) {
@@ -803,7 +828,7 @@ const ServicesPage = () => {
                 key={dept.id} 
                 dept={dept} 
                 index={index} 
-                onClick={() => setSelectedDeptModal(dept)} 
+                onClick={() => window.location.hash = `#/specialty/${dept.id}`} 
               />
             ))}
           </div>
@@ -865,7 +890,7 @@ const ServicesPage = () => {
             <motion.div
               layoutId={`dept-card-${selectedDeptModal.id}`}
               transition={{ type: 'spring', stiffness: 220, damping: 24 }}
-              className="relative bg-white/75 backdrop-blur-[30px] border border-white/50 w-full max-w-[1100px] h-[80vh] rounded-[36px] shadow-[0_25px_60px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col md:flex-row z-10"
+              className="relative bg-white/75 backdrop-blur-[30px] border border-white/50 w-full max-w-[1100px] h-[85vh] md:h-[80vh] rounded-[36px] shadow-[0_25px_60px_rgba(0,0,0,0.15)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row z-10"
             >
               {/* Close Button Sticky */}
               <button 
@@ -876,13 +901,13 @@ const ServicesPage = () => {
               </button>
 
               {/* Left Column: Doctor Profile */}
-              <div className="w-full md:w-[35%] bg-emerald-950/5 border-r border-slate-100 p-8 flex flex-col justify-between items-center text-center relative overflow-hidden">
+              <div className="w-full md:w-[35%] bg-emerald-950/5 border-b md:border-b-0 md:border-r border-slate-100 pt-12 pb-5 px-5 md:p-8 flex flex-col justify-between items-center text-center relative overflow-hidden md:overflow-visible flex-shrink-0">
                 <div className="absolute top-[-50px] w-72 h-72 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none" />
                 
-                <div className="flex flex-col items-center w-full mt-6 z-10">
+                <div className="flex flex-col items-center w-full mt-2 md:mt-6 z-10">
                   <DoctorProfileImage src={selectedDeptModal.doctor.image} name={selectedDeptModal.doctor.name} />
 
-                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-full uppercase tracking-wider mb-3 mt-6">
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-full uppercase tracking-wider mb-2 md:mb-3 mt-3 md:mt-6">
                     Department Specialist
                   </span>
                   
@@ -926,7 +951,7 @@ const ServicesPage = () => {
               </div>
 
               {/* Right Column: Detailed Info Scrollable */}
-              <div className="w-full md:w-[65%] p-8 sm:p-12 flex flex-col justify-between overflow-y-auto scrollbar-thin">
+              <div className="w-full md:w-[65%] p-8 sm:p-12 flex flex-col justify-between overflow-y-visible md:overflow-y-auto scrollbar-thin">
                 <div className="space-y-8">
                   <div>
                     <span className="text-[10px] font-bold text-emerald-600 tracking-[0.15em] uppercase block mb-1">
@@ -956,7 +981,9 @@ const ServicesPage = () => {
 
                   {/* Treatments list */}
                   <div className="border-t border-slate-100 pt-6">
-                    <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block mb-4">Treatments & Services</span>
+                    <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block mb-4">
+                      {selectedDeptModal.id === 'ent' ? 'ENT Services' : 'Treatments & Services'}
+                    </span>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {selectedDeptModal.treatments.map((t, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
@@ -969,7 +996,9 @@ const ServicesPage = () => {
 
                   {/* Advanced Procedures & Tech */}
                   <div className="border-t border-slate-100 pt-6">
-                    <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block mb-4">Advanced Procedures & Technologies</span>
+                    <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase block mb-4">
+                      {selectedDeptModal.id === 'ent' ? 'Advanced Treatments / Expertise in the Following' : 'Advanced Procedures & Technologies'}
+                    </span>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {selectedDeptModal.procedures.map((p, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
@@ -997,7 +1026,11 @@ const ServicesPage = () => {
                       <span className="font-bold text-slate-400 uppercase text-[9px] tracking-wider block mb-3">Consultation Hours</span>
                       <div className="flex items-center gap-1.5 font-light">
                         <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>{selectedDeptModal.hours}</span>
+                        <div className="flex flex-col gap-0.5">
+                          {selectedDeptModal.hours.split('&').map((time, idx) => (
+                            <span key={idx} className="block">{time.trim()}</span>
+                          ))}
+                        </div>
                       </div>
                       <div className="flex items-center gap-1.5 font-light mt-2.5 text-emerald-700 font-semibold">
                         <AlertCircle className="w-3.5 h-3.5 text-emerald-600" />

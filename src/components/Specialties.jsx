@@ -135,12 +135,12 @@ const Specialties = () => {
   }, []);
 
   const departments = [
-    { name: 'Gynecology', icon: <Heart className="w-6 h-6 text-emerald-500" /> },
-    { name: 'ENT', icon: <Stethoscope className="w-6 h-6 text-emerald-500" /> },
-    { name: 'Dental', icon: <Smile className="w-6 h-6 text-emerald-500" /> },
-    { name: 'General Medicine', icon: <BriefcaseMedical className="w-6 h-6 text-emerald-500" /> },
-    { name: 'Diabetic Care', icon: <ActivitySquare className="w-6 h-6 text-emerald-500" /> },
-    { name: 'Laparoscopic Surgery', icon: <Shield className="w-6 h-6 text-emerald-500" /> }
+    { id: 'gynaecology', name: 'Gynecology', icon: <Heart className="w-6 h-6 text-emerald-500" /> },
+    { id: 'ent', name: 'ENT', icon: <Stethoscope className="w-6 h-6 text-emerald-500" /> },
+    { id: 'dental', name: 'Dental', icon: <Smile className="w-6 h-6 text-emerald-500" /> },
+    { id: 'medicine', name: 'General Medicine', icon: <BriefcaseMedical className="w-6 h-6 text-emerald-500" /> },
+    { id: 'medicine', name: 'Diabetic Care', icon: <ActivitySquare className="w-6 h-6 text-emerald-500" /> },
+    { id: 'surgery', name: 'Laparoscopic Surgery', icon: <Shield className="w-6 h-6 text-emerald-500" /> }
   ];
 
   return (
@@ -190,7 +190,10 @@ const Specialties = () => {
           </div>
 
           <div className="flex items-center">
-            <button className="group relative inline-flex items-center gap-3 px-6 py-3.5 bg-white border border-emerald-500/10 hover:border-emerald-500/40 text-emerald-600 font-medium text-sm rounded-full shadow-lg shadow-emerald-500/5 transition-all duration-300 hover:shadow-emerald-500/10 hover:-translate-y-0.5 cursor-pointer">
+            <button 
+              onClick={() => window.location.hash = '#/services'}
+              className="group relative inline-flex items-center gap-3 px-6 py-3.5 bg-white border border-emerald-500/10 hover:border-emerald-500/40 text-emerald-600 font-medium text-sm rounded-full shadow-lg shadow-emerald-500/5 transition-all duration-300 hover:shadow-emerald-500/10 hover:-translate-y-0.5 cursor-pointer"
+            >
               <span>View All Specialties</span>
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
@@ -200,44 +203,75 @@ const Specialties = () => {
         {/* Dynamic Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          {/* COLUMN 1: Large Left Feature Card */}
-          <div
-            ref={leftCardRef}
-            className="group relative h-[500px] lg:h-[620px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 flex flex-col justify-end p-8"
-          >
-            {/* Background Consultation Image */}
+          {/* COLUMN 1: Stacked Left Cards */}
+          <div className="flex flex-col gap-6">
+            
+            {/* Column 1 Top: Complete Family Healthcare Feature Card */}
             <div
-              className="absolute inset-0 bg-cover bg-center parallax-bg transition-transform duration-700 ease-out group-hover:scale-105"
-              style={{
-                backgroundImage: `url('./images/family-healthcare.jpg')`
-              }}
-            />
-            {/* Ambient gradients */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-            <div className="absolute inset-0 bg-emerald-950/10 mix-blend-multiply" />
+              ref={leftCardRef}
+              onClick={() => window.location.hash = '#/services'}
+              className="group relative h-[500px] lg:h-[620px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 flex flex-col justify-end p-8 cursor-pointer"
+            >
+              {/* Background Consultation Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center parallax-bg transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('./images/family-healthcare.jpg')`
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-emerald-950/10 mix-blend-multiply" />
 
-            {/* Glass badge Top Left */}
-            <div className="absolute top-6 left-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/25 flex items-center gap-2">
-              <Stethoscope className="w-3.5 h-3.5 text-white" />
-              <span className="text-[10px] tracking-[0.15em] text-white font-semibold uppercase">
-                MULTISPECIALTY CARE
-              </span>
-            </div>
+              {/* Glass badge Top Left */}
+              <div className="absolute top-6 left-6 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/25 flex items-center gap-2">
+                <Stethoscope className="w-3.5 h-3.5 text-white" />
+                <span className="text-[10px] tracking-[0.15em] text-white font-semibold uppercase">
+                  MULTISPECIALTY CARE
+                </span>
+              </div>
 
-            {/* Bottom Content Area */}
-            <div className="relative z-10 text-left text-white">
-              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
-                Complete Family Healthcare
-              </h3>
-              <p className="text-white/80 text-sm leading-relaxed max-w-sm mb-6 font-light">
-                Trusted specialists providing comprehensive care for every age and every stage of life.
-              </p>
+              {/* Bottom Content Area */}
+              <div className="relative z-10 text-left text-white">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
+                  Complete Family Healthcare
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed max-w-sm mb-6 font-light">
+                  Trusted specialists providing comprehensive care for every age and every stage of life.
+                </p>
 
-              {/* Circular Arrow Button */}
-              <div className="w-10 h-10 bg-white hover:bg-emerald-500 hover:text-white rounded-full flex items-center justify-center text-emerald-600 transition-colors duration-300 cursor-pointer shadow-lg">
-                <ArrowUpRight className="w-5 h-5" />
+                {/* Circular Arrow Button */}
+                <div className="w-10 h-10 bg-white hover:bg-emerald-500 hover:text-white rounded-full flex items-center justify-center text-emerald-600 transition-colors duration-300 cursor-pointer shadow-lg">
+                  <ArrowUpRight className="w-5 h-5" />
+                </div>
               </div>
             </div>
+
+            {/* Column 1 Bottom: General & Laparoscopic Surgery */}
+            <div
+              onClick={() => window.location.hash = '#/specialty/surgery'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('./images/laparoscopic-surgery.jpg')`
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+              <div className="relative z-10 w-fit px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-white" />
+                <span className="text-[9px] tracking-wider text-white font-semibold uppercase">LAPAROSCOPIC SURGERY</span>
+              </div>
+
+              <div className="relative z-10 text-left text-white">
+                <h3 className="text-xl font-bold mb-1">General & Laparoscopic Surgery</h3>
+                <p className="text-white/85 text-xs font-light max-w-xs">
+                  Minimally invasive keyhole surgeries, laser proctology, hernia & gallstone care.
+                </p>
+              </div>
+            </div>
+
           </div>
 
           {/* COLUMN 2: Stacked Middle Cards */}
@@ -246,7 +280,8 @@ const Specialties = () => {
             {/* Middle Top Card: Gynecology */}
             <div
               ref={midTopCardRef}
-              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
+              onClick={() => window.location.hash = '#/specialty/gynaecology'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               {/* Background image */}
               <div
@@ -271,10 +306,11 @@ const Specialties = () => {
               </div>
             </div>
 
-            {/* Middle Bottom Card: Dental Care */}
+            {/* Middle Middle Card: Dental Care */}
             <div
               ref={midBottomCardRef}
-              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
+              onClick={() => window.location.hash = '#/specialty/dental'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -304,14 +340,69 @@ const Specialties = () => {
               </div>
             </div>
 
+            {/* Middle Bottom Card: General Medicine & Diabetes */}
+            <div
+              onClick={() => window.location.hash = '#/specialty/medicine'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('./images/general-medicine.jpg')`
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+              <div className="relative z-10 w-fit px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center gap-1.5">
+                <ActivitySquare className="w-3.5 h-3.5 text-white" />
+                <span className="text-[9px] tracking-wider text-white font-semibold uppercase">GENERAL MEDICINE</span>
+              </div>
+
+              <div className="relative z-10 text-left text-white">
+                <h3 className="text-xl font-bold mb-1">General Medicine & Diabetes</h3>
+                <p className="text-white/85 text-xs font-light max-w-xs">
+                  Holistic adult healthcare, chronic disease management, and diabetology.
+                </p>
+              </div>
+            </div>
+
           </div>
 
           {/* COLUMN 3: Stacked Right Cards */}
           <div className="flex flex-col gap-6">
 
-            {/* Right Top Card: Department Marquee */}
+            {/* Right Top Card: ENT Care Card */}
             <div
               ref={rightTopCardRef}
+              onClick={() => window.location.hash = '#/specialty/ent'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
+            >
+              {/* Background image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('./images/ent-care.jpg')`
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+              {/* Top Section Icon */}
+              <div className="relative z-10 w-fit px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center gap-1.5">
+                <Stethoscope className="w-3.5 h-3.5 text-white" />
+                <span className="text-[9px] tracking-wider text-white font-semibold uppercase">ENT CLINIC</span>
+              </div>
+
+              {/* Bottom text */}
+              <div className="relative z-10 text-left text-white">
+                <h3 className="text-xl font-bold mb-1">ENT Care</h3>
+                <p className="text-white/85 text-xs font-light max-w-xs">
+                  Ear, Nose, Throat & Head-Neck specialist consultations and procedures.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Middle Card: Department Marquee */}
+            <div
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 p-6 flex flex-col justify-between"
             >
               <div>
@@ -328,7 +419,11 @@ const Specialties = () => {
                   {[...departments, ...departments].map((dept, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.hash = `#/specialty/${dept.id}`;
+                      }}
+                      className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm active:scale-90"
                     >
                       {dept.icon}
                       <span className="text-[10px] font-semibold text-gray-700 whitespace-nowrap">{dept.name}</span>
@@ -341,7 +436,11 @@ const Specialties = () => {
                   {[...departments, ...departments].reverse().map((dept, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.hash = `#/specialty/${dept.id}`;
+                      }}
+                      className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm active:scale-90"
                     >
                       {dept.icon}
                       <span className="text-[10px] font-semibold text-gray-700 whitespace-nowrap">{dept.name}</span>
@@ -352,14 +451,15 @@ const Specialties = () => {
 
               <div className="text-[10px] text-gray-400 text-left flex items-center gap-1.5 select-none">
                 <Sparkles className="w-3 h-3 text-emerald-500" />
-                <span>Hover a tile to explore or inspect</span>
+                <span>Click any department tile to explore</span>
               </div>
             </div>
 
             {/* Right Bottom Card: Group of Indian Doctors */}
             <div
               ref={rightBottomCardRef}
-              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between"
+              onClick={() => window.location.hash = '#/doctors'}
+              className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
                 className="absolute inset-0 bg-contain bg-top bg-no-repeat bg-[#053D38] transition-transform duration-700 ease-out group-hover:scale-105"
@@ -382,6 +482,10 @@ const Specialties = () => {
                 {departments.slice(0, 5).map((dept, index) => (
                   <span
                     key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.location.hash = `#/specialty/${dept.id}`;
+                    }}
                     className="px-2 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[9px] font-medium tracking-wide shadow-sm hover:bg-emerald-500 hover:border-emerald-400/40 transition-colors duration-300 cursor-pointer"
                   >
                     {dept.name}

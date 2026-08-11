@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useBooking } from '../context/BookingContext';
-import { 
-  Search, Calendar, Phone, Clock, Globe, Award, BookOpen, 
-  CheckCircle2, Compass, Stethoscope, ChevronLeft, ChevronRight, X 
+import {
+  Search, Calendar, Phone, Clock, Globe, Award, BookOpen,
+  CheckCircle2, Compass, Stethoscope, ChevronLeft, ChevronRight, X, Users, Shield
 } from 'lucide-react';
 import Footer from '../components/Footer';
 
@@ -37,18 +37,16 @@ const LargeDoctorImage = ({ src, name }) => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       className="relative w-full aspect-[4/5] rounded-[36px] overflow-hidden border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.08)] bg-white/10 backdrop-blur-[20px] group cursor-pointer transition-all duration-300 ease-out"
       style={{ transformStyle: 'preserve-3d' }}
     >
       <img
         src={src}
         alt={name}
-        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
       />
       {/* Glass reflections & soft glow overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           background: `radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(24,200,160,0.18), transparent 75%)`
@@ -59,11 +57,26 @@ const LargeDoctorImage = ({ src, name }) => {
   );
 };
 
+// Staggered Doctor card helper for Hero section
+const DoctorHeroCard = ({ doc, onClick }) => {
+  return (
+    <motion.div
+      whileHover={{ y: -8, scale: 1.02 }}
+      onClick={onClick}
+      className="bg-white rounded-[32px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-white shadow-md flex flex-col cursor-pointer transition-all duration-300 w-full"
+    >
+      <div className="w-full aspect-[4/4.5] overflow-hidden bg-slate-50 relative">
+        <img src={doc.image} alt={doc.name} className="w-full h-full object-cover object-top" />
+      </div>
+    </motion.div>
+  );
+};
+
 const DoctorsPage = () => {
   const { openBookingModal } = useBooking();
   const pageRef = useRef(null);
   const scrollerTrackRef = useRef(null);
-  
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState('All');
   const [selectedDoctor, setSelectedDoctor] = useState(null);
@@ -129,24 +142,28 @@ const DoctorsPage = () => {
         'MS in ENT from NRI Medical College, Guntur (2017)'
       ],
       specializations: [
-        'Hernia Surgery (Open and Laparoscopic)',
-        'Appendix Surgery (Appendectomy)',
-        'Hemorrhoids Treatments (Laser/stapler/conventional)',
-        'Fistula-in-ano (Fistulotomy) & Fissure-in-ano (Sphincterotomy)',
-        'Gall Bladder Surgery (Laparoscopic Cholecystectomy)',
-        'Thyroid Disorders (Medical Management, Thyroidectomy)',
-        'Wound Care (Debridement, Skin Grafting, Diabetic Foot)',
-        'G.I, Biliary Tract & Pancreatic Disorders'
+        'FESS (Functional Endoscopic Sinus Surgery)',
+        'Septoplasty',
+        'Turbinate Reduction',
+        'Adenotonsillectomy (Coblation & Debrider Assisted)',
+        'Thyroid & Head and Neck Surgeries',
+        'OSA (Obstructive Sleep Apnea) Surgeries',
+        'Tympanoplasty & Mastoidectomy',
+        'Other Ear Surgeries',
+        'Endonasal DCR (Dacryocystorhinostomy)'
       ],
       languages: ['English', 'Telugu', 'Hindi', 'Urdu'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      timings: 'Mon - Sat: 10:00 AM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       conditions: [
-        'Ear Discharge & Nasal Congestion',
-        'Head & Neck Masses',
-        'Voice Disorders',
-        'Swallowing Difficulties',
-        'Allergic Rhinitis',
-        'Sensorineural Hearing Loss'
+        'Wax Removal / Ear Wax Cleaning',
+        'Ear, Nose & Throat Foreign Body Removal',
+        'Diagnostic Nasal Endoscopy',
+        'Videolaryngoscopy',
+        'Otoscopy',
+        'Keloid Excision',
+        'Ear Lobe Repair',
+        'Auricular (Aural) Hematoma – Incision & Drainage (I&D)',
+        'Audiological Evaluation for Hearing Loss'
       ],
       memberships: [
         'Known for patient care, understanding, and treatment with minimal pain and best recovery possible.',
@@ -183,7 +200,7 @@ const DoctorsPage = () => {
         'Successfully performed numerous laparoscopic and open surgeries with excellent outcomes.'
       ],
       languages: ['English', 'Telugu', 'Hindi'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      timings: 'Mon - Sat: 6:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       conditions: [
         'Gallstones & Gallbladder Disease',
         'Appendicitis (Acute & Recurrent)',
@@ -211,7 +228,7 @@ const DoctorsPage = () => {
       specialty: 'Obstetrician & Gynecologist',
       department: "Gynaecology & Women's Health",
       experience: '7+ Years Experience',
-      image: './images/sivaharika.jpg',
+      image: './images/sivaharika.jpg?v=2',
       about: 'Dr. Sivaharika Rayudu, MBBS, DNB, holds advanced qualifications including a Diploma in Assisted Reproductive Technology (ART) from KIEL, Germany, and a Diploma in Cosmetic Gynaecology from ICCG. With a compassionate approach and a deep commitment to women’s health, she offers a wide range of gynecological and reproductive care services. Her expertise spans menstrual disorders, PCOS, endometriosis, adolescent gynecology, and infertility treatments. She provides comprehensive pre-conceptional counseling, antenatal care, and specializes in managing high-risk pregnancies, painless deliveries, and LSCS.\n\nDr. Sivaharika Rayudu also focuses on postnatal rehabilitation, family planning, and cervical cancer screening, ensuring holistic care for women at every stage of life. Her personalized and confidential care makes her a trusted choice for women seeking modern, evidence-based gynecological solutions.',
       education: [
         'MBBS from Southern Medical University (2013)',
@@ -227,7 +244,7 @@ const DoctorsPage = () => {
         'Postnatal Rehabilitation & Family Planning'
       ],
       languages: ['English', 'Telugu', 'Hindi'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      timings: 'Mon - Sat: 10:00 AM - 2:00 PM & 5:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       conditions: [
         'Polycystic Ovary Syndrome (PCOS)',
         'Endometriosis, Menstrual Cramps & Irregular Periods',
@@ -264,7 +281,7 @@ const DoctorsPage = () => {
         'Widely appreciated for complex surgeries.'
       ],
       languages: ['English', 'Telugu', 'Hindi', 'Gujarati'],
-      timings: 'Mon - Sat: 10:00 AM - 1:00 PM & 5:00 PM - 9:00 PM',
+      timings: 'Mon - Sat: 10:00 AM - 2:00 PM & 5:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       conditions: [
         'Dental Caries, Cavities & Tooth Sensitivity',
         'Gingivitis & Advanced Periodontitis (Gum Disease)',
@@ -287,11 +304,11 @@ const DoctorsPage = () => {
     {
       id: 'sharatchandra-reddy-atla',
       name: 'Dr. Sharatchandra Reddy Atla',
-      specialty: 'Consultant – Internal Medicine',
+      specialty: 'General physician and Diabetologist',
       department: 'General Medicine & Diabetes',
       experience: '6+ Years Experience',
       image: './images/sharatchandra_reddy.jpg',
-      about: 'Dr. Sharatchandra Reddy Atla is a dedicated Consultant Physician and Internal Medicine Specialist with over 6 years of experience in diagnosing and treating a wide range of acute and chronic medical conditions. He is committed to providing comprehensive, evidence-based healthcare with a strong focus on accurate diagnosis, preventive medicine, and long-term disease management.\n\nHe completed his DNB in Internal Medicine from the National Board of Examinations (NBE), New Delhi, and has extensive experience in both academic and clinical practice. Currently serving as a Consultant in Internal Medicine at Kadimi Nursing Home, Hyderabad, and Assistant Professor at Maheshwara Medical College, he combines clinical expertise with medical education to deliver high-quality patient care.\n\nKnown for his patient-centered approach, Dr. Sharatchandra emphasizes preventive healthcare, early diagnosis, lifestyle modification, and personalized treatment plans to help patients achieve better long-term health outcomes.',
+      about: 'Dr. Sharatchandra Reddy Atla is a dedicated Consultant Physician and Internal Medicine Specialist with over 6 years of experience in diagnosing and treating a wide range of acute and chronic medical conditions. He is committed to providing comprehensive, evidence-based healthcare with a strong focus on accurate diagnosis, preventive medicine, and long-term disease management.\n\nHe completed his DNB in Internal Medicine from the National Board of Examinations (NBE), New Delhi, and has extensive experience in both academic and clinical practice. Currently serving as a Consultant Physician at Medistar hospital and Assistant Professor at Maheshwara Medical College. He combines clinical expertise with medical education to deliver high-quality patient care.\n\nKnown for his patient-centered approach, Dr. Sharatchandra emphasizes preventive healthcare, early diagnosis, lifestyle modification, and personalized treatment plans to help patients achieve better long-term health outcomes.',
       education: [
         'Diplomate of National Board (DNB) – Internal Medicine, National Board of Examinations (NBE), New Delhi (2016–2019)',
         'MBBS – Dr. NTR University of Health Sciences (NTRUHS), Andhra Pradesh (2008–2014)'
@@ -311,7 +328,7 @@ const DoctorsPage = () => {
         'Inpatient & Outpatient Care'
       ],
       languages: ['English', 'Telugu', 'Hindi', 'Marathi'],
-      timings: 'Mon – Sat: 10:00 AM – 4:00 PM',
+      timings: 'Mon - Sat: 6:00 PM - 9:00 PM & Sun: 10:00 AM - 1:00 PM',
       conditions: [
         'Diabetes Mellitus (Type 1 & Type 2)',
         'Hypertension (High Blood Pressure)',
@@ -328,7 +345,8 @@ const DoctorsPage = () => {
         'General Medical Emergencies'
       ],
       memberships: [
-        'Consultant – Internal Medicine, Kadimi Nursing Home, Hyderabad (June 2024 – Present)',
+        'Consultant Physician , medistar hospital (Feb 2026 - present)',
+        'Consultant - Internal Medicine, Kadimi Nursing Home, Hyderabad(June 2024 - Jan 2026)',
         'Assistant Professor, Maheshwara Medical College, Hyderabad (October 2022 – Present)',
         'Senior Resident, Maheshwara Medical College, Hyderabad (October 2021 – September 2022)',
         'Junior Resident, Maheshwara Medical College, Hyderabad (February 2020 – September 2021)'
@@ -352,9 +370,9 @@ const DoctorsPage = () => {
 
   // Filter doctors based on search and department
   const filteredDoctors = doctorsData.filter((doc) => {
-    const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          doc.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          doc.department.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      doc.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      doc.department.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesDept = selectedDept === 'All' || doc.department === selectedDept;
     return matchesSearch && matchesDept;
   });
@@ -368,12 +386,12 @@ const DoctorsPage = () => {
       // 1. Floating hero elements animation
       gsap.fromTo('.hero-avatar',
         { y: 15 },
-        { 
-          y: -15, 
-          duration: 3.5, 
-          repeat: -1, 
-          yoyo: true, 
-          ease: 'sine.inOut', 
+        {
+          y: -15,
+          duration: 3.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
           stagger: {
             each: 0.5,
             from: 'random'
@@ -423,58 +441,74 @@ const DoctorsPage = () => {
 
   return (
     <main ref={pageRef} className="w-full bg-transparent text-white overflow-hidden">
-      
+
       {/* 1. HERO SECTION */}
-      <section className="relative w-full pt-[130px] pb-20 lg:pt-[150px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#A6DDD5] via-[#5FB1A5] to-[#085249] overflow-hidden text-white">
-        {/* Ambient Blur spheres */}
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+      <section className="relative w-full pt-[130px] pb-20 lg:pt-[150px] lg:pb-28 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#f2f8f7] via-[#e8f3f1] to-[#e0effd] text-slate-800 overflow-hidden border-b border-slate-100">
+        {/* Soft background grid pattern */}
+        <div className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #0d7d70 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+
+        {/* Decorative background curve */}
+        <div className="absolute bottom-[-10%] left-[-10%] w-[120%] h-[50%] bg-white/50 rounded-[100%] blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left -mt-8 lg:-mt-16">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-sm">
-              <Compass className="w-4 h-4 text-teal-100 animate-spin-slow" />
-              <span className="text-xs font-bold text-white tracking-[0.25em] uppercase">
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-[#e0eff2] text-[#0d7d70] border border-[#b2dfdb]/30 rounded-full shadow-sm">
+              <Compass className="w-4 h-4 text-[#0d7d70] animate-spin-slow" />
+              <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase">
                 Kokapet's Medical Center
               </span>
             </div>
-            
-            <h1 className="font-serif text-5xl sm:text-7xl font-[300] tracking-tight leading-[1.1] mb-8">
+
+            <h1 className="font-serif text-[#0c3c36] text-5xl sm:text-7xl font-[300] tracking-tight leading-[1.1] mb-4">
               Meet Our <br />
-              <span className="font-semibold text-teal-500 bg-white px-5 py-2 rounded-[30px] inline-block shadow-sm text-teal-950 mt-3">Specialists</span>
+              <span className="font-bold text-[#0d7d70] block mt-1">Specialists</span>
             </h1>
-            
-            <p className="text-white/90 text-base sm:text-lg lg:text-xl font-light leading-relaxed max-w-lg">
+
+            <div className="w-20 h-[3px] bg-[#0d7d70] rounded-full mb-6" />
+
+            <p className="text-slate-600 text-base sm:text-lg font-light leading-relaxed max-w-md mb-8">
               Our experienced specialists provide personalized, compassionate care under one roof. Consult with Hyderabad's leading healthcare experts today.
             </p>
+
           </div>
 
-          {/* Right Floating Doctors Column */}
-          <div className="lg:col-span-6 flex justify-center items-center h-[450px] sm:h-[500px] relative mt-10 lg:mt-0">
-            {/* Overlay Circle 1 (Dr. Sivani) */}
-            <div className="hero-avatar absolute top-[5%] left-[5%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[0].image} alt="" className="w-full h-full object-cover object-top" />
+          {/* Right Floating Doctors Column: Staggered Cards */}
+          <div className="lg:col-span-6 w-full relative grid grid-cols-3 gap-3 lg:gap-5 items-start mt-10 lg:mt-0">
+            {/* Column 1 */}
+            <div className="flex flex-col gap-4 lg:gap-5 pt-8 sm:pt-16 lg:pt-20">
+              <DoctorHeroCard
+                doc={doctorsData[0]}
+                onClick={() => handleDoctorSelect(doctorsData[0])}
+              />
+              <DoctorHeroCard
+                doc={doctorsData[5]}
+                onClick={() => handleDoctorSelect(doctorsData[5])}
+              />
             </div>
-            {/* Overlay Circle 2 (Dr. Feroz) */}
-            <div className="hero-avatar absolute top-[0%] right-[15%] w-36 h-36 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[1].image} alt="" className="w-full h-full object-cover object-top" />
+
+            {/* Column 2 */}
+            <div className="flex flex-col gap-4 lg:gap-5">
+              <DoctorHeroCard
+                doc={doctorsData[1]}
+                onClick={() => handleDoctorSelect(doctorsData[1])}
+              />
+              <DoctorHeroCard
+                doc={doctorsData[3]}
+                onClick={() => handleDoctorSelect(doctorsData[3])}
+              />
             </div>
-            {/* Overlay Circle 3 (Dr. Anand) */}
-            <div className="hero-avatar absolute top-[35%] left-[32%] w-48 h-48 rounded-full overflow-hidden border-[6px] border-white/80 shadow-2xl bg-emerald-500/10 backdrop-blur-[5px] z-10">
-              <img src={doctorsData[2].image} alt="" className="w-full h-full object-cover object-top" />
-            </div>
-            {/* Overlay Circle 4 (Dr. Nagarjuna) */}
-            <div className="hero-avatar absolute bottom-[5%] left-[10%] w-36 h-36 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[3].image} alt="" className="w-full h-full object-cover object-top" />
-            </div>
-            {/* Overlay Circle 5 (Dr. Yogini) */}
-            <div className="hero-avatar absolute bottom-[10%] right-[25%] w-32 h-32 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[4].image} alt="" className="w-full h-full object-cover object-top" />
-            </div>
-            {/* Overlay Circle 6 (Dr. Sharatchandra) */}
-            <div className="hero-avatar absolute top-[55%] right-[0%] w-28 h-28 rounded-full overflow-hidden border-4 border-white/80 shadow-lg bg-emerald-500/10 backdrop-blur-[5px]">
-              <img src={doctorsData[5].image} alt="" className="w-full h-full object-cover object-top" />
+
+            {/* Column 3 */}
+            <div className="flex flex-col gap-4 lg:gap-5 pt-4 sm:pt-12">
+              <DoctorHeroCard
+                doc={doctorsData[2]}
+                onClick={() => handleDoctorSelect(doctorsData[2])}
+              />
+              <DoctorHeroCard
+                doc={doctorsData[4]}
+                onClick={() => handleDoctorSelect(doctorsData[4])}
+              />
             </div>
           </div>
         </div>
@@ -483,7 +517,7 @@ const DoctorsPage = () => {
       {/* 2. HORIZONTAL DOCTOR CAROUSEL */}
       <section className="glass-section relative w-full py-8 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
-          <div 
+          <div
             ref={scrollerTrackRef}
             onWheel={handleScrollWheel}
             className="flex gap-6 overflow-x-auto pb-4 pt-2 snap-x snap-mandatory scroll-smooth scrollbar-none"
@@ -499,8 +533,8 @@ const DoctorsPage = () => {
                   <motion.div
                     whileHover={{ y: -6, scale: 1.02 }}
                     className={`w-[190px] p-4 rounded-[26px] bg-white/70 backdrop-blur-[15px] border transition-all duration-300 relative flex flex-col items-center text-center cursor-pointer select-none
-                      ${isActive 
-                        ? 'border-emerald-500/50 shadow-[0_12px_28px_rgba(0,168,107,0.08)] bg-white' 
+                      ${isActive
+                        ? 'border-emerald-500/50 shadow-[0_12px_28px_rgba(0,168,107,0.08)] bg-white'
                         : 'border-white/50 shadow-[0_8px_20px_rgba(0,0,0,0.02)]'
                       }
                     `}
@@ -511,14 +545,14 @@ const DoctorsPage = () => {
                         <div className="absolute inset-0 border-2 border-emerald-500 rounded-full animate-ping opacity-60" />
                       )}
                     </div>
-                    
+
                     <h3 className="font-serif text-sm font-semibold text-slate-800 line-clamp-1 mb-0.5">
                       {doc.name.replace('Dr. ', '')}
                     </h3>
                     <p className="text-[10px] text-slate-500 font-medium line-clamp-1 mb-2">
                       {doc.specialty}
                     </p>
-                    
+
                     <span className="text-[9px] font-bold text-emerald-700 bg-emerald-500/10 px-2 py-0.5 rounded-full uppercase tracking-wider">
                       {doc.department.split(' ')[0]}
                     </span>
@@ -536,7 +570,7 @@ const DoctorsPage = () => {
           {/* Search Box */}
           <div className="relative flex-1 w-full">
             <Search className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
-            <input 
+            <input
               type="text"
               placeholder="Search Doctor by Name, Specialty..."
               value={searchQuery}
@@ -566,7 +600,7 @@ const DoctorsPage = () => {
       {/* 4. FEATURED DOCTOR (MAIN SECTION) */}
       <section id="featured-doctor-spotlight" className="relative w-full py-20 px-6 md:px-12 lg:px-20 bg-transparent">
         <div className="max-w-6xl mx-auto">
-          
+
           {filteredDoctors.length === 0 ? (
             <div className="w-full text-center py-16">
               <Stethoscope className="w-12 h-12 text-slate-300 mx-auto mb-4 animate-bounce" />
@@ -574,14 +608,14 @@ const DoctorsPage = () => {
               <p className="text-slate-400 text-sm">Try resetting your search query or department filters.</p>
             </div>
           ) : selectedDoctor ? (
-            <motion.div 
+            <motion.div
               key={selectedDoctor.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
             >
-              
+
               {/* Doctor Image Column (Nearly Half) */}
               <div className="lg:col-span-5 flex justify-center">
                 <LargeDoctorImage src={selectedDoctor.image} name={selectedDoctor.name} />
@@ -617,13 +651,17 @@ const DoctorsPage = () => {
                     <Clock className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                     <div>
                       <span className="font-bold text-white block mb-1">Hospital Timings</span>
-                      <p className="font-light leading-relaxed">{selectedDoctor.timings}</p>
+                      <p className="font-light leading-relaxed">
+                        {selectedDoctor.timings.split('&').map((time, idx) => (
+                          <span key={idx} className="block">{time.trim()}</span>
+                        ))}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-4 items-center">
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setActiveDoctorOverlay(selectedDoctor)}
@@ -631,15 +669,15 @@ const DoctorsPage = () => {
                   >
                     <span>View Full Profile</span>
                   </motion.button>
-                  
-                  <a 
+
+                  <a
                     href="tel:+918919942870"
                     className="px-4 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-1.5 transition-colors duration-300"
                   >
                     <Phone className="w-3.5 h-3.5" />
                     <span>Call 89199 42870</span>
                   </a>
-                  <a 
+                  <a
                     href="tel:+918106770862"
                     className="px-4 py-4 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-1.5 transition-colors duration-300"
                   >
@@ -661,7 +699,7 @@ const DoctorsPage = () => {
         {activeDoctorOverlay && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-hidden">
             {/* Blurry dark background overlay */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -678,7 +716,7 @@ const DoctorsPage = () => {
               className="relative bg-white/70 backdrop-blur-[35px] border border-white/50 w-full max-w-[900px] h-[85vh] rounded-[40px] shadow-[0_30px_70px_rgba(0,0,0,0.18)] overflow-hidden flex flex-col z-10"
             >
               {/* Close Button Sticky */}
-              <button 
+              <button
                 onClick={() => setActiveDoctorOverlay(null)}
                 className="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100/80 hover:bg-slate-200/80 hover:scale-110 flex items-center justify-center text-slate-600 transition-all z-35 shadow-sm"
               >
@@ -689,13 +727,13 @@ const DoctorsPage = () => {
               <div className="flex-1 overflow-y-auto p-8 sm:p-12 scrollbar-thin">
                 <div className="flex flex-col items-center text-center pb-8 border-b border-slate-100">
                   <div className="w-28 h-28 rounded-full overflow-hidden border-[4px] border-white shadow-lg mb-4 relative">
-                    <img src={activeDoctorOverlay.image} alt={activeDoctorOverlay.name} className="w-full h-full object-cover" />
+                    <img src={activeDoctorOverlay.image} alt={activeDoctorOverlay.name} className="w-full h-full object-cover object-top" />
                   </div>
-                  
+
                   <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider mb-2">
                     {activeDoctorOverlay.department}
                   </span>
-                  
+
                   <h2 className="font-serif text-3xl font-semibold text-slate-800">
                     {activeDoctorOverlay.name}
                   </h2>
@@ -739,7 +777,7 @@ const DoctorsPage = () => {
                   <div className="border-t border-slate-100 pt-6">
                     <h3 className="text-xs font-bold text-slate-400 tracking-wider uppercase mb-4 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      Core Specializations
+                      {activeDoctorOverlay.id === 'feroz-basha' ? 'Advanced Treatments / Expertise in the Following' : 'Core Specializations'}
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {activeDoctorOverlay.specializations.map((spec, idx) => (
@@ -755,7 +793,7 @@ const DoctorsPage = () => {
                   <div className="border-t border-slate-100 pt-6">
                     <h3 className="text-xs font-bold text-slate-400 tracking-wider uppercase mb-4 flex items-center gap-1.5">
                       <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
-                      Conditions Treated
+                      {activeDoctorOverlay.id === 'feroz-basha' ? 'ENT Services' : 'Conditions Treated'}
                     </h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {activeDoctorOverlay.conditions.map((cond, idx) => (
@@ -809,7 +847,11 @@ const DoctorsPage = () => {
                       <span className="font-bold text-slate-800 block mb-2">Hospital Timings</span>
                       <div className="flex items-center gap-2 font-light">
                         <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>{activeDoctorOverlay.timings}</span>
+                        <div className="flex flex-col gap-0.5">
+                          {activeDoctorOverlay.timings.split('&').map((time, idx) => (
+                            <span key={idx} className="block">{time.trim()}</span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -821,7 +863,7 @@ const DoctorsPage = () => {
 
                 {/* Footer CTAs inside Modal */}
                 <div className="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-8 mt-8">
-                  <a 
+                  <a
                     href={`https://wa.me/918919942870?text=${encodeURIComponent(`Hello Curo Clinics,\n\nI would like to book an appointment with ${activeDoctorOverlay.name} (${activeDoctorOverlay.specialty}).`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -832,14 +874,14 @@ const DoctorsPage = () => {
                     <span>Book Appointment via WhatsApp</span>
                   </a>
                   <div className="flex flex-col gap-2 flex-grow">
-                    <a 
+                    <a
                       href="tel:+918919942870"
                       className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"
                     >
                       <Phone className="w-4 h-4" />
                       <span>Call +91 89199 42870</span>
                     </a>
-                    <a 
+                    <a
                       href="tel:+918106770862"
                       className="w-full py-3 bg-emerald-500/10 border border-emerald-500/20 text-[#053D38] hover:bg-emerald-500/20 font-bold text-xs rounded-full flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01]"
                     >

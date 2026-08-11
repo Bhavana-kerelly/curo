@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
-import { Calendar, Menu, X } from 'lucide-react';
+import { Calendar, Menu, X, Video } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import { useBooking } from '../context/BookingContext';
 
 const Navbar = ({ currentPage }) => {
-  const { openBookingModal } = useBooking();
+  const { openBookingModal, openOnlineConsultationModal } = useBooking();
   const [activeSection, setActiveSection] = useState('home');
   const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -236,11 +236,20 @@ const Navbar = ({ currentPage }) => {
           ref={ctaCapsuleRef}
           className="h-[68px] flex items-center pointer-events-auto"
         >
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
+            {/* Book Online Consultation CTA */}
+            <button 
+              onClick={openOnlineConsultationModal}
+              className="hidden md:flex group relative h-[54px] px-5 bg-white/80 hover:bg-white text-emerald-800 font-semibold text-[13px] sm:text-[14px] rounded-full items-center gap-1.5 border border-emerald-500/30 shadow-sm hover:shadow-md hover:border-emerald-500 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
+            >
+              <Video className="w-4 h-4 text-emerald-600" />
+              <span>Online Consultation</span>
+            </button>
+
             {/* Book Appointment CTA */}
             <button 
-              onClick={openBookingModal}
-              className="hidden md:flex group relative h-[54px] px-6 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
+              onClick={() => openBookingModal(false)}
+              className="hidden md:flex group relative h-[54px] px-5 bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-[13px] sm:text-[14px] rounded-full items-center gap-1.5 shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:scale-[1.03] hover:-translate-y-[1px] transition-all duration-300 cursor-pointer"
             >
               <Calendar className="w-4 h-4" />
               <span>Book Appointment</span>
@@ -297,16 +306,27 @@ const Navbar = ({ currentPage }) => {
             </nav>
           </div>
 
-          <div>
+          <div className="flex flex-col gap-3">
             <button 
               onClick={() => {
                 setMobileMenuOpen(false);
-                openBookingModal();
+                openOnlineConsultationModal();
               }}
-              className="w-full h-[50px] bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/10 cursor-pointer"
+              className="w-full h-[46px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-500/30 font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+            >
+              <Video className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Book Online Consultation</span>
+            </button>
+
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openBookingModal(false);
+              }}
+              className="w-full h-[46px] bg-gradient-to-r from-[#00A86B] to-[#00895A] text-white font-semibold text-xs rounded-full flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/10 cursor-pointer"
             >
               <Calendar className="w-3.5 h-3.5" />
-              <span>Book Appointment</span>
+              <span>Book In-Person Appointment</span>
             </button>
           </div>
         </div>

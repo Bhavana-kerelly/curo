@@ -11,7 +11,7 @@ const SingleBlogPage = ({ blogId }) => {
   
   const blog = blogsData.find(b => b.id.toString() === blogId.toString());
 
-  // Filter 3 related/other blogs
+  // Filter 3 related/other blogs for sticky sidebar widget
   const relatedBlogs = blogsData
     .filter(b => b.id.toString() !== blogId.toString())
     .slice(0, 3);
@@ -40,7 +40,7 @@ const SingleBlogPage = ({ blogId }) => {
       return {
         name: 'Dr. Sivaharika Rayudu',
         specialty: 'Obstetrician & Gynecologist',
-        image: './images/sivaharika.jpg',
+        image: './images/sivaharika.jpg?v=2',
         whatsapp: 'https://wa.me/918919942870?text=Hello%20Dr.%20Sivaharika%20Rayudu,%20I%20would%20like%20to%20book%20a%20gynecology%20appointment.'
       };
     }
@@ -63,7 +63,7 @@ const SingleBlogPage = ({ blogId }) => {
     if (titleLower.includes('sharatchandra')) {
       return {
         name: 'Dr. Sharatchandra Reddy Atla',
-        specialty: 'Internal Medicine Specialist',
+        specialty: 'General physician and Diabetologist',
         image: './images/sharatchandra_reddy.jpg',
         whatsapp: 'https://wa.me/918919942870?text=Hello%20Dr.%20Sharatchandra%20Reddy%20Atla,%20I%20would%20like%20to%20book%20an%20appointment.'
       };
@@ -78,7 +78,7 @@ const SingleBlogPage = ({ blogId }) => {
 
     gsap.fromTo('.single-blog-fade',
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', clearProps: 'transform' }
     );
   }, [blogId]);
 
@@ -94,7 +94,7 @@ const SingleBlogPage = ({ blogId }) => {
   }
 
   return (
-    <main ref={pageRef} className="w-full bg-[#F8FAFC] text-slate-800 overflow-hidden">
+    <main ref={pageRef} className="w-full bg-[#F8FAFC] text-slate-800">
       
       {/* 1. HERO SECTION */}
       <section ref={heroRef} className="relative w-full pt-[130px] pb-32 lg:pt-[150px] lg:pb-40 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#0C3E38] via-[#053D38] to-[#022421] overflow-hidden text-white">
@@ -151,10 +151,10 @@ const SingleBlogPage = ({ blogId }) => {
           </div>
 
           {/* 2-Column Content and Sidebar Grid (Starts below featured image) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             {/* LEFT: Article Content */}
-            <div className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm border border-slate-100/80">
+            <main className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm border border-slate-100/80">
               <div className="prose prose-lg prose-slate max-w-none prose-p:font-light prose-p:text-slate-600 prose-p:leading-relaxed">
                 {(() => {
                   let contentArray = blog.content;
@@ -188,95 +188,93 @@ const SingleBlogPage = ({ blogId }) => {
                   }
                 })()}
               </div>
-            </div>
+            </main>
 
-            {/* RIGHT: Sidebar */}
-            <div className="lg:col-span-4 flex flex-col gap-8">
-              
-              {/* Matching Doctor Sidebar Widget */}
-              {doctor && (
-                <div className="single-blog-fade bg-white rounded-3xl p-6 shadow-sm border border-slate-100 flex flex-col items-center text-center relative z-20">
-                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-emerald-500/20 shadow-md">
-                    <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover" />
+            {/* RIGHT / SIDEBAR */}
+            <aside className="lg:col-span-4">
+              <div className="lg:sticky lg:top-[110px] flex flex-col gap-6">
+                
+                {/* Matching Doctor Sidebar Widget */}
+                {doctor && (
+                  <div className="single-blog-fade bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex flex-col items-center text-center relative z-20">
+                    <div className="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-emerald-500/20 shadow-md">
+                      <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover object-top" />
+                    </div>
+                    <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2.5 py-0.5 rounded-full mb-1.5">
+                      Featured Specialist
+                    </span>
+                    <h4 className="text-base font-bold text-[#0F172A]">{doctor.name}</h4>
+                    <p className="text-xs text-slate-500 mb-3">{doctor.specialty}</p>
+                    <div className="w-full h-[1px] bg-slate-100 my-3" />
+                    <a
+                      href={doctor.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 bg-[#053D38] hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold tracking-wider transition-colors shadow-md flex items-center justify-center gap-2"
+                    >
+                      <span>Book Appointment</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full mb-2">
-                    Featured Specialist
-                  </span>
-                  <h4 className="text-lg font-bold text-[#0F172A]">{doctor.name}</h4>
-                  <p className="text-xs text-slate-500 mb-4">{doctor.specialty}</p>
-                  <div className="w-full h-[1px] bg-slate-100 my-4" />
-                  <p className="text-xs text-slate-500 leading-relaxed mb-5">
-                    Consult directly with {doctor.name} at our Kokapet clinic for expert, personalized guidance.
+                )}
+
+                {/* Quick CTA Card */}
+                <div className="single-blog-fade bg-gradient-to-br from-[#0C3E38] to-[#053D38] rounded-3xl p-5 text-white shadow-lg relative overflow-hidden">
+                  {/* Decorative radial blur */}
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl" />
+                  
+                  <h4 className="text-base font-bold mb-1.5">Need Medical Help?</h4>
+                  <p className="text-xs text-white/80 leading-relaxed mb-4">
+                    Consult with our Kokapet specialists for expert care.
                   </p>
-                  <a
-                    href={doctor.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 bg-[#053D38] hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold tracking-wider transition-colors shadow-md flex items-center justify-center gap-2"
-                  >
-                    <span>Book Appointment</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  
+                  <div className="flex flex-col gap-2">
+                    <a 
+                      href="tel:+918919942870"
+                      className="w-full py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-center rounded-xl text-xs font-semibold transition-colors"
+                    >
+                      Call +91 89199 42870
+                    </a>
+                    <a 
+                      href="https://wa.me/918919942870?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2 bg-emerald-500 hover:bg-emerald-400 text-white text-center rounded-xl text-xs font-semibold transition-colors shadow-sm"
+                    >
+                      Book via WhatsApp
+                    </a>
+                  </div>
                 </div>
-              )}
 
-            {/* Quick CTA Card */}
-            <div className="single-blog-fade bg-gradient-to-br from-[#0C3E38] to-[#053D38] rounded-3xl p-6 text-white shadow-lg relative overflow-hidden">
-              {/* Decorative radial blur */}
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl" />
-              
-              <h4 className="text-lg font-bold mb-2">Need Medical Help?</h4>
-              <p className="text-xs text-white/80 leading-relaxed mb-5">
-                Our clinic in Kokapet features state-of-the-art facilities and a highly experienced clinical team to address all your healthcare needs.
-              </p>
-              
-              <div className="flex flex-col gap-2">
-                <a 
-                  href="tel:+918106770862"
-                  className="w-full py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-center rounded-xl text-xs font-semibold transition-colors"
-                >
-                  Call +91 81067 70862
-                </a>
-                <a 
-                  href="https://wa.me/918919942870?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white text-center rounded-xl text-xs font-semibold transition-colors shadow-sm"
-                >
-                  Book via WhatsApp
-                </a>
-              </div>
-            </div>
+                {/* Recommended Articles Sidebar Section */}
+                <div className="single-blog-fade flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-1">
+                    <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Recommended Articles</h4>
+                    <a href="#/blogs" className="text-[10px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+                      View All
+                    </a>
+                  </div>
 
-            {/* Recommended Articles Sidebar Widget */}
-            <div className="single-blog-fade bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
-              <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Recommended Articles</h4>
-                <a href="#/blogs" className="text-[10px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
-                  View All
-                </a>
+                  {relatedBlogs.map((item) => (
+                    <a
+                      key={item.id}
+                      href={`#/blog/${item.id}`}
+                      className="group bg-white rounded-2xl p-3 shadow-sm border border-slate-100 flex flex-col gap-2.5 hover:shadow-md hover:border-emerald-500/30 transition-all duration-300"
+                    >
+                      <div className="w-full h-auto rounded-xl overflow-hidden bg-slate-100 border border-slate-100/80 shadow-sm">
+                        <img src={item.image} alt={item.title} className="w-full h-auto block transition-transform duration-500 group-hover:scale-105" />
+                      </div>
+                      <div className="flex flex-col gap-1 text-left min-w-0 px-0.5">
+                        <span className="text-[10px] text-slate-400 font-semibold">{item.date}</span>
+                        <h5 className="font-bold text-xs text-[#0F172A] leading-snug group-hover:text-emerald-600 transition-colors line-clamp-2">
+                          {item.title}
+                        </h5>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-4">
-                {relatedBlogs.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#/blog/${item.id}`}
-                    className="group flex flex-col gap-3 hover:bg-[#F8FAFC]/60 p-3 rounded-2xl transition-all duration-300 border border-slate-100/50"
-                  >
-                    <div className="w-full h-32 rounded-xl overflow-hidden bg-slate-100 border border-slate-100/80 shadow-sm">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    </div>
-                    <div className="flex flex-col gap-1 text-left">
-                      <span className="text-[10px] text-slate-400 font-semibold">{item.date}</span>
-                      <h5 className="font-bold text-sm text-[#0F172A] leading-snug group-hover:text-emerald-600 transition-colors line-clamp-2">
-                        {item.title}
-                      </h5>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+            </aside>
 
         </div>
       </div>

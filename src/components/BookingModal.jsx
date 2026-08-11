@@ -7,28 +7,22 @@ import gsap from 'gsap';
 const doctors = [
   "Dr. Sivani Payneni",
   "Dr. Feroz Basha Shaik",
-  "Dr. Anand",
   "Dr. Nagarjuna Doppalapudi",
-  "Dr. Neha",
   "Dr. Sivaharika Rayudu",
-  "Dr. Ravinder Raja",
   "Dr. Yogini Khetawat",
   "Dr. Sharatchandra Reddy Atla"
 ];
 
 const departments = [
-  "Urology",
   "Gynaecology & Women's Health",
   "Dental Care",
   "ENT Care",
   "General & Laparoscopic Surgery",
-  "Pediatrics",
-  "General Medicine & Diabetes",
-  "Pulmonology"
+  "General Medicine & Diabetes"
 ];
 
 const BookingModal = () => {
-  const { isBookingOpen, closeBookingModal } = useBooking();
+  const { isBookingOpen, isOnlineConsultation, closeBookingModal } = useBooking();
   const overlayRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -131,7 +125,8 @@ const BookingModal = () => {
       setTimeout(() => {
         setIsLoading(false);
         const phoneNumber = '918919942870';
-        const message = `Hello Curo Clinics,\n\nI would like to book an appointment.\n\nPatient Name:\n${formData.name}\n\nDoctor:\n${formData.doctor}\n\nDepartment:\n${formData.department}\n\nMobile Number:\n${formData.mobile}\n\nKindly let me know the available appointment slots.\n\nThank you.`;
+        const typeText = isOnlineConsultation ? 'an ONLINE Video Consultation' : 'an In-Person Appointment';
+        const message = `Hello Curo Clinics,\n\nI would like to book ${typeText}.\n\nPatient Name:\n${formData.name}\n\nDoctor:\n${formData.doctor}\n\nDepartment:\n${formData.department}\n\nMobile Number:\n${formData.mobile}\n\nKindly share the consultation schedule & details.\n\nThank you.`;
         
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
@@ -163,13 +158,19 @@ const BookingModal = () => {
         <div className="relative z-10 p-6 md:p-10">
           <div className="text-center mb-8">
             <span className="inline-block px-3 py-1 mb-4 text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-              BOOK APPOINTMENT
+              {isOnlineConsultation ? 'ONLINE CONSULTATION' : 'BOOK APPOINTMENT'}
             </span>
             <h2 className="text-3xl md:text-4xl font-light text-white mb-3 tracking-tight">
-              Book Your <span className="text-emerald-400 font-medium">Consultation</span>
+              {isOnlineConsultation ? (
+                <>Book <span className="text-emerald-400 font-medium">Online Video</span> Consultation</>
+              ) : (
+                <>Book Your <span className="text-emerald-400 font-medium">Consultation</span></>
+              )}
             </h2>
             <p className="text-gray-300 text-sm md:text-base font-light">
-              Fill in your details and we'll help you schedule your appointment with the right specialist.
+              {isOnlineConsultation
+                ? 'Fill in your details to schedule a live video consultation with our specialists via WhatsApp.'
+                : "Fill in your details and we'll help you schedule your appointment with the right specialist."}
             </p>
           </div>
 
