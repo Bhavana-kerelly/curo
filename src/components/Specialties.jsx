@@ -191,7 +191,7 @@ const Specialties = () => {
 
           <div className="flex items-center">
             <button 
-              onClick={() => window.location.hash = '#/services'}
+              onClick={() => { window.history.pushState({}, '', '/services'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative inline-flex items-center gap-3 px-6 py-3.5 bg-white border border-emerald-500/10 hover:border-emerald-500/40 text-emerald-600 font-medium text-sm rounded-full shadow-lg shadow-emerald-500/5 transition-all duration-300 hover:shadow-emerald-500/10 hover:-translate-y-0.5 cursor-pointer"
             >
               <span>View All Specialties</span>
@@ -209,7 +209,7 @@ const Specialties = () => {
             {/* Column 1 Top: Complete Family Healthcare Feature Card */}
             <div
               ref={leftCardRef}
-              onClick={() => window.location.hash = '#/services'}
+              onClick={() => { window.history.pushState({}, '', '/services'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[500px] lg:h-[620px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 flex flex-col justify-end p-8 cursor-pointer"
             >
               {/* Background Consultation Image */}
@@ -248,7 +248,7 @@ const Specialties = () => {
 
             {/* Column 1 Bottom: General & Laparoscopic Surgery */}
             <div
-              onClick={() => window.location.hash = '#/specialty/surgery'}
+              onClick={() => { window.history.pushState({}, '', '/specialty/surgery'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
@@ -280,7 +280,7 @@ const Specialties = () => {
             {/* Middle Top Card: Gynecology */}
             <div
               ref={midTopCardRef}
-              onClick={() => window.location.hash = '#/specialty/gynaecology'}
+              onClick={() => { window.history.pushState({}, '', '/specialty/gynaecology'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               {/* Background image */}
@@ -309,7 +309,7 @@ const Specialties = () => {
             {/* Middle Middle Card: Dental Care */}
             <div
               ref={midBottomCardRef}
-              onClick={() => window.location.hash = '#/specialty/dental'}
+              onClick={() => { window.history.pushState({}, '', '/specialty/dental'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
@@ -342,7 +342,7 @@ const Specialties = () => {
 
             {/* Middle Bottom Card: General Medicine & Diabetes */}
             <div
-              onClick={() => window.location.hash = '#/specialty/medicine'}
+              onClick={() => { window.history.pushState({}, '', '/specialty/medicine'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
@@ -374,7 +374,7 @@ const Specialties = () => {
             {/* Right Top Card: ENT Care Card */}
             <div
               ref={rightTopCardRef}
-              onClick={() => window.location.hash = '#/specialty/ent'}
+              onClick={() => { window.history.pushState({}, '', '/specialty/ent'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/5 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               {/* Background image */}
@@ -421,7 +421,7 @@ const Specialties = () => {
                       key={index}
                       onClick={(e) => {
                         e.stopPropagation();
-                        window.location.hash = `#/specialty/${dept.id}`;
+                        window.history.pushState({}, '', `/specialty/${dept.id}`); window.dispatchEvent(new Event('popstate'));
                       }}
                       className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm active:scale-90"
                     >
@@ -438,7 +438,7 @@ const Specialties = () => {
                       key={index}
                       onClick={(e) => {
                         e.stopPropagation();
-                        window.location.hash = `#/specialty/${dept.id}`;
+                        window.history.pushState({}, '', `/specialty/${dept.id}`); window.dispatchEvent(new Event('popstate'));
                       }}
                       className="flex items-center gap-2 px-3 py-2 bg-[#EAF9F2]/60 hover:bg-[#EAF9F2] border border-emerald-500/10 rounded-full transition-all duration-300 scale-95 hover:scale-100 cursor-pointer shadow-sm active:scale-90"
                     >
@@ -458,7 +458,7 @@ const Specialties = () => {
             {/* Right Bottom Card: Group of Indian Doctors */}
             <div
               ref={rightBottomCardRef}
-              onClick={() => window.location.hash = '#/doctors'}
+              onClick={() => { window.history.pushState({}, '', '/doctors'); window.dispatchEvent(new Event('popstate')); }}
               className="group relative h-[238px] lg:h-[298px] rounded-3xl overflow-hidden bg-white border border-emerald-500/10 shadow-xl shadow-emerald-500/5 transition-all duration-500 hover:shadow-emerald-500/10 hover:-translate-y-1 p-6 flex flex-col justify-between cursor-pointer"
             >
               <div
@@ -484,7 +484,7 @@ const Specialties = () => {
                     key={index}
                     onClick={(e) => {
                       e.stopPropagation();
-                      window.location.hash = `#/specialty/${dept.id}`;
+                      window.history.pushState({}, '', `/specialty/${dept.id}`); window.dispatchEvent(new Event('popstate'));
                     }}
                     className="px-2 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[9px] font-medium tracking-wide shadow-sm hover:bg-emerald-500 hover:border-emerald-400/40 transition-colors duration-300 cursor-pointer"
                   >

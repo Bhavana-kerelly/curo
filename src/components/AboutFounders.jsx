@@ -18,7 +18,7 @@ const AboutFounders = () => {
       value: "5+",
       title: "Specialties Under One Roof",
       desc: "ENT, Gynecology, Dental Care, General Medicine and General Surgery—all working together for complete family healthcare.",
-      image: './images/family-doctor.jpg',
+      image: '/images/family-doctor.jpg',
       placement: "left-6 right-6 bottom-6",
       clipPath: "polygon(64px 0, calc(100% - 14px) 0, calc(100% - 4px) 4px, 100% 14px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 4px), calc(100% - 14px) 100%, 14px 100%, 4px calc(100% - 4px), 0 calc(100% - 14px), 0 64px)",
       offset: false
@@ -27,7 +27,7 @@ const AboutFounders = () => {
       value: "100%",
       title: "Patient-First Care",
       desc: "Every consultation is built around compassion, transparency and personalized treatment plans tailored to each patient's health journey.",
-      image: "./images/patient-care.jpg",
+      image: "/images/patient-care.jpg",
       placement: "left-6 bottom-20",
       clipPath: "polygon(0 14px, 4px 4px, 14px 0, calc(100% - 64px) 0, 100% 64px, 100% calc(100% - 14px), calc(100% - 4px) calc(100% - 4px), calc(100% - 14px) 100%, 64px 100%, 0 calc(100% - 64px))",
       offset: true

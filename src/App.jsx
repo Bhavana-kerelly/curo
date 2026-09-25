@@ -12,36 +12,39 @@ import BookingModal from './components/BookingModal';
 import { BookingProvider } from './context/BookingContext';
 import WhatsAppWidget from './components/WhatsAppWidget';
 
+
 function App() {
+
   const [page, setPage] = useState('home');
   const [blogId, setBlogId] = useState(null);
   const [specialtyId, setSpecialtyId] = useState('gynaecology');
 
   useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash.startsWith('#/about-us')) {
+    const handleLocationChange = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/about-us')) {
         setPage('about');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/services')) {
+      } else if (path.startsWith('/services')) {
         setPage('services');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/specialty/')) {
-        const id = window.location.hash.split('#/specialty/')[1];
+      } else if (path.startsWith('/specialty/')) {
+        const id = path.split('/specialty/')[1];
         setSpecialtyId(id);
         setPage('single-specialty');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/doctors')) {
+      } else if (path.startsWith('/doctors')) {
         setPage('doctors');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/blogs')) {
+      } else if (path.startsWith('/blogs')) {
         setPage('blogs');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/blog/')) {
-        const id = window.location.hash.split('#/blog/')[1];
+      } else if (path.startsWith('/blog/')) {
+        const id = path.split('/blog/')[1];
         setBlogId(id);
         setPage('single-blog');
         window.scrollTo({ top: 0, behavior: 'instant' });
-      } else if (window.location.hash.startsWith('#/contact')) {
+      } else if (path.startsWith('/contact')) {
         setPage('contact');
         window.scrollTo({ top: 0, behavior: 'instant' });
       } else {
@@ -49,10 +52,24 @@ function App() {
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // initial execution
+    window.addEventListener('popstate', handleLocationChange);
+    
+    const handleClick = (e) => {
+      const a = e.target.closest('a');
+      if (a && a.getAttribute('href') && a.getAttribute('href').startsWith('/')) {
+        e.preventDefault();
+        window.history.pushState({}, '', a.getAttribute('href'));
+        handleLocationChange();
+      }
+    };
+    document.addEventListener('click', handleClick);
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    handleLocationChange(); // initial execution
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      document.removeEventListener('click', handleClick);
+    };
   }, []);
 
   return (
@@ -60,7 +77,7 @@ function App() {
       <div className="w-full min-h-screen bg-transparent text-white antialiased relative">
         {/* Fixed Global Background */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
-          <img src="./images/curo-hero.jpg" alt="Curo Clinics Background" className="w-full h-full object-cover blur-[6px] scale-105" />
+          <img src="/images/curo-hero.jpg" alt="Curo Clinics Background" className="w-full h-full object-cover blur-[6px] scale-105" />
           <div className="absolute inset-0 bg-white/10" />
         </div>
 
@@ -87,6 +104,7 @@ function App() {
 
         <BookingModal />
         <WhatsAppWidget />
+
       </div>
     </BookingProvider>
   );

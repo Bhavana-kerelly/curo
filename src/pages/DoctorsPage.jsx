@@ -43,7 +43,9 @@ const LargeDoctorImage = ({ src, name }) => {
       <img
         src={src}
         alt={name}
-        className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+        className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] ${
+          name?.toLowerCase().includes('feroz') ? 'object-[center_60%]' : 'object-top'
+        }`}
       />
       {/* Glass reflections & soft glow overlay */}
       <div
@@ -66,7 +68,13 @@ const DoctorHeroCard = ({ doc, onClick }) => {
       className="bg-white rounded-[32px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.06)] border border-white shadow-md flex flex-col cursor-pointer transition-all duration-300 w-full"
     >
       <div className="w-full aspect-[4/4.5] overflow-hidden bg-slate-50 relative">
-        <img src={doc.image} alt={doc.name} className="w-full h-full object-cover object-top" />
+        <img 
+          src={doc.image} 
+          alt={doc.name} 
+          className={`w-full h-full object-cover ${
+            doc.name?.toLowerCase().includes('feroz') || doc.image?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+          }`} 
+        />
       </div>
     </motion.div>
   );
@@ -540,7 +548,13 @@ const DoctorsPage = () => {
                     `}
                   >
                     <div className="w-20 h-20 rounded-full overflow-hidden mb-3.5 border-2 border-white shadow-md relative">
-                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover object-top" />
+                      <img 
+                        src={doc.image} 
+                        alt={doc.name} 
+                        className={`w-full h-full object-cover ${
+                          doc.name?.toLowerCase().includes('feroz') || doc.image?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+                        }`} 
+                      />
                       {isActive && (
                         <div className="absolute inset-0 border-2 border-emerald-500 rounded-full animate-ping opacity-60" />
                       )}
@@ -727,7 +741,13 @@ const DoctorsPage = () => {
               <div className="flex-1 overflow-y-auto p-8 sm:p-12 scrollbar-thin">
                 <div className="flex flex-col items-center text-center pb-8 border-b border-slate-100">
                   <div className="w-28 h-28 rounded-full overflow-hidden border-[4px] border-white shadow-lg mb-4 relative">
-                    <img src={activeDoctorOverlay.image} alt={activeDoctorOverlay.name} className="w-full h-full object-cover object-top" />
+                    <img 
+                      src={activeDoctorOverlay.image} 
+                      alt={activeDoctorOverlay.name} 
+                      className={`w-full h-full object-cover ${
+                        activeDoctorOverlay.name?.toLowerCase().includes('feroz') || activeDoctorOverlay.image?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+                      }`} 
+                    />
                   </div>
 
                   <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider mb-2">

@@ -4,11 +4,11 @@ export const specialtiesData = [
     name: "Gynaecology & Women's Health",
     category: "Maternal & Women's Health",
     heroTagline: "Empowering Women's Health Across Every Stage of Life",
-    bgImage: './images/gynecology-card.jpg',
+    bgImage: '/images/gynecology-card.jpg',
     introduction: 'Empowering women with comprehensive health solutions from adolescence through pregnancy, childbirth, and menopause. We emphasize patient-centered evidence-based care in private, comfortable consultation rooms.',
     doctor: {
       name: 'Dr. Sivaharika Rayudu',
-      image: './images/sivaharika.jpg?v=2',
+      image: '/images/sivaharika.jpg?v=2',
       qualification: 'MBBS, MD (Obstetrics & Gynaecology), DNB',
       experience: '12+ Years of Medical Experience',
       bio: 'Dr. Sivaharika Rayudu is a leading Obstetrician & Gynecologist specializing in high-risk pregnancy management, laparoscopic keyhole gynae surgeries, and comprehensive PCOS management.'
@@ -49,11 +49,11 @@ export const specialtiesData = [
     name: 'Dental Care',
     category: 'Oral Aesthetics & Care',
     heroTagline: 'Precision Dental Solutions for Healthy, Confident Smiles',
-    bgImage: './images/dental-chair.jpg',
+    bgImage: '/images/dental-chair.jpg',
     introduction: 'Providing holistic dental care services ranging from preventive maintenance to modern cosmetic dentistry and implants, blending clinical precision with artistic insight to restore your smile.',
     doctor: {
       name: 'Dr. Yogini Khetawat',
-      image: './images/yogini.jpg',
+      image: '/images/yogini.jpg',
       qualification: 'B.D.S., Dental Surgeon & Cosmetologist',
       experience: '12+ Years of Dental & Cosmetology Practice',
       bio: 'Dr. Yogini Khetawat is a renowned Dental Surgeon & Cosmetologist with over 12 years of experience in smile designing, dental implants, root canal therapy, and advanced oral cosmetological procedures.'
@@ -94,11 +94,11 @@ export const specialtiesData = [
     name: 'ENT Care',
     category: 'Ear, Nose & Throat Clinics',
     heroTagline: 'Comprehensive Ear, Nose & Throat Care for Better Hearing, Breathing & Wellbeing',
-    bgImage: './images/ent-care.jpg',
+    bgImage: '/images/ent-care.jpg',
     introduction: 'Providing comprehensive ENT care for common and complex conditions affecting the ear, nose, throat, and related structures. Our clinical approach combines accurate diagnosis, minimally invasive procedures, and personalized treatment to improve hearing, breathing, voice, and overall ENT health.',
     doctor: {
       name: 'Dr. Feroz Basha Shaik',
-      image: './images/feroz_basha.jpg',
+      image: '/images/feroz_basha.jpg',
       qualification: 'MBBS, MS (ENT), Head & Neck Surgeon',
       experience: '8+ Years of Clinical Experience',
       bio: 'Dr. Feroz Basha Shaik provides comprehensive care for a wide range of ear, nose, and throat conditions, with expertise in clinical diagnosis, endoscopic evaluation, minor ENT procedures, foreign body removal, ear care, and hearing assessment.'
@@ -141,11 +141,11 @@ export const specialtiesData = [
     name: 'General & Laparoscopic Surgery',
     category: 'Minimally Invasive Surgery',
     heroTagline: 'Advanced Keyhole Surgeries with Faster Recovery and Less Pain',
-    bgImage: './images/laparoscopic-surgery.jpg',
+    bgImage: '/images/laparoscopic-surgery.jpg',
     introduction: 'Providing advanced laparoscopic and keyhole surgeries that offer patient benefits such as less pain, minimal scarring, and faster discharge, ensuring optimal surgical outcomes.',
     doctor: {
       name: 'Dr. Nagarjuna Doppalapudi',
-      image: './images/nagarjuna_doppalapudi.jpg',
+      image: '/images/nagarjuna_doppalapudi.jpg',
       qualification: 'MBBS, DNB (General Surgery), FIAGES',
       experience: '10+ Years of Surgical Practice',
       bio: 'Dr. Nagarjuna Doppalapudi is a Consultant General and Laparoscopic Surgeon specializing in keyhole laparoscopic surgeries, laser proctology (piles/fissures), hernia repairs, and varicose vein treatments.'
@@ -186,11 +186,11 @@ export const specialtiesData = [
     name: 'General Medicine & Diabetes',
     category: 'Comprehensive Medicine',
     heroTagline: 'Holistic Adult Healthcare, Chronic Disease Management & Diabetology',
-    bgImage: './images/general-medicine.jpg',
+    bgImage: '/images/general-medicine.jpg',
     introduction: 'The primary clinical contact for adults, offering comprehensive medical screening, chronic disease management, and customized wellness profiles, with a strong focus on diabetology.',
     doctor: {
       name: 'Dr. Sivani Payneni',
-      image: './images/sivani_payneni.jpg',
+      image: '/images/sivani_payneni.jpg',
       qualification: 'MBBS, MD (General Medicine), Diabetologist',
       experience: '10+ Years of Academic & Clinical Practice',
       bio: 'Dr. Sivani Payneni is an experienced Consultant Physician & Diabetologist skilled in managing Type 1 & 2 diabetes, metabolic disorders, hypertension, and acute infectious illnesses.'

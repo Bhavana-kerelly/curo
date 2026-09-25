@@ -125,42 +125,42 @@ const Navbar = ({ currentPage }) => {
     if (id === 'home' && currentPage !== 'home') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/';
+      window.history.pushState({}, '', '/'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 
     if (id === 'about') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/about-us';
+      window.history.pushState({}, '', '/about-us'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 
     if (id === 'specialties') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/services';
+      window.history.pushState({}, '', '/services'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 
     if (id === 'doctors') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/doctors';
+      window.history.pushState({}, '', '/doctors'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 
     if (id === 'blogs') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/blogs';
+      window.history.pushState({}, '', '/blogs'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 
     if (id === 'contact') {
       e.preventDefault();
       setMobileMenuOpen(false);
-      window.location.hash = '#/contact';
+      window.history.pushState({}, '', '/contact'); window.dispatchEvent(new Event('popstate'));
       return;
     }
 

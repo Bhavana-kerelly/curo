@@ -48,7 +48,9 @@ const DoctorProfileImage = ({ src, name }) => {
       <img
         src={src}
         alt={name}
-        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-108"
+        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-108 ${
+          name?.toLowerCase().includes('feroz') || src?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+        }`}
       />
       <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </motion.div>
@@ -828,7 +830,7 @@ const ServicesPage = () => {
                 key={dept.id} 
                 dept={dept} 
                 index={index} 
-                onClick={() => window.location.hash = `#/specialty/${dept.id}`} 
+                onClick={() => { window.history.pushState({}, '', `/specialty/${dept.id}`); window.dispatchEvent(new Event('popstate')); }} 
               />
             ))}
           </div>

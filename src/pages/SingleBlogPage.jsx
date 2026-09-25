@@ -9,11 +9,11 @@ const SingleBlogPage = ({ blogId }) => {
   const pageRef = useRef(null);
   const heroRef = useRef(null);
   
-  const blog = blogsData.find(b => b.id.toString() === blogId.toString());
+  const blog = blogsData.find(b => b.slug === blogId || b.id.toString() === blogId.toString());
 
   // Filter 3 related/other blogs for sticky sidebar widget
   const relatedBlogs = blogsData
-    .filter(b => b.id.toString() !== blogId.toString())
+    .filter(b => b.slug !== blogId && b.id.toString() !== blogId.toString())
     .slice(0, 3);
 
   // Helper to find matching doctor details
@@ -87,7 +87,7 @@ const SingleBlogPage = ({ blogId }) => {
       <main className="w-full min-h-screen bg-white text-slate-800 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Blog not found</h2>
-          <a href="#/blogs" className="text-emerald-600 font-bold hover:underline">Return to Blogs</a>
+          <a href="/blogs" className="text-emerald-600 font-bold hover:underline">Return to Blogs</a>
         </div>
       </main>
     );
@@ -103,7 +103,7 @@ const SingleBlogPage = ({ blogId }) => {
 
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
           <a 
-            href="#/blogs" 
+            href="/blogs" 
             className="single-blog-fade inline-flex items-center gap-2 text-emerald-300 hover:text-white transition-colors font-medium text-sm mb-6 self-start sm:self-center"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -198,7 +198,13 @@ const SingleBlogPage = ({ blogId }) => {
                 {doctor && (
                   <div className="single-blog-fade bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex flex-col items-center text-center relative z-20">
                     <div className="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-emerald-500/20 shadow-md">
-                      <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover object-top" />
+                      <img 
+                        src={doctor.image} 
+                        alt={doctor.name} 
+                        className={`w-full h-full object-cover ${
+                          doctor.name?.toLowerCase().includes('feroz') || doctor.image?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+                        }`} 
+                      />
                     </div>
                     <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2.5 py-0.5 rounded-full mb-1.5">
                       Featured Specialist
@@ -250,7 +256,7 @@ const SingleBlogPage = ({ blogId }) => {
                 <div className="single-blog-fade flex flex-col gap-3">
                   <div className="flex items-center justify-between px-1">
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Recommended Articles</h4>
-                    <a href="#/blogs" className="text-[10px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+                    <a href="/blogs" className="text-[10px] font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
                       View All
                     </a>
                   </div>
@@ -258,7 +264,7 @@ const SingleBlogPage = ({ blogId }) => {
                   {relatedBlogs.map((item) => (
                     <a
                       key={item.id}
-                      href={`#/blog/${item.id}`}
+                      href={`/blog/${item.slug}`}
                       className="group bg-white rounded-2xl p-3 shadow-sm border border-slate-100 flex flex-col gap-2.5 hover:shadow-md hover:border-emerald-500/30 transition-all duration-300"
                     >
                       <div className="w-full h-auto rounded-xl overflow-hidden bg-slate-100 border border-slate-100/80 shadow-sm">

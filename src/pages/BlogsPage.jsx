@@ -80,7 +80,7 @@ const BlogsPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="blogs-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogsData.map((blog) => (
-              <a href={`#/blog/${blog.id}`} key={blog.id} className="block">
+              <a href={`/blog/${blog.slug}`} key={blog.id} className="block">
                 <article className="blog-card flex flex-col bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,168,107,0.08)] hover:-translate-y-2 cursor-pointer group h-full">
                 
                 {/* Blog Image */}

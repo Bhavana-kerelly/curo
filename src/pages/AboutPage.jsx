@@ -137,7 +137,7 @@ const AboutPage = () => {
             
             {/* Doctor Image */}
             <img 
-              src="./images/doctors_group.jpg" 
+              src="/images/doctors_group.jpg" 
               alt="Curo Clinics Medical Team" 
               className="absolute bottom-6 right-[-40px] sm:right-[-20px] lg:right-[-60px] h-[98%] w-auto object-contain z-10 drop-shadow-sm rounded-[28px]"
             />
@@ -157,7 +157,7 @@ const AboutPage = () => {
           {/* Left: Interactive Image Box */}
           <div className="relative group rounded-[36px] overflow-hidden border border-white/30 shadow-xl p-2" style={{background: 'rgba(248,251,250,0.25)', backdropFilter: 'blur(12px)'}}>
             <img 
-              src="./images/curo-hero.jpg" 
+              src="/images/curo-hero.jpg" 
               alt="Curo Clinics Hospital Exterior" 
               className="w-full h-[400px] sm:h-[500px] object-cover rounded-[28px] transition-transform duration-700 group-hover:scale-[1.03]"
             />

@@ -46,9 +46,9 @@ const SingleSpecialtyPage = ({ deptId }) => {
           
           {/* Breadcrumb Navigation */}
           <div className="specialty-fade flex items-center gap-2 text-xs text-emerald-200/80 mb-6 font-medium">
-            <a href="#/" className="hover:text-white transition-colors">Home</a>
+            <a href="/" className="hover:text-white transition-colors">Home</a>
             <ChevronRight className="w-3.5 h-3.5 opacity-60" />
-            <a href="#/services" className="hover:text-white transition-colors">Specialties</a>
+            <a href="/services" className="hover:text-white transition-colors">Specialties</a>
             <ChevronRight className="w-3.5 h-3.5 opacity-60" />
             <span className="text-emerald-400 font-semibold">{specialty.name}</span>
           </div>
@@ -127,7 +127,9 @@ const SingleSpecialtyPage = ({ deptId }) => {
               <img 
                 src={specialty.doctor.image} 
                 alt={specialty.doctor.name} 
-                className="w-full h-full object-cover object-top"
+                className={`w-full h-full object-cover ${
+                  specialty.doctor.name?.toLowerCase().includes('feroz') || specialty.doctor.image?.includes('feroz') ? 'object-[center_60%]' : 'object-top'
+                }`}
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent pointer-events-none" />
             </div>
@@ -321,7 +323,7 @@ const SingleSpecialtyPage = ({ deptId }) => {
               </span>
               <h2 className="font-serif text-3xl font-bold text-white">Explore Other Specialties</h2>
             </div>
-            <a href="#/services" className="text-emerald-400 font-bold text-xs hover:underline flex items-center gap-1">
+            <a href="/services" className="text-emerald-400 font-bold text-xs hover:underline flex items-center gap-1">
               <span>View All Departments</span>
               <ArrowRight className="w-4 h-4" />
             </a>
@@ -331,7 +333,7 @@ const SingleSpecialtyPage = ({ deptId }) => {
             {otherSpecialties.map((other) => (
               <a
                 key={other.id}
-                href={`#/specialty/${other.id}`}
+                href={`/specialty/${other.id}`}
                 className="group bg-slate-800/80 border border-slate-700 hover:border-emerald-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>

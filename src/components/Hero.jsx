@@ -127,7 +127,7 @@ const Hero = () => {
       {/* Main Overlay Content */}
       <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex items-center">
         {/* Left Side Info - Right Side left empty for Doctor inside video */}
-        <div className="w-full md:w-1/2 lg:w-5/12 flex flex-col justify-center text-left">
+        <div className="w-full md:w-1/2 lg:w-5/12 flex flex-col justify-center text-left mt-16 md:mt-24">
 
           {/* Animated Badge */}
           <div
@@ -164,7 +164,7 @@ const Hero = () => {
             </button>
             <button
               ref={addToButtonsRef}
-              onClick={() => window.location.hash = '#/doctors'}
+              onClick={() => { window.history.pushState({}, '', '/doctors'); window.dispatchEvent(new Event('popstate')); }}
               className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-medium rounded-full border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
             >
               Meet Our Doctors
